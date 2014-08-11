@@ -1,0 +1,8 @@
+# Standard trade contract
+# - buyer
+# - seller
+# - amount
+# - expiry
+# - insurers (insured party, amount, fee)
+# - outcome
+# * contract will escrow the funds
