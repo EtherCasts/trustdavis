@@ -1,13 +1,43 @@
 # Reference database
 # - insurer, object, max/available liability, fee
+#
+# No False Claims scenario
 
 shared:
-    OWNER = 0x10
+    FACTORY = 0x10
 
 init:
-    contract.storage[OWNER] = msg.sender
+    contract.storage[FACTORY] = msg.sender
 
 code:
     cmd = msg.data[0]
-    if cmd == "suicide" and msg.sender == contract.storage[OWNER]:
+    if cmd == "suicide" and msg.sender == contract.storage[FACTORY]:
         suicide(msg.sender)
+
+    if cmd == "deposit" and msg.value > 0:  # deposit
+        contract.storage[msg.sender] += msg.value
+    elif cmd == "withdraw":
+        # TODO which amount is available
+        return(0)
+    elif cmd == "set":  # set reference <insured> <max_liability> <premium>
+        insured = msg.data[1]
+        max_liability = msg.data[2]
+        premium = msg.data[3]
+
+        if insured == 0 or insured >= 2 ** 160:
+            return(0)
+
+        idx = msg.sender * 2 ** 160 + insured * 3
+        contracts.storage[idx] = max_liability
+        contracts.storage[idx + 1] = premium
+        contracts.storage[idx + 2] = block.timestamp  # last updated
+
+        # TODO add list of references
+        return(1)
+    elif cmd == "lock": # lock a reference <insured> <liability>
+        # TODO
+        return(0)
+    elif cmd == "release": # release a reference <insured> <liability> <success>
+        # TODO
+        return(0)
+    return(0)

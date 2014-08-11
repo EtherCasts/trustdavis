@@ -15,4 +15,4 @@ class TestReferences(object):
         self.c = self.s.contract(self.code)
 
     def test_init(self):
-        assert self.s.block.get_storage_data(self.c, 0x10) == int(tester.a0, 16)  # owner
+        assert self.s.block.get_storage_data(self.c, 0x10) == int(tester.a0, 16)  # factory
