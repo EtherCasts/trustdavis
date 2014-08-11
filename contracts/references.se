@@ -1,0 +1,13 @@
+# Reference database
+# - insurer, object, max/available liability, fee
+
+shared:
+    OWNER = 0x10
+
+init:
+    contract.storage[OWNER] = msg.sender
+
+code:
+    cmd = msg.data[0]
+    if cmd == "suicide" and msg.sender == contract.storage[OWNER]:
+        suicide(msg.sender)
