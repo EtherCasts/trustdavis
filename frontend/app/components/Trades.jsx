@@ -7,8 +7,21 @@ var FluxMixin = Fluxxor.FluxMixin(React),
     StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
 var NewTradeForm = require("./NewTradeForm");
+var TradeList = require("./TradeList");
 
 require("../css/style.css");
+
+// TODO mock data
+var tradeList = [{
+    id: 'f70097659f329a09',
+    type: 'buy',
+    description: 'Garden gnome',
+    price: 12,
+    counterparty: 'Andrew',
+    counterpartyId: '91c24063',
+    status: 'new',
+    expiration: '31/12/2014'
+}];
 
 var Trades = React.createClass({
   mixins: [FluxMixin, StoreWatchMixin("TradeStore")],
@@ -26,19 +39,8 @@ var Trades = React.createClass({
     return (
       <div>
         <NewTradeForm />
-        <ul>
-          {this.state.todos.map(function(todo, i) {
-            //return <li key={i}><TradeItem todo={todo} /></li>;
-            return <li key={i}>TradeItem</li>;
-          })}
-        </ul>
-        <form onSubmit={this.onSubmitForm}>
-          <input type="text" size="30" placeholder="New Trade"
-                 value={this.state.newTradeText}
-                 onChange={this.handleTradeTextChange} />
-          <input type="submit" value="Add Trade" />
-        </form>
-        <button onClick={this.clearCompletedTrades}>Clear Completed</button>
+        <h3>Your Active Trades</h3>
+        <TradeList tradeList={tradeList} />
       </div>
     );
   },
