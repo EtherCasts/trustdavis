@@ -6,7 +6,9 @@ var Fluxxor = require("fluxxor");
 var FluxMixin = Fluxxor.FluxMixin(React),
     StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
-//var TradeItem = require("./TradeItem");
+var NewTradeForm = require("./NewTradeForm");
+
+require("../css/style.css");
 
 var Trades = React.createClass({
   mixins: [FluxMixin, StoreWatchMixin("TradeStore")],
@@ -23,7 +25,7 @@ var Trades = React.createClass({
   render: function() {
     return (
       <div>
-        <h1>Trades</h1>
+        <NewTradeForm />
         <ul>
           {this.state.todos.map(function(todo, i) {
             //return <li key={i}><TradeItem todo={todo} /></li>;
