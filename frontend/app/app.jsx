@@ -4,28 +4,38 @@ var React = require("react");
 var Fluxxor = require("fluxxor");
 var Router = require("react-router");
 
-var TodoStore = require("./stores/TodoStore");
-var TodoActions = require("./actions/TodoActions");
-var TodoApp = require("./components/TodoApp");
+var TrustDavisApp = require("./components/TrustDavisApp");
+
+var TradeStore = require("./stores/TradeStore");
+var TradeActions = require("./actions/TradeActions");
+var Trades = require("./components/Trades");
+
+// TODO
+var Placeholder = require("./components/Placeholder");
+
+var merge = require('react/lib/merge');
 
 var Route = Router.Route;
 var Routes = Router.Routes;
-
-// window.React = React;
-// window.flux = flux;
+var Redirect = Router.Redirect;
 
 var stores = {
-  TodoStore: new TodoStore()
+  TradeStore: new TradeStore()
 };
 
-var flux = new Fluxxor.Flux(stores, TodoActions);
+var actions = merge({}, TradeActions);
+
+var flux = new Fluxxor.Flux(stores, actions);
 
 var routes = (
     <Routes>
-        <Route name="welcome" path="/" handler={TodoApp} flux={flux} title="welcome" />
-        <Route name="hi" path="/hi" handler={TodoApp} flux={flux} title="hi" />
-        <Route name="hello" path="/hello" handler={TodoApp} flux={flux} title="hello" />
-        <Route name="say" path="/say/:title" handler={TodoApp} flux={flux} />
+        <Route handler={TrustDavisApp}>
+            <Redirect from="/" to="trades" />
+            <Route name="trades" path="/trades" handler={Trades} flux={flux} />
+            <Route name="tradeDetails" path="/trade/:tradeId" handler={Placeholder} />
+            <Route name="references" path="/references" handler={Placeholder} />
+            <Route name="contacts" path="/contacts" handler={Placeholder} />
+        </Route>
     </Routes>
 );
 
