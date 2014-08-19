@@ -1,6 +1,10 @@
 # TrustDavis frontend
 
-## Development
+## Installation
 
 $ npm install
+$ bower install
+
+## Development
+
 $ npm start
