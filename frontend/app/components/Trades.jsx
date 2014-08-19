@@ -21,6 +21,15 @@ var tradeList = [{
     counterpartyId: '91c24063',
     status: 'new',
     expiration: '31/12/2014'
+}, {
+    id: 'e92113a5cb209c12',
+    type: 'sell',
+    description: 'Lawnmower',
+    price: 66,
+    counterparty: undefined,
+    counterpartyId: undefined,
+    status: 'new',
+    expiration: '15/10/2014'
 }];
 
 var Trades = React.createClass({

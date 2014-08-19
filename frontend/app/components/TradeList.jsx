@@ -12,7 +12,7 @@ var TradeRow = React.createClass({
                 <td><Link to="tradeDetails" tradeId={this.props.trade.id}>
                 {this.props.trade.description}</Link></td>
                 <td>{this.props.trade.price} ETH</td>
-                <td><Link to="contacts">{this.props.trade.counterparty}</Link></td>
+                <td>{this.props.trade.counterpartyId?<Link to="contacts">{this.props.trade.counterparty}</Link>:'Not claimed'}</td>
                 <td>{this.props.trade.status}</td>
                 <td>{this.props.trade.expiration}</td>
             </tr>
@@ -24,7 +24,7 @@ var TradeList = React.createClass({
     render: function() {
         var tradeListNodes = this.props.tradeList.map(function (trade) {
             return (
-                <TradeRow trade={trade} />
+                <TradeRow key={trade.id} trade={trade} />
             );
         });
         return (
