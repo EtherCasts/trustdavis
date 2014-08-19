@@ -1,0 +1,37 @@
+{
+  "name": "trustdavis",
+  "version": "0.0.1",
+  "description": "TrustDavis: Reputation on Ethereum",
+  "main": "app/app.jsx",
+  "scripts": {
+    "start": "webpack-dev-server --port 8089 --no-info --content-base app",
+    "watch": "webpack --progress --colors --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EtherCasts/trustdavis.git"
+  },
+  "keywords": [
+    "trustdavis",
+    "trust",
+    "reputation",
+    "ethereum"
+  ],
+  "author": "EtherCasts",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EtherCasts/trustdavis/issues"
+  },
+  "homepage": "https://github.com/EtherCasts/trustdavis",
+  "devDependencies": {
+    "webpack": "^1.3.3-beta2",
+    "webpack-dev-server": "^1.4.10",
+    "jsx-loader": "^0.11.0"
+  },
+  "dependencies": {
+    "react": "^0.11.1",
+    "fluxxor": "^1.3.2",
+    "react-router": "^0.5.2"
+  }
+}
