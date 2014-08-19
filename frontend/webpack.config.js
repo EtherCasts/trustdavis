@@ -1,17 +1,26 @@
 var webpack = require("webpack");
 
 module.exports = {
-  cache: true,
-  entry: "./app/app.jsx",
+  entry: [
+    "webpack-dev-server/client?http://localhost:8089",
+    "webpack/hot/dev-server",
+    "./app/app.jsx"
+  ],
+  // Hot Module Replacement not working https://github.com/webpack/webpack/issues/406
   output: {
     path: __dirname + "/app",
     filename: "bundle.js"
   },
-  devtool: "source-map",
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
   module: {
     loaders: [
       { test: /\.less$/, loader: "style!css!less" },
-      { test: /\.jsx$/, loader: "jsx-loader" },
+      { test: /\.jsx$/, loaders: ["react-hot", "jsx"] },
       { test: /\.json$/, loader: "json" }
     ]
   }

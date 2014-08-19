@@ -1,165 +1,32 @@
 /** @jsx React.DOM */
 
-var React = require("react"),
-    Fluxxor = require("fluxxor");
+var React = require("react");
+var Fluxxor = require("fluxxor");
+var Router = require("react-router");
 
-window.React = React;
+var TodoStore = require("./stores/TodoStore");
+var TodoActions = require("./actions/TodoActions");
+var TodoApp = require("./components/TodoApp");
 
-var constants = {
-  ADD_TODO: "ADD_TODO",
-  TOGGLE_TODO: "TOGGLE_TODO",
-  CLEAR_TODOS: "CLEAR_TODOS"
-};
+var Route = Router.Route;
+var Routes = Router.Routes;
 
-var TodoStore = Fluxxor.createStore({
-  initialize: function() {
-    this.todos = [];
-
-    this.bindActions(
-      constants.ADD_TODO, this.onAddTodo,
-      constants.TOGGLE_TODO, this.onToggleTodo,
-      constants.CLEAR_TODOS, this.onClearTodos
-    );
-  },
-
-  onAddTodo: function(payload) {
-    this.todos.push({text: payload.text, complete: false});
-    this.emit("change");
-  },
-
-  onToggleTodo: function(payload) {
-    payload.todo.complete = !payload.todo.complete;
-    this.emit("change");
-  },
-
-  onClearTodos: function() {
-    this.todos = this.todos.filter(function(todo) {
-      return !todo.complete;
-    });
-    this.emit("change");
-  },
-
-  getState: function() {
-    return {
-      todos: this.todos
-    };
-  }
-});
-
-var actions = {
-  addTodo: function(text) {
-    this.dispatch(constants.ADD_TODO, {text: text});
-  },
-
-  toggleTodo: function(todo) {
-    this.dispatch(constants.TOGGLE_TODO, {todo: todo});
-  },
-
-  clearTodos: function() {
-    this.dispatch(constants.CLEAR_TODOS);
-  }
-};
+// window.React = React;
+// window.flux = flux;
 
 var stores = {
   TodoStore: new TodoStore()
 };
 
-var flux = new Fluxxor.Flux(stores, actions);
-
-window.flux = flux;
-
-var FluxMixin = Fluxxor.FluxMixin(React),
-    FluxChildMixin = Fluxxor.FluxChildMixin(React),
-    StoreWatchMixin = Fluxxor.StoreWatchMixin;
-
-var Application = React.createClass({
-  mixins: [FluxMixin, StoreWatchMixin("TodoStore")],
-
-  getInitialState: function() {
-    return { newTodoText: "" };
-  },
-
-  getStateFromFlux: function() {
-    var flux = this.getFlux();
-    // Our entire state is made up of the TodoStore data. In a larger
-    // application, you will likely return data from multiple stores, e.g.:
-    //
-    //   return {
-    //     todoData: flux.store("TodoStore").getState(),
-    //     userData: flux.store("UserStore").getData(),
-    //     fooBarData: flux.store("FooBarStore").someMoreData()
-    //   };
-    return flux.store("TodoStore").getState();
-  },
-
-  render: function() {
-    return (
-      <div>
-        <h1>{this.props.title} - {this.props.params.title}</h1>
-        <ul>
-          {this.state.todos.map(function(todo, i) {
-            return <li key={i}><TodoItem todo={todo} /></li>;
-          })}
-        </ul>
-        <form onSubmit={this.onSubmitForm}>
-          <input type="text" size="30" placeholder="New Todo"
-                 value={this.state.newTodoText}
-                 onChange={this.handleTodoTextChange} />
-          <input type="submit" value="Add Todo" />
-        </form>
-        <button onClick={this.clearCompletedTodos}>Clear Completed</button>
-      </div>
-    );
-  },
-
-  handleTodoTextChange: function(e) {
-    this.setState({newTodoText: e.target.value});
-  },
-
-  onSubmitForm: function(e) {
-    e.preventDefault();
-    if (this.state.newTodoText.trim()) {
-      this.getFlux().actions.addTodo(this.state.newTodoText);
-      this.setState({newTodoText: ""});
-    }
-  },
-
-  clearCompletedTodos: function(e) {
-    this.getFlux().actions.clearTodos();
-  }
-});
-
-var TodoItem = React.createClass({
-  mixins: [FluxChildMixin],
-
-  propTypes: {
-    todo: React.PropTypes.object.isRequired
-  },
-
-  render: function() {
-    var style = {
-      textDecoration: this.props.todo.complete ? "line-through" : ""
-    };
-
-    return <span style={style} onClick={this.onClick}>{this.props.todo.text}</span>;
-  },
-
-  onClick: function() {
-    this.getFlux().actions.toggleTodo(this.props.todo);
-  }
-});
-
-//React.renderComponent(<Application flux={flux} title="hi" />, document.getElementById("app"));
-var Routes = require('react-router/Routes');
-var Route = require('react-router/Route');
+var flux = new Fluxxor.Flux(stores, TodoActions);
 
 var routes = (
-  <Routes location="hash" flux={flux}>
-      <Route name="welcome" path="/" handler={Application} flux={flux} title="welcome" />
-      <Route name="hi" path="/hi" handler={Application} flux={flux} title="hi" />
-      <Route name="hello" path="/hello" handler={Application} flux={flux} title="hello" />
-      <Route name="say" path="/say/:title" handler={Application} flux={flux} />
-  </Routes>
+    <Routes>
+        <Route name="welcome" path="/" handler={TodoApp} flux={flux} title="welcome" />
+        <Route name="hi" path="/hi" handler={TodoApp} flux={flux} title="hi" />
+        <Route name="hello" path="/hello" handler={TodoApp} flux={flux} title="hello" />
+        <Route name="say" path="/say/:title" handler={TodoApp} flux={flux} />
+    </Routes>
 );
 
 React.renderComponent(routes, document.getElementById("app"));
