@@ -9,6 +9,7 @@ var TrustDavisApp = require("./components/TrustDavisApp");
 var TradeStore = require("./stores/TradeStore");
 var TradeActions = require("./actions/TradeActions");
 var Trades = require("./components/Trades");
+var TradeDetails = require("./components/TradeDetails");
 
 // TODO
 var Placeholder = require("./components/Placeholder");
@@ -27,12 +28,18 @@ var actions = merge({}, TradeActions);
 
 var flux = new Fluxxor.Flux(stores, actions);
 
+// TODO mock data
+var user = {
+    id: "1a73636d",
+    name: "Mike"
+};
+
 var routes = (
     <Routes>
-        <Route handler={TrustDavisApp}>
+        <Route handler={TrustDavisApp} user={user}>
             <Redirect from="/" to="trades" />
             <Route name="trades" path="/trades" handler={Trades} flux={flux} />
-            <Route name="tradeDetails" path="/trade/:tradeId" handler={Placeholder} />
+            <Route name="tradeDetails" path="/trade/:tradeId" handler={TradeDetails} user={user} flux={flux} />
             <Route name="references" path="/references" handler={Placeholder} />
             <Route name="contacts" path="/contacts" handler={Placeholder} />
         </Route>

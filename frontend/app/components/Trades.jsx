@@ -52,23 +52,8 @@ var Trades = React.createClass({
         <TradeList tradeList={tradeList} />
       </div>
     );
-  },
-
-  handleTradeTextChange: function(e) {
-    this.setState({newTradeText: e.target.value});
-  },
-
-  onSubmitForm: function(e) {
-    e.preventDefault();
-    if (this.state.newTradeText.trim()) {
-      this.getFlux().actions.addTrade(this.state.newTradeText);
-      this.setState({newTradeText: ""});
-    }
-  },
-
-  clearCompletedTrades: function(e) {
-    this.getFlux().actions.clearTrades();
   }
+
 });
 
 module.exports = Trades;

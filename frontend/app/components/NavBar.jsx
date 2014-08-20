@@ -36,7 +36,7 @@ var NavBar = React.createClass({
               </form>
               <ul className="nav navbar-nav navbar-right">
                 <li><Link to="contacts">
-                    <span className="glyphicon glyphicon-user"></span> {this.props.userName} ({this.props.userId + '\u2026'})
+                    <span className="glyphicon glyphicon-user"></span> {this.props.user.name} ({this.props.user.id + '\u2026'})
                 </Link></li>
               </ul>
             </div>

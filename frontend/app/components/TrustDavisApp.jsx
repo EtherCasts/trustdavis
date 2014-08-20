@@ -9,7 +9,7 @@ var TrustDavisApp = React.createClass({
   render: function() {
     return (
       <div>
-        <NavBar userName="Mike" userId="1a73636d" />
+        <NavBar user={this.props.user} />
         <this.props.activeRouteHandler/>
       </div>
     );
