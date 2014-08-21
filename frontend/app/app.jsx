@@ -4,6 +4,9 @@ var React = require("react");
 var Fluxxor = require("fluxxor");
 var Router = require("react-router");
 
+// expost React globally for DevTools
+window.React = React;
+
 var TrustDavisApp = require("./components/TrustDavisApp");
 
 var TradeStore = require("./stores/TradeStore");
