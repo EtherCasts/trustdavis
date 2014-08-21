@@ -3,8 +3,6 @@
 var React = require("react");
 var ProgressBar = require("./ProgressBar");
 
-require("../css/style.css");
-
 var TradeStatusPane = React.createClass({
   render: function() {
     var escrowPctStyle = {width: this.props.trade.escrowPct + '%'};

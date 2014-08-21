@@ -9,8 +9,6 @@ var FluxMixin = Fluxxor.FluxMixin(React),
 var NewTradeForm = require("./NewTradeForm");
 var TradeList = require("./TradeList");
 
-require("../css/style.css");
-
 // TODO mock data
 var fixtures = require("../fixtures");
 

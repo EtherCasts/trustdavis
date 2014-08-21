@@ -11,8 +11,6 @@ var ReferencesOverviewPane = require("./ReferencesOverviewPane");
 var ReferencesDepositPane = require("./ReferencesDepositPane");
 var ReferencesList = require("./ReferencesList");
 
-require("../css/style.css");
-
 // TODO mock data
 var fixtures = require("../fixtures");
 

@@ -10,8 +10,6 @@ var TradeSummaryPane = require("./TradeSummaryPane");
 var TradeStatusPane = require("./TradeStatusPane");
 var TradeReferenceList = require("./TradeReferenceList");
 
-require("../css/style.css");
-
 // TODO mock data
 var fixtures = require("../fixtures");
 

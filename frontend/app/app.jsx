@@ -27,6 +27,7 @@ var fixtures = require("./fixtures");
 var jQuery = require("jquery");
 window.jQuery = jQuery;
 require("bootstrap/dist/js/bootstrap.js");
+require("./css/style.css");
 
 var Route = Router.Route;
 var Routes = Router.Routes;
