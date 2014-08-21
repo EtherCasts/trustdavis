@@ -13,25 +13,7 @@ var ReferenceList = require("./ReferenceList");
 require("../css/style.css");
 
 // TODO mock data
-var trade = {
-    id: 'f70097659f329a09',
-    type: 'buy',
-    buyer: { id: '1a73636d', name: 'Mike' },
-    seller: { id: '91c24063', name: 'Andrew' },
-    description: 'Garden gnome',
-    price: 12.0,
-    expiration: '31/12/2014',
-    escrowPct: 100.0,
-    insurancePct: 50.0,
-    statusText: 'awaiting insurance'
-};
-
-var referenceList = [{
-    id: 'f7009765',
-    insurer: { id: 'f7009765', name: 'John' },
-    liability: 6,
-    premiumPct: 10.0
-}];
+var fixtures = require("../fixtures");
 
 var TradeDetails = React.createClass({
   mixins: [FluxMixin, StoreWatchMixin("TradeStore")],
@@ -50,10 +32,10 @@ var TradeDetails = React.createClass({
       <div>
         <div className="row">
             <div className="col-sm-6">
-                <TradeSummaryPane trade={trade} user={this.props.user} />
+                <TradeSummaryPane trade={fixtures.trade} user={this.props.user} />
             </div>
             <div className="col-sm-6">
-                <TradeStatusPane trade={trade} />
+                <TradeStatusPane trade={fixtures.trade} />
             </div>
         </div>
         <div className="row">
@@ -65,7 +47,7 @@ var TradeDetails = React.createClass({
                 <button type="button" className="btn btn-default" disabled="disabled">Insure this trade</button>
             </div>
         </div>
-        <ReferenceList referenceList={referenceList} />
+        <ReferenceList referenceList={fixtures.referenceList} />
       </div>
     );
   }

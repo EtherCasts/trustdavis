@@ -13,11 +13,15 @@ var TradeStore = require("./stores/TradeStore");
 var TradeActions = require("./actions/TradeActions");
 var Trades = require("./components/Trades");
 var TradeDetails = require("./components/TradeDetails");
+var References = require("./components/References");
+
+var merge = require('react/lib/merge');
 
 // TODO
 var Placeholder = require("./components/Placeholder");
 
-var merge = require('react/lib/merge');
+// TODO mock data
+var fixtures = require("./fixtures");
 
 var Route = Router.Route;
 var Routes = Router.Routes;
@@ -31,19 +35,14 @@ var actions = merge({}, TradeActions);
 
 var flux = new Fluxxor.Flux(stores, actions);
 
-// TODO mock data
-var user = {
-    id: "1a73636d",
-    name: "Mike"
-};
 
 var routes = (
     <Routes>
-        <Route handler={TrustDavisApp} user={user}>
+        <Route handler={TrustDavisApp} user={fixtures.user}>
             <Redirect from="/" to="trades" />
             <Route name="trades" path="/trades" handler={Trades} flux={flux} />
-            <Route name="tradeDetails" path="/trade/:tradeId" handler={TradeDetails} user={user} flux={flux} />
-            <Route name="references" path="/references" handler={Placeholder} />
+            <Route name="tradeDetails" path="/trade/:tradeId" handler={TradeDetails} user={fixtures.user} flux={flux} />
+            <Route name="references" path="/references" handler={References} flux={flux} />
             <Route name="contacts" path="/contacts" handler={Placeholder} />
         </Route>
     </Routes>

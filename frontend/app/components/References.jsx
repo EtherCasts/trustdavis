@@ -14,7 +14,7 @@ require("../css/style.css");
 // TODO mock data
 var fixtures = require("../fixtures");
 
-var Trades = React.createClass({
+var References = React.createClass({
   mixins: [FluxMixin, StoreWatchMixin("TradeStore")],
 
   getInitialState: function() {
@@ -30,7 +30,7 @@ var Trades = React.createClass({
     return (
       <div>
         <NewTradeForm />
-        <h3>Your Active Trades</h3>
+        <h3>Your Active References</h3>
         <TradeList tradeList={fixtures.tradeList} />
       </div>
     );
@@ -38,4 +38,4 @@ var Trades = React.createClass({
 
 });
 
-module.exports = Trades;
+module.exports = References;
