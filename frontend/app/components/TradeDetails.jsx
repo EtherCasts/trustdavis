@@ -8,7 +8,7 @@ var FluxMixin = Fluxxor.FluxMixin(React),
 
 var TradeSummaryPane = require("./TradeSummaryPane");
 var TradeStatusPane = require("./TradeStatusPane");
-var ReferenceList = require("./ReferenceList");
+var TradeReferenceList = require("./TradeReferenceList");
 
 require("../css/style.css");
 
@@ -32,10 +32,10 @@ var TradeDetails = React.createClass({
       <div>
         <div className="row">
             <div className="col-sm-6">
-                <TradeSummaryPane trade={fixtures.trade} user={this.props.user} />
+                <TradeSummaryPane trade={fixtures.tradeDetails} user={this.props.user} />
             </div>
             <div className="col-sm-6">
-                <TradeStatusPane trade={fixtures.trade} />
+                <TradeStatusPane trade={fixtures.tradeDetails} />
             </div>
         </div>
         <div className="row">
@@ -47,7 +47,7 @@ var TradeDetails = React.createClass({
                 <button type="button" className="btn btn-default" disabled="disabled">Insure this trade</button>
             </div>
         </div>
-        <ReferenceList referenceList={fixtures.referenceList} />
+        <TradeReferenceList tradeReferenceList={fixtures.tradeReferenceList} />
       </div>
     );
   }

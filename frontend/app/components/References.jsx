@@ -6,8 +6,10 @@ var Fluxxor = require("fluxxor");
 var FluxMixin = Fluxxor.FluxMixin(React),
     StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
-var NewTradeForm = require("./NewTradeForm");
-var TradeList = require("./TradeList");
+var NewReferenceForm = require("./NewReferenceForm");
+var ReferencesOverviewPane = require("./ReferencesOverviewPane");
+var ReferencesDepositPane = require("./ReferencesDepositPane");
+var ReferencesList = require("./ReferencesList");
 
 require("../css/style.css");
 
@@ -15,7 +17,7 @@ require("../css/style.css");
 var fixtures = require("../fixtures");
 
 var References = React.createClass({
-  mixins: [FluxMixin, StoreWatchMixin("TradeStore")],
+  mixins: [FluxMixin, StoreWatchMixin("TradeStore")], // TODO ReferenceStore
 
   getInitialState: function() {
     return { newTradeText: "" };
@@ -23,15 +25,23 @@ var References = React.createClass({
 
   getStateFromFlux: function() {
     var flux = this.getFlux();
-    return flux.store("TradeStore").getState();
+    return flux.store("TradeStore").getState(); // TODO ReferenceStore
   },
 
   render: function() {
     return (
       <div>
-        <NewTradeForm />
-        <h3>Your Active References</h3>
-        <TradeList tradeList={fixtures.tradeList} />
+        <div className="row">
+            <div className="col-sm-6">
+                <ReferencesOverviewPane references={fixtures.references} />
+            </div>
+            <div className="col-sm-6">
+                <ReferencesDepositPane references={fixtures.references} />
+            </div>
+        </div>
+        <NewReferenceForm />
+        <h3>Your References</h3>
+        <ReferencesList referencesList={fixtures.referencesList} />
       </div>
     );
   }

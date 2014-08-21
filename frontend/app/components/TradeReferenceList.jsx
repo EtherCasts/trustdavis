@@ -4,7 +4,7 @@ var React = require("react");
 
 var UserLink = require("./UserLink");
 
-var ReferenceRow = React.createClass({
+var TradeReferenceRow = React.createClass({
     render: function() {
         return (
             <tr>
@@ -16,15 +16,15 @@ var ReferenceRow = React.createClass({
     }
 });
 
-var ReferenceList = React.createClass({
+var TradeReferenceList = React.createClass({
     render: function() {
-        var referenceListNodes = this.props.referenceList.map(function (reference) {
+        var tradeReferenceListNodes = this.props.tradeReferenceList.map(function(reference) {
             return (
-                <ReferenceRow key={reference.id} reference={reference} />
+                <TradeReferenceRow key={reference.id} reference={reference} />
             );
         });
         return (
-            <table className="referenceList table table-striped">
+            <table className="tradeReferenceList table table-striped">
                 <thead>
                     <tr>
                         <th>Insurer</th>
@@ -33,11 +33,11 @@ var ReferenceList = React.createClass({
                     </tr>
                 </thead>
                 <tbody>
-                    {referenceListNodes}
+                    {tradeReferenceListNodes}
                 </tbody>
             </table>
         );
     }
 });
 
-module.exports = ReferenceList;
+module.exports = TradeReferenceList;

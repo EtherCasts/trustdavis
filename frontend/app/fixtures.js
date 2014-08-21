@@ -20,7 +20,7 @@ var fixtures = {
         status: 'new',
         expiration: '15/10/2014'
     }],
-    trade: {
+    tradeDetails: {
         id: 'f70097659f329a09',
         type: 'buy',
         buyer: { id: '1a73636d', name: 'Mike' },
@@ -32,11 +32,26 @@ var fixtures = {
         insurancePct: 50.0,
         statusText: 'awaiting insurance'
     },
-    referenceList: [{
+    tradeReferenceList: [{
         id: 'f7009765',
         insurer: { id: 'f7009765', name: 'John' },
         liability: 6,
         premiumPct: 10.0
+    }],
+    references: {
+        maxLiabilities: 12,
+        lockedLiabilities: 6,
+        insuredTrades: 15,
+        claims: 3,
+        profit: 8,
+        deposit: 12
+    },
+    referencesList: [{
+        id: 'f7009765',
+        trader: { id: '91c24063', name: 'Andrew' },
+        maxLiability: 6,
+        premiumPct: 10,
+        lockedLiability: 6
     }]
 };
 
