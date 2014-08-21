@@ -7,8 +7,6 @@ var Link = Router.Link;
 var Tab = require("./Tab");
 var UserLink = require("./UserLink");
 
-// TODO make bootstrap javascript work
-
 var NavBar = React.createClass({
   render: function() {
     return (

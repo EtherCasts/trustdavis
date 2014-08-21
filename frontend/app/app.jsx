@@ -23,6 +23,11 @@ var Placeholder = require("./components/Placeholder");
 // TODO mock data
 var fixtures = require("./fixtures");
 
+// XXX Load jQuery and bootstrap
+var jQuery = require("jquery");
+window.jQuery = jQuery;
+require("bootstrap/dist/js/bootstrap.js");
+
 var Route = Router.Route;
 var Routes = Router.Routes;
 var Redirect = Router.Redirect;
