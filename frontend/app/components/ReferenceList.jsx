@@ -1,18 +1,16 @@
 /** @jsx React.DOM */
 
 var React = require("react");
-var Router = require("react-router");
-var Link = Router.Link;
+
+var UserLink = require("./UserLink");
 
 var ReferenceRow = React.createClass({
     render: function() {
         return (
             <tr>
-                <td>{this.props.reference.type}</td>
-                <td>{this.props.reference.price} ETH</td>
-                <td>{this.props.reference.counterpartyId?<Link to="contacts">{this.props.reference.counterparty}</Link>:'Not claimed'}</td>
-                <td>{this.props.reference.status}</td>
-                <td>{this.props.reference.expiration}</td>
+                <td><UserLink user={this.props.reference.insurer} /></td>
+                <td>{this.props.reference.liability} ETH</td>
+                <td>{this.props.reference.premiumPct} %</td>
             </tr>
         );
     }
@@ -29,11 +27,9 @@ var ReferenceList = React.createClass({
             <table className="referenceList table table-striped">
                 <thead>
                     <tr>
-                        <th>Type</th>
-                        <th>Price</th>
-                        <th>Counterparty</th>
-                        <th>Status</th>
-                        <th>Expiration</th>
+                        <th>Insurer</th>
+                        <th>Liability</th>
+                        <th>Premium</th>
                     </tr>
                 </thead>
                 <tbody>

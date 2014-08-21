@@ -4,6 +4,8 @@ var React = require("react");
 var Router = require("react-router");
 var Link = Router.Link;
 
+var UserLink = require("./UserLink");
+
 var TradeRow = React.createClass({
     render: function() {
         return (
@@ -12,7 +14,7 @@ var TradeRow = React.createClass({
                 <td><Link to="tradeDetails" tradeId={this.props.trade.id}>
                 {this.props.trade.description}</Link></td>
                 <td>{this.props.trade.price} ETH</td>
-                <td>{this.props.trade.counterpartyId?<Link to="contacts">{this.props.trade.counterparty}</Link>:'Not claimed'}</td>
+                <td>{this.props.trade.counterparty ? <UserLink user={this.props.trade.counterparty} /> : 'Not claimed'}</td>
                 <td>{this.props.trade.status}</td>
                 <td>{this.props.trade.expiration}</td>
             </tr>

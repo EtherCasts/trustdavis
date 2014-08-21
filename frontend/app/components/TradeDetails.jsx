@@ -16,10 +16,8 @@ require("../css/style.css");
 var trade = {
     id: 'f70097659f329a09',
     type: 'buy',
-    buyer: 'Mike',
-    buyerId: '1a73636d',
-    seller: 'Andrew',
-    sellerId: '91c24063',
+    buyer: { id: '1a73636d', name: 'Mike' },
+    seller: { id: '91c24063', name: 'Andrew' },
     description: 'Garden gnome',
     price: 12.0,
     expiration: '31/12/2014',
@@ -30,10 +28,9 @@ var trade = {
 
 var referenceList = [{
     id: 'f7009765',
-    insurer: 'John',
-    insurerId: 'f7009765',
+    insurer: { id: 'f7009765', name: 'John' },
     liability: 6,
-    premium: 10.0
+    premiumPct: 10.0
 }];
 
 var TradeDetails = React.createClass({

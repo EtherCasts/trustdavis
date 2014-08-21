@@ -3,7 +3,9 @@
 var React = require("react");
 var Router = require("react-router");
 var Link = Router.Link;
+
 var Tab = require("./Tab");
+var UserLink = require("./UserLink");
 
 // TODO make bootstrap javascript work
 
@@ -35,9 +37,7 @@ var NavBar = React.createClass({
                 <button type="submit" className="btn btn-default"><span className="glyphicon glyphicon-search"></span></button>
               </form>
               <ul className="nav navbar-nav navbar-right">
-                <li><Link to="contacts">
-                    <span className="glyphicon glyphicon-user"></span> {this.props.user.name} ({this.props.user.id + '\u2026'})
-                </Link></li>
+                <li><UserLink user={this.props.user} showIcon={true} /></li>
               </ul>
             </div>
           </div>

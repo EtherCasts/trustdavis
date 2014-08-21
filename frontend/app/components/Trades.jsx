@@ -17,8 +17,7 @@ var tradeList = [{
     type: 'buy',
     description: 'Garden gnome',
     price: 12,
-    counterparty: 'Andrew',
-    counterpartyId: '91c24063',
+    counterparty: { id: '91c24063', name: 'Andrew' },
     status: 'new',
     expiration: '31/12/2014'
 }, {
@@ -27,7 +26,6 @@ var tradeList = [{
     description: 'Lawnmower',
     price: 66,
     counterparty: undefined,
-    counterpartyId: undefined,
     status: 'new',
     expiration: '15/10/2014'
 }];
