@@ -61,7 +61,8 @@ var TradeDetails = React.createClass({
         </div>
         <div className="row">
             <div className="col-xs-6">
-                <h3>References for this trade</h3>
+                <h3 className="visible-xs-block">References</h3>
+                <h3 className="hidden-xs">References for this trade</h3>
             </div>
             <div className="col-xs-6 text-right">
                 <button type="button" className="btn btn-default" disabled="disabled">Insure this trade</button>
