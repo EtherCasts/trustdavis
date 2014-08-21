@@ -16,37 +16,37 @@ var TradeStatusPane = React.createClass({
           </div>
           <div className="panel-body">
             <div className="row">
-                <div className="col-md-4">
+                <div className="col-xs-4">
                     Escrow
                 </div>
-                <div className="col-md-8">
+                <div className="col-xs-8">
                     <ProgressBar pct={this.props.trade.escrowPct} />
                 </div>
             </div>
             <div className="row">
-                <div className="col-md-4">
+                <div className="col-xs-4">
                     Insurance
                 </div>
-                <div className="col-md-8">
+                <div className="col-xs-8">
                     <ProgressBar pct={this.props.trade.insurancePct} />
                 </div>
             </div>
             <div className="row spacer">
-                <div className="col-md-4">
+                <div className="col-xs-4">
                     Status
                 </div>
-                <div className="col-md-8">
+                <div className="col-xs-8">
                     {this.props.trade.statusText}
                 </div>
             </div>
             <div className="row spacer">
-                <div className="col-md-4">
+                <div className="col-xs-4">
                     <button type="button" className="btn btn-success" disabled="disabled">Success</button>
                 </div>
-                <div className="col-md-4">
+                <div className="col-xs-4">
                     <button type="button" className="btn btn-danger" disabled="disabled">Fail</button>
                 </div>
-                <div className="col-md-4">
+                <div className="col-xs-4">
                     <button type="button" className="btn btn-default">Cancel</button>
                 </div>
             </div>
