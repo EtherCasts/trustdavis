@@ -11,6 +11,7 @@ var TradeRow = React.createClass({
         return (
             <tr>
                 <td>{this.props.trade.type}</td>
+                <td>{this.props.trade.domain}</td>
                 <td><Link to="tradeDetails" tradeId={this.props.trade.id}>
                 {this.props.trade.description}</Link></td>
                 <td>{this.props.trade.price} ETH</td>
@@ -34,6 +35,7 @@ var TradeList = React.createClass({
                 <thead>
                     <tr>
                         <th>Type</th>
+                        <th>Domain</th>
                         <th>Description</th>
                         <th>Price</th>
                         <th>Counterparty</th>
