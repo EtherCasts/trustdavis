@@ -4,8 +4,6 @@ var React = require("react");
 
 var UserLink = require("./UserLink");
 
-// TODO dropdown javascript
-
 var ReferenceRow = React.createClass({
     render: function() {
         return (
