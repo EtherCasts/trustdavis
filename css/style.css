@@ -1,0 +1,11 @@
+.form-inline .form-control.small {
+    width: 100px;
+}
+
+.form-inline .form-control.medium {
+    width: 160px;
+}
+
+.spacer {
+    margin-top: 40px;
+}
