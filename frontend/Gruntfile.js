@@ -46,10 +46,23 @@ module.exports = function(grunt) {
             }
         }
     },
+    jshint: {
+      // define the files to lint
+      files: ['Gruntfile.js', 'webpack.config.js', 'app/**/*.js', 'app/**/*.jsx'],
+      // configure JSHint (documented at http://www.jshint.com/docs/)
+      options: {
+          // more options here if you want to override JSHint defaults
+        globals: {
+          jQuery: true,
+          console: true,
+          module: true
+        }
+      }
+    },
     watch: {
             app: {
                 files: ["app/**/*"],
-                tasks: ["webpack:build-dev"],
+                tasks: ["jshint", "webpack:build-dev"],
                 options: {
                     spawn: false,
                 }
@@ -63,12 +76,13 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-jsxhint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-webpack');
   grunt.loadNpmTasks('grunt-gh-pages');
 
   grunt.registerTask("default", ["webpack-dev-server:start"]);
   grunt.registerTask("dev", ["webpack:build-dev", "watch:app"]);
-  grunt.registerTask("build", ["webpack:build"]);
+  grunt.registerTask("build", ["jshint", "webpack:build"]);
   grunt.registerTask("publish", ["build", "gh-pages"]);
 };
