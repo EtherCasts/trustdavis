@@ -14,12 +14,20 @@ var NewTradeForm = React.createClass({
                 I want to <select className="form-control input-large">
                   <option>sell</option>
                   <option>buy</option>
-                </select> the product <input type="text" className="form-control" placeholder="description" />
+                </select> a
+                {' '}
+                <select className="form-control input-large" required="required">
+                  <option value="" disabled="disabled" selected="selected">product / service...</option>
+                  <option>product</option>
+                  <option>service</option>
+                </select> called
+                {' '}
+                 <input type="text" className="form-control" placeholder="description" />
                 {' '}
                 for <input type="number" min="0" step="0.0001" className="form-control small" placeholder="0.0000" /> ETH.
-                This offer is valid until <input type="date" className="form-control medium" placeholder="date" />
+                <p>This offer is valid until <input type="date" className="form-control medium" placeholder="date" />
                 {' '}
-                <button type="submit" className="btn btn-default">Create</button>
+                <button type="submit" className="btn btn-default">Create</button></p>
             </form>
           </div>
         </div>
