@@ -4,8 +4,7 @@
   "description": "TrustDavis: Reputation on Ethereum",
   "main": "app/app.jsx",
   "scripts": {
-    "start": "webpack-dev-server --port 8089 --hot --content-base app",
-    "watch": "webpack --progress --colors --watch",
+    "start": "echo \"Error: use grunt\" && exit 1",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -31,15 +30,19 @@
     "jsx-loader": "^0.11.0",
     "react-hot-loader": "^0.3.0",
     "css-loader": "^0.7.1",
-    "style-loader": "^0.7.0"
+    "less": "^1.7.4",
+    "less-loader": "^0.7.7",
+    "style-loader": "^0.7.0",
+    "grunt": "^0.4.5",
+    "grunt-gh-pages": "^0.9.1",
+    "grunt-webpack": "^1.0.8",
+    "grunt-contrib-watch": "^0.6.1"
   },
   "dependencies": {
     "react": "^0.11.1",
     "fluxxor": "^1.3.2",
     "react-router": "^0.5.2",
     "jquery": "^2.1.1",
-    "bootstrap": "^3.2.0",
-    "less": "^1.7.4",
-    "less-loader": "^0.7.7"
+    "bootstrap": "^3.2.0"
   }
 }
