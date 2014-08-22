@@ -20,8 +20,8 @@ var ReferenceRow = React.createClass({
                         Action <span className="caret"></span>
                       </button>
                       <ul className="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+                        <li role="presentation"><a role="menuitem" tabIndex="-1" href="#">Edit</a></li>
+                        <li role="presentation"><a role="menuitem" tabIndex="-1" href="#">Delete</a></li>
                       </ul>
                     </div>
                 </td>
