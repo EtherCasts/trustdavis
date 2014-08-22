@@ -3,6 +3,7 @@
 var React = require("react");
 
 var UserLink = require("./UserLink");
+var ActionDropDown = require("./ActionDropDown");
 
 var ReferenceRow = React.createClass({
     render: function() {
@@ -12,17 +13,7 @@ var ReferenceRow = React.createClass({
                 <td>{this.props.reference.maxLiability} ETH</td>
                 <td>{this.props.reference.premiumPct} %</td>
                 <td>{this.props.reference.lockedLiability} ETH</td>
-                <td>
-                    <div className="dropdown">
-                      <button className="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                        Action <span className="caret"></span>
-                      </button>
-                      <ul className="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <li role="presentation"><a role="menuitem" tabIndex="-1" href="#">Edit</a></li>
-                        <li role="presentation"><a role="menuitem" tabIndex="-1" href="#">Delete</a></li>
-                      </ul>
-                    </div>
-                </td>
+                <td><ActionDropDown key={this.props.reference.id} /></td>
             </tr>
         );
     }

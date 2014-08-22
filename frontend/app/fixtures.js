@@ -55,6 +55,13 @@ var fixtures = {
         maxLiability: 6,
         premiumPct: 10,
         lockedLiability: 6
+    }],
+    contactList: [{
+        id: '91c24063',
+        name: 'Andrew'
+    }, {
+        id: 'f7009765',
+        name: 'John'
     }]
 };
 
