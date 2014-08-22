@@ -14,6 +14,7 @@ var TradeActions = require("./actions/TradeActions");
 var Trades = require("./components/Trades");
 var TradeDetails = require("./components/TradeDetails");
 var References = require("./components/References");
+var Contacts = require("./components/Contacts");
 
 var merge = require('react/lib/merge');
 
@@ -23,7 +24,7 @@ var Placeholder = require("./components/Placeholder");
 // TODO mock data
 var fixtures = require("./fixtures");
 
-// XXX Load jQuery and bootstrap
+// Load jQuery and bootstrap
 var jQuery = require("jquery");
 window.jQuery = jQuery;
 require("bootstrap/dist/js/bootstrap.js");
@@ -49,7 +50,7 @@ var routes = (
             <Route name="trades" path="/trades" handler={Trades} flux={flux} />
             <Route name="tradeDetails" path="/trade/:tradeId" handler={TradeDetails} user={fixtures.user} flux={flux} />
             <Route name="references" path="/references" handler={References} flux={flux} />
-            <Route name="contacts" path="/contacts" handler={Placeholder} />
+            <Route name="contacts" path="/contacts" handler={Contacts} flux={flux} />
         </Route>
     </Routes>
 );
