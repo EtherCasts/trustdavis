@@ -6,7 +6,7 @@ var fixtures = {
     tradeList : [{
         id: 'f70097659f329a09',
         type: 'buy',
-        domain: 'product',
+        category: 'product',
         description: 'Garden gnome',
         price: 12,
         counterparty: { id: '91c24063', name: 'Andrew' },
@@ -15,7 +15,7 @@ var fixtures = {
     }, {
         id: 'e92113a5cb209c12',
         type: 'sell',
-        domain: 'product',
+        category: 'product',
         description: 'Lawnmower',
         price: 66,
         counterparty: undefined,
@@ -27,7 +27,7 @@ var fixtures = {
         type: 'buy',
         buyer: { id: '1a73636d', name: 'Mike' },
         seller: { id: '91c24063', name: 'Andrew' },
-        domain: 'product',
+        category: 'product',
         description: 'Garden gnome',
         price: 12.0,
         expiration: '31/12/2014',
