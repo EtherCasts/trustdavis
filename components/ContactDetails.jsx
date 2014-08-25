@@ -33,7 +33,7 @@ var ContactDetails = React.createClass({
         <ContactSummaryPane user={this.props.user} tradeList={fixtures.tradeList} referencesList={fixtures.referencesList} />
         <h3>{this.props.user.name}'s Trades</h3>
         <TradeList tradeList={fixtures.tradeList} />
-        <h3>{this.props.user.name}' References</h3>
+        <h3>{this.props.user.name}'s References</h3>
         <ReferencesList referencesList={fixtures.referencesList} />
       </div>
     );
