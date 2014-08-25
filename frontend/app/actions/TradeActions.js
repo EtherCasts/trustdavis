@@ -1,16 +1,16 @@
-var TradeConstants = require("../constants/TradeConstants");
+var constants = require("../constants");
 
 var TradeActions = {
   addTrade: function(text) {
-    this.dispatch(TradeConstants.ADD_TODO, {text: text});
+    this.dispatch(constants.trade.ADD_TODO, {text: text});
   },
 
   toggleTrade: function(todo) {
-    this.dispatch(TradeConstants.TOGGLE_TODO, {todo: todo});
+    this.dispatch(constants.trade.TOGGLE_TODO, {todo: todo});
   },
 
   clearTrades: function() {
-    this.dispatch(TradeConstants.CLEAR_TODOS);
+    this.dispatch(constants.trade.CLEAR_TODOS);
   }
 };
 
