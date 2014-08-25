@@ -7,9 +7,9 @@ var TradeStore = Fluxxor.createStore({
     this.todos = [];
 
     this.bindActions(
-      TradeConstants.trade.ADD_TODO, this.onAddTrade,
-      TradeConstants.trade.TOGGLE_TODO, this.onToggleTrade,
-      TradeConstants.trade.CLEAR_TODOS, this.onClearTrades
+      constants.trade.ADD_TODO, this.onAddTrade,
+      constants.trade.TOGGLE_TODO, this.onToggleTrade,
+      constants.trade.CLEAR_TODOS, this.onClearTrades
     );
   },
 
