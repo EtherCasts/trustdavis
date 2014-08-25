@@ -15,6 +15,7 @@ var Trades = require("./components/Trades");
 var TradeDetails = require("./components/TradeDetails");
 var References = require("./components/References");
 var Contacts = require("./components/Contacts");
+var ContactDetails = require("./components/ContactDetails");
 
 var merge = require('react/lib/merge');
 
@@ -51,6 +52,7 @@ var routes = (
             <Route name="tradeDetails" path="/trade/:tradeId" handler={TradeDetails} user={fixtures.user} flux={flux} />
             <Route name="references" path="/references" handler={References} flux={flux} />
             <Route name="contacts" path="/contacts" handler={Contacts} flux={flux} />
+            <Route name="contactDetails" path="/contact/:contactId" handler={ContactDetails} user={fixtures.user} flux={flux} />
         </Route>
     </Routes>
 );
