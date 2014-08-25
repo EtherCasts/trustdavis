@@ -1,12 +1,12 @@
-var ContactConstants = require("../constants/ContactConstants");
+var constants = require("../constants");
 
 var ContactActions = {
   addContact: function(contact) {
-    this.dispatch(ContactConstants.ADD_CONTACT, contact);
+    this.dispatch(constants.contact.ADD_CONTACT, contact);
   },
 
   removeContact: function(contact) {
-    this.dispatch(ContactConstants.REMOVE_CONTACT, contact);
+    this.dispatch(constants.contact.REMOVE_CONTACT, contact);
   }
 };
 
