@@ -9,11 +9,8 @@ var FluxMixin = Fluxxor.FluxMixin(React),
 var NewContactForm = require("./NewContactForm");
 var ContactList = require("./ContactList");
 
-// TODO mock data
-var fixtures = require("../fixtures");
-
 var Contacts = React.createClass({
-  mixins: [FluxMixin, StoreWatchMixin("TradeStore")], // TODO ContactStore
+  mixins: [FluxMixin, StoreWatchMixin("ContactStore")],
 
   getInitialState: function() {
     return {};
@@ -21,7 +18,7 @@ var Contacts = React.createClass({
 
   getStateFromFlux: function() {
     var flux = this.getFlux();
-    return flux.store("TradeStore").getState();
+    return flux.store("ContactStore").getState();
   },
 
   render: function() {
@@ -29,7 +26,7 @@ var Contacts = React.createClass({
       <div>
         <NewContactForm />
         <h3>Your Contacts</h3>
-        <ContactList contactList={fixtures.contactList} />
+        <ContactList contactList={this.state.contacts} />
       </div>
     );
   }

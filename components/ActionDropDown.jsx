@@ -10,8 +10,8 @@ var ActionDropDown = React.createClass({
                 Action <span className="caret"></span>
               </button>
               <ul className="dropdown-menu" role="menu" aria-labelledby={'dropdownMenu-' + this.props.key}>
-                <li role="presentation"><a role="menuitem" tabIndex="-1" href="#">Edit</a></li>
-                <li role="presentation"><a role="menuitem" tabIndex="-1" href="#">Delete</a></li>
+                {this.props.handleEdit && <li role="presentation"><a role="menuitem" tabIndex="-1" href="#" onClick={this.props.handleEdit}>Edit</a></li>}
+                <li role="presentation"><a role="menuitem" tabIndex="-1" href="#" onClick={this.props.handleDelete}>Delete</a></li>
               </ul>
             </div>
         );

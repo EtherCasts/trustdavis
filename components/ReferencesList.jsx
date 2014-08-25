@@ -13,9 +13,13 @@ var ReferenceRow = React.createClass({
                 <td>{this.props.reference.maxLiability} ETH</td>
                 <td>{this.props.reference.premiumPct} %</td>
                 <td>{this.props.reference.lockedLiability} ETH</td>
-                {this.props.editable && <td><ActionDropDown key={this.props.reference.id} /></td>}
+                {this.props.editable && <td><ActionDropDown key={this.props.reference.id} handleDelete={this.handleDelete} /></td>}
             </tr>
         );
+    },
+    handleDelete: function(e) {
+        e.preventDefault();
+        // TODO
     }
 });
 
@@ -23,9 +27,9 @@ var ReferencesList = React.createClass({
     render: function() {
         var referencesListNodes = this.props.referencesList.map(function(reference) {
             return (
-                <ReferenceRow key={reference.id} reference={reference} />
+                <ReferenceRow key={reference.id} reference={reference} editable={this.props.editable} />
             );
-        });
+        }.bind(this));
         return (
             <table className="referenceList table table-striped">
                 <thead>

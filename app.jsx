@@ -13,14 +13,15 @@ var TradeStore = require("./stores/TradeStore");
 var TradeActions = require("./actions/TradeActions");
 var Trades = require("./components/Trades");
 var TradeDetails = require("./components/TradeDetails");
+
 var References = require("./components/References");
+
 var Contacts = require("./components/Contacts");
 var ContactDetails = require("./components/ContactDetails");
+var ContactStore = require("./stores/ContactStore");
+var ContactActions = require("./actions/ContactActions");
 
 var merge = require('react/lib/merge');
-
-// TODO
-var Placeholder = require("./components/Placeholder");
 
 // TODO mock data
 var fixtures = require("./fixtures");
@@ -36,10 +37,13 @@ var Routes = Router.Routes;
 var Redirect = Router.Redirect;
 
 var stores = {
-  TradeStore: new TradeStore()
+  TradeStore: new TradeStore(),
+  ContactStore: new ContactStore({contacts: fixtures.contactList})
 };
 
+// XXX group into one set of actions?
 var actions = merge({}, TradeActions);
+actions = merge(actions, ContactActions);
 
 var flux = new Fluxxor.Flux(stores, actions);
 
