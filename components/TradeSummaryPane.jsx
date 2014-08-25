@@ -33,8 +33,8 @@ var TradeSummaryPane = React.createClass({
                         <td><UserLink user={this.props.trade.seller} /></td>
                     </tr>
                     <tr>
-                        <td>Domain</td>
-                        <td>{this.props.trade.domain}</td>
+                        <td>Category</td>
+                        <td>{this.props.trade.category}</td>
                     </tr>
                     <tr>
                         <td>Description</td>
