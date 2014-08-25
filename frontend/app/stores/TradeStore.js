@@ -4,35 +4,30 @@ var constants = require("../constants");
 
 var TradeStore = Fluxxor.createStore({
   initialize: function() {
-    this.todos = [];
+    this.trades = [];
 
     this.bindActions(
-      constants.trade.ADD_TODO, this.onAddTrade,
-      constants.trade.TOGGLE_TODO, this.onToggleTrade,
-      constants.trade.CLEAR_TODOS, this.onClearTrades
+      constants.trade.ADD_TRADE, this.onAddTrade
     );
   },
 
   onAddTrade: function(payload) {
-    this.todos.push({text: payload.text, complete: false});
-    this.emit(constants.CHANGE_EVENT);
-  },
-
-  onToggleTrade: function(payload) {
-    payload.todo.complete = !payload.todo.complete;
-    this.emit(constants.CHANGE_EVENT);
-  },
-
-  onClearTrades: function() {
-    this.todos = this.todos.filter(function(todo) {
-      return !todo.complete;
+    this.trades.push({
+        id: payload.id,
+        type: payload.type,
+        category: payload.category,
+        description: payload.description,
+        price: payload.price,
+        expiration: payload.expiration,
+        counterparty: payload.counterparty || undefined,
+        status: payload.status || 'new'
     });
     this.emit(constants.CHANGE_EVENT);
   },
 
   getState: function() {
     return {
-      todos: this.todos
+      trades: this.trades
     };
   }
 });
