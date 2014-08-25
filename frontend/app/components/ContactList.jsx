@@ -10,7 +10,7 @@ var ContactRow = React.createClass({
     render: function() {
         return (
             <tr>
-                <td>{this.props.contact.name}</td>
+                <td><Link to="contactDetails" contactId={this.props.contact.id}>{this.props.contact.name}</Link></td>
                 <td>{this.props.contact.id}</td>
                 <td><ActionDropDown key={this.props.contact.id} /></td>
             </tr>

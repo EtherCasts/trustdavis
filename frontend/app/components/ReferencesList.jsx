@@ -13,7 +13,7 @@ var ReferenceRow = React.createClass({
                 <td>{this.props.reference.maxLiability} ETH</td>
                 <td>{this.props.reference.premiumPct} %</td>
                 <td>{this.props.reference.lockedLiability} ETH</td>
-                <td><ActionDropDown key={this.props.reference.id} /></td>
+                {this.props.editable && <td><ActionDropDown key={this.props.reference.id} /></td>}
             </tr>
         );
     }
@@ -34,7 +34,7 @@ var ReferencesList = React.createClass({
                         <th>Max Liability</th>
                         <th>Premium</th>
                         <th>Locked Liability</th>
-                        <th>Action</th>
+                        {this.props.editable && <th>Action</th>}
                     </tr>
                 </thead>
                 <tbody>

@@ -39,7 +39,7 @@ var References = React.createClass({
         </div>
         <NewReferenceForm />
         <h3>Your References</h3>
-        <ReferencesList referencesList={fixtures.referencesList} />
+        <ReferencesList referencesList={fixtures.referencesList} editable={true} />
       </div>
     );
   }
