@@ -9,7 +9,8 @@ var ReferenceStore = Fluxxor.createStore({
     this.references = options.references || [];
 
     this.bindActions(
-      constants.reference.ADD_REFERENCE, this.onAddReference
+      constants.reference.ADD_REFERENCE, this.onAddReference,
+      constants.reference.REMOVE_REFERENCE, this.onRemoveReference
     );
   },
 
@@ -20,6 +21,13 @@ var ReferenceStore = Fluxxor.createStore({
         maxLiability: payload.maxLiability,
         premiumPct: payload.premiumPct,
         lockedLiability: 0
+    });
+    this.emit(constants.CHANGE_EVENT);
+  },
+
+  onRemoveReference: function(payload) {
+    this.references = this.references.filter(function(reference) {
+        return reference.id !== payload.id;
     });
     this.emit(constants.CHANGE_EVENT);
   },

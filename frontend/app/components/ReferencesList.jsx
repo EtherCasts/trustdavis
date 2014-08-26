@@ -1,11 +1,14 @@
 /** @jsx React.DOM */
 
 var React = require("react");
+var Fluxxor = require("fluxxor");
+var FluxChildMixin = Fluxxor.FluxChildMixin(React);
 
 var UserLink = require("./UserLink");
 var ActionDropDown = require("./ActionDropDown");
 
 var ReferenceRow = React.createClass({
+    mixins: [FluxChildMixin],
     render: function() {
         return (
             <tr>
@@ -19,7 +22,7 @@ var ReferenceRow = React.createClass({
     },
     handleDelete: function(e) {
         e.preventDefault();
-        // TODO handleDelete
+        this.getFlux().actions.reference.removeReference(this.props.reference);
     }
 });
 
