@@ -10,7 +10,7 @@ var TradeRow = React.createClass({
     render: function() {
         var isBuyer = this.props.trade.buyer && (this.props.trade.buyer.id === this.props.user.id);
         var isSeller = this.props.trade.seller && (this.props.trade.seller.id === this.props.user.id);
-        var counterparty = undefined;
+        var counterparty;
 
         if (isBuyer) {
             counterparty = this.props.trade.seller;
