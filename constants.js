@@ -10,7 +10,8 @@ module.exports = {
         ADD_TRADE: null
     }),
     reference: keyMirror({
-        ADD_REFERENCE: null
+        ADD_REFERENCE: null,
+        REMOVE_REFERENCE: null
     }),
     user: keyMirror({
         DEPOSIT: null,
