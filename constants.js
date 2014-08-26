@@ -4,9 +4,9 @@ module.exports = {
     CHANGE_EVENT: "change",
     contact: keyMirror({
         ADD_CONTACT: null,
-        REMOVE_CONTACT: null}),
+        REMOVE_CONTACT: null
+    }),
     trade: keyMirror({
-        ADD_TODO: null,
-        TOGGLE_TODO: null,
-        CLEAR_TODOS: null})
+        ADD_TRADE: null
+    })
 };

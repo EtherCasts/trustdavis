@@ -9,15 +9,8 @@ var FluxMixin = Fluxxor.FluxMixin(React),
 var NewTradeForm = require("./NewTradeForm");
 var TradeList = require("./TradeList");
 
-// TODO mock data
-var fixtures = require("../fixtures");
-
 var Trades = React.createClass({
   mixins: [FluxMixin, StoreWatchMixin("TradeStore")],
-
-  getInitialState: function() {
-    return { newTradeText: "" };
-  },
 
   getStateFromFlux: function() {
     var flux = this.getFlux();
@@ -29,7 +22,7 @@ var Trades = React.createClass({
       <div>
         <NewTradeForm />
         <h3>Your Active Trades</h3>
-        <TradeList tradeList={fixtures.tradeList} />
+        <TradeList tradeList={this.state.trades} />
       </div>
     );
   }

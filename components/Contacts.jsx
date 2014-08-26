@@ -12,10 +12,6 @@ var ContactList = require("./ContactList");
 var Contacts = React.createClass({
   mixins: [FluxMixin, StoreWatchMixin("ContactStore")],
 
-  getInitialState: function() {
-    return {};
-  },
-
   getStateFromFlux: function() {
     var flux = this.getFlux();
     return flux.store("ContactStore").getState();

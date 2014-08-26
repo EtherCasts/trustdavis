@@ -2,8 +2,6 @@
 
 var React = require("react");
 
-var UserLink = require("./UserLink");
-
 var ContactSummaryPane = React.createClass({
   render: function() {
     return (

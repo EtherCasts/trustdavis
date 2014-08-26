@@ -1,7 +1,6 @@
 /** @jsx React.DOM */
 
 var React = require("react");
-var ProgressBar = require("./ProgressBar");
 
 var ReferencesDepositPane = React.createClass({
   render: function() {

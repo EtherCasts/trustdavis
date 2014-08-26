@@ -30,9 +30,9 @@ var ContactDetails = React.createClass({
   render: function() {
     return (
       <div>
-        <ContactSummaryPane user={this.props.user} tradeList={fixtures.tradeList} referencesList={fixtures.referencesList} />
+        <ContactSummaryPane user={this.props.user} tradeList={this.state.trades} referencesList={fixtures.referencesList} />
         <h3>{this.props.user.name}'s Trades</h3>
-        <TradeList tradeList={fixtures.tradeList} />
+        <TradeList tradeList={this.state.trades} />
         <h3>{this.props.user.name}'s References</h3>
         <ReferencesList referencesList={fixtures.referencesList} />
       </div>
