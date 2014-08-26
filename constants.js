@@ -8,5 +8,8 @@ module.exports = {
     }),
     trade: keyMirror({
         ADD_TRADE: null
+    }),
+    reference: keyMirror({
+        ADD_REFERENCE: null
     })
 };

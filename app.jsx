@@ -16,6 +16,8 @@ var Trades = require("./components/Trades");
 var TradeDetails = require("./components/TradeDetails");
 
 var References = require("./components/References");
+var ReferenceStore = require("./stores/ReferenceStore");
+var ReferenceActions = require("./actions/ReferenceActions");
 
 var Contacts = require("./components/Contacts");
 var ContactDetails = require("./components/ContactDetails");
@@ -37,11 +39,13 @@ var Redirect = Router.Redirect;
 
 var stores = {
   TradeStore: new TradeStore({trades: fixtures.tradeList}),
+  ReferenceStore: new ReferenceStore({references: fixtures.referencesList}),
   ContactStore: new ContactStore({contacts: fixtures.contactList})
 };
 
 var actions = {
     trade: TradeActions,
+    reference: ReferenceActions,
     contact: ContactActions
 };
 
@@ -51,7 +55,7 @@ var routes = (
     <Routes>
         <Route handler={TrustDavisApp} user={fixtures.user}>
             <Redirect from="/" to="trades" />
-            <Route name="trades" path="/trades" handler={Trades} flux={flux} />
+            <Route name="trades" path="/trades" handler={Trades} user={fixtures.user} flux={flux} />
             <Route name="tradeDetails" path="/trade/:tradeId" handler={TradeDetails} user={fixtures.user} flux={flux} />
             <Route name="references" path="/references" handler={References} flux={flux} />
             <Route name="contacts" path="/contacts" handler={Contacts} flux={flux} />

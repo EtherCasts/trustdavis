@@ -10,9 +10,6 @@ var TradeSummaryPane = require("./TradeSummaryPane");
 var TradeStatusPane = require("./TradeStatusPane");
 var TradeReferenceList = require("./TradeReferenceList");
 
-// TODO mock data
-var fixtures = require("../fixtures");
-
 var TradeDetails = React.createClass({
   mixins: [FluxMixin, StoreWatchMixin("TradeStore")],
 
@@ -26,14 +23,16 @@ var TradeDetails = React.createClass({
   },
 
   render: function() {
+    // TODO select trade from URL
+    var trade = this.state.trades[0];
     return (
       <div>
         <div className="row">
             <div className="col-sm-6">
-                <TradeSummaryPane trade={fixtures.tradeDetails} user={this.props.user} />
+                <TradeSummaryPane trade={trade} user={this.props.user} />
             </div>
             <div className="col-sm-6">
-                <TradeStatusPane trade={fixtures.tradeDetails} />
+                <TradeStatusPane trade={trade} />
             </div>
         </div>
         <div className="row">
@@ -45,7 +44,7 @@ var TradeDetails = React.createClass({
                 <button type="button" className="btn btn-default" disabled="disabled">Insure this trade</button>
             </div>
         </div>
-        <TradeReferenceList tradeReferenceList={fixtures.tradeReferenceList} />
+        <TradeReferenceList tradeReferenceList={trade.references} />
       </div>
     );
   }
