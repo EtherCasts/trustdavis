@@ -5,8 +5,6 @@ var ProgressBar = require("./ProgressBar");
 
 var TradeStatusPane = React.createClass({
   render: function() {
-    var escrowPctStyle = {width: this.props.trade.escrowPct + '%'};
-    var insurancePctStyle = {width: this.props.trade.insurancePct + '%'};
     return (
         <div className="panel panel-default">
           <div className="panel-heading">

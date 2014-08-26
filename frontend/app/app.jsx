@@ -4,6 +4,7 @@ var React = require("react");
 var Fluxxor = require("fluxxor");
 var Router = require("react-router");
 
+/* global window */
 // expost React globally for DevTools
 window.React = React;
 
@@ -46,7 +47,6 @@ var actions = {
 
 var flux = new Fluxxor.Flux(stores, actions);
 
-
 var routes = (
     <Routes>
         <Route handler={TrustDavisApp} user={fixtures.user}>
@@ -60,4 +60,5 @@ var routes = (
     </Routes>
 );
 
+/* global document */
 React.renderComponent(routes, document.getElementById("app"));

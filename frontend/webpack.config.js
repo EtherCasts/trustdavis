@@ -1,10 +1,9 @@
-var webpack = require("webpack");
-
 module.exports = {
   entry: [
     "./app/app.jsx"
   ],
   output: {
+    /* global __dirname */
     path: __dirname + "/app",
     filename: "bundle.js"
   },

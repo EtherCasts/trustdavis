@@ -55,8 +55,11 @@ module.exports = function(grunt) {
         globals: {
           jQuery: true,
           console: true,
-          module: true
-        }
+          module: true,
+          require: true
+        },
+        "undef": true,
+        "unused": true
       }
     },
     watch: {

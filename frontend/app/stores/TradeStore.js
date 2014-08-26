@@ -1,10 +1,12 @@
 var Fluxxor = require("fluxxor");
 
 var constants = require("../constants");
+var utils = require("../utils");
 
 var TradeStore = Fluxxor.createStore({
-  initialize: function() {
-    this.trades = [];
+
+  initialize: function(options) {
+    this.trades = options.trades || [];
 
     this.bindActions(
       constants.trade.ADD_TRADE, this.onAddTrade
@@ -13,7 +15,7 @@ var TradeStore = Fluxxor.createStore({
 
   onAddTrade: function(payload) {
     this.trades.push({
-        id: payload.id,
+        id: utils.randomId(),
         type: payload.type,
         category: payload.category,
         description: payload.description,
