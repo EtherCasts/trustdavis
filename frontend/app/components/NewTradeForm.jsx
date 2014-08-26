@@ -20,7 +20,7 @@ var NewTradeForm = React.createClass({
                 </select> a
                 {' '}
                 <select className="form-control input-large" required="required" ref="category">
-                  <option value="" disabled="disabled" selected="selected">product / service...</option>
+                  <option value="" disabled="disabled">product / service...</option>
                   <option>product</option>
                   <option>service</option>
                 </select> called

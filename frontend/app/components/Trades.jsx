@@ -22,7 +22,7 @@ var Trades = React.createClass({
       <div>
         <NewTradeForm />
         <h3>Your Active Trades</h3>
-        <TradeList tradeList={this.state.trades} />
+        <TradeList tradeList={this.state.trades} user={this.props.user} />
       </div>
     );
   }

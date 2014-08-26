@@ -55,7 +55,7 @@ var routes = (
     <Routes>
         <Route handler={TrustDavisApp} user={fixtures.user}>
             <Redirect from="/" to="trades" />
-            <Route name="trades" path="/trades" handler={Trades} flux={flux} />
+            <Route name="trades" path="/trades" handler={Trades} user={fixtures.user} flux={flux} />
             <Route name="tradeDetails" path="/trade/:tradeId" handler={TradeDetails} user={fixtures.user} flux={flux} />
             <Route name="references" path="/references" handler={References} flux={flux} />
             <Route name="contacts" path="/contacts" handler={Contacts} flux={flux} />

@@ -12,29 +12,25 @@ var ContactSummaryPane = require("./ContactSummaryPane");
 var TradeList = require("./TradeList");
 var ReferencesList = require("./ReferencesList");
 
-// TODO mock data
-var fixtures = require("../fixtures");
-
 var ContactDetails = React.createClass({
-  mixins: [FluxMixin, StoreWatchMixin("TradeStore")], // TODO ContactStore
-
-  getInitialState: function() {
-    return {};
-  },
+  mixins: [FluxMixin, StoreWatchMixin("TradeStore", "ReferenceStore")],
 
   getStateFromFlux: function() {
     var flux = this.getFlux();
-    return flux.store("TradeStore").getState(); // TODO ContactStore
+    return {
+        trades: flux.store("TradeStore").getState(),
+        references: flux.store("ReferenceStore").getState()
+    };
   },
 
   render: function() {
     return (
       <div>
-        <ContactSummaryPane user={this.props.user} tradeList={this.state.trades} referencesList={fixtures.referencesList} />
+        <ContactSummaryPane user={this.props.user} tradeList={this.state.trades.trades} referencesList={this.state.references.references} />
         <h3>{this.props.user.name}'s Trades</h3>
-        <TradeList tradeList={this.state.trades} />
+        <TradeList tradeList={this.state.trades.trades} user={this.props.user} />
         <h3>{this.props.user.name}'s References</h3>
-        <ReferencesList referencesList={fixtures.referencesList} />
+        <ReferencesList referencesList={this.state.references.references} />
       </div>
     );
   }
