@@ -4,7 +4,6 @@ var React = require("react");
 
 var ReferencesDepositPane = React.createClass({
   render: function() {
-    var available = this.props.references.deposit - this.props.references.lockedLiabilities;
     return (
         <div className="panel panel-default">
           <div className="panel-heading">
@@ -16,7 +15,7 @@ var ReferencesDepositPane = React.createClass({
                     Deposit
                 </div>
                 <div className="col-xs-6">
-                    {this.props.references.deposit} ETH
+                    {this.props.deposit} ETH
                 </div>
             </div>
             <div className="row">
@@ -24,7 +23,7 @@ var ReferencesDepositPane = React.createClass({
                     Available
                 </div>
                 <div className="col-xs-6">
-                    {available} ETH
+                    {this.props.available} ETH
                 </div>
             </div>
             <div className="row spacer">

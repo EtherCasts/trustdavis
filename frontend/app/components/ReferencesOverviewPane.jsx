@@ -14,23 +14,23 @@ var ReferencesOverviewPane = React.createClass({
                 <tbody>
                     <tr>
                         <td>Max Liabilities</td>
-                        <td>{this.props.references.maxLiabilities} ETH</td>
+                        <td>{this.props.stats.maxLiabilities} ETH</td>
                     </tr>
                     <tr>
                         <td>Locked Liabilities</td>
-                        <td>{this.props.references.lockedLiabilities} ETH</td>
+                        <td>{this.props.stats.lockedLiabilities} ETH</td>
                     </tr>
                     <tr>
                         <td>Insured Trades</td>
-                        <td>{this.props.references.insuredTrades}</td>
+                        <td>?</td>{ /* TODO */ }
                     </tr>
                     <tr>
                         <td>Claims</td>
-                        <td>{this.props.references.claims}</td>
+                        <td>?</td>{ /* TODO */ }
                     </tr>
                     <tr>
                         <td>Profit</td>
-                        <td>{this.props.references.profit} ETH</td>
+                        <td>? ETH</td>{ /* TODO */ }
                     </tr>
                 </tbody>
             </table>

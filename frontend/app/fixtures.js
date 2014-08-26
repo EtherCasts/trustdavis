@@ -1,7 +1,8 @@
 var fixtures = {
     user: {
         id: "1a73636d",
-        name: "Mike"
+        name: "Mike",
+        deposit: 12
     },
     tradeList : [{
         id: 'f70097659f329a09',
@@ -41,18 +42,10 @@ var fixtures = {
         liability: 6,
         premiumPct: 10.0
     }],
-    references: {
-        maxLiabilities: 12,
-        lockedLiabilities: 6,
-        insuredTrades: 15,
-        claims: 3,
-        profit: 8,
-        deposit: 12
-    },
     referencesList: [{
         id: 'f7009765',
         trader: { id: '91c24063', name: 'Andrew' },
-        maxLiability: 6,
+        maxLiability: 12,
         premiumPct: 10,
         lockedLiability: 6
     }],

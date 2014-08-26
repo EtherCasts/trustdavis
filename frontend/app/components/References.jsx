@@ -13,33 +13,33 @@ var ReferencesList = require("./ReferencesList");
 
 // TODO mock data
 var fixtures = require("../fixtures");
+var stats = require("../stats");
 
 var References = React.createClass({
-  mixins: [FluxMixin, StoreWatchMixin("TradeStore")], // TODO ReferenceStore
-
-  getInitialState: function() {
-    return { newTradeText: "" };
-  },
+  mixins: [FluxMixin, StoreWatchMixin("ReferenceStore")],
 
   getStateFromFlux: function() {
     var flux = this.getFlux();
-    return flux.store("TradeStore").getState(); // TODO ReferenceStore
+    return flux.store("ReferenceStore").getState();
   },
 
   render: function() {
+    var referenceStats = stats.referenceStats(this.state.references);
+    var available = fixtures.user.deposit - referenceStats.lockedLiabilities;
+
     return (
       <div>
         <div className="row">
             <div className="col-sm-6">
-                <ReferencesOverviewPane references={fixtures.references} />
+                <ReferencesOverviewPane stats={referenceStats} />
             </div>
             <div className="col-sm-6">
-                <ReferencesDepositPane references={fixtures.references} />
+                <ReferencesDepositPane deposit={fixtures.user.deposit} available={available} />
             </div>
         </div>
         <NewReferenceForm />
         <h3>Your References</h3>
-        <ReferencesList referencesList={fixtures.referencesList} editable={true} />
+        <ReferencesList referencesList={this.state.references} editable={true} />
       </div>
     );
   }
