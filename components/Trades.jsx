@@ -10,11 +10,14 @@ var NewTradeForm = require("./NewTradeForm");
 var TradeList = require("./TradeList");
 
 var Trades = React.createClass({
-  mixins: [FluxMixin, StoreWatchMixin("TradeStore")],
+  mixins: [FluxMixin, StoreWatchMixin("TradeStore", "UserStore")],
 
   getStateFromFlux: function() {
     var flux = this.getFlux();
-    return flux.store("TradeStore").getState();
+    return {
+        trades: flux.store("TradeStore").getState(),
+        user: flux.store("UserStore").getState()
+    };
   },
 
   render: function() {
@@ -22,7 +25,7 @@ var Trades = React.createClass({
       <div>
         <NewTradeForm />
         <h3>Your Active Trades</h3>
-        <TradeList tradeList={this.state.trades} user={this.props.user} />
+        <TradeList tradeList={this.state.trades.trades} user={this.state.user.user} />
       </div>
     );
   }

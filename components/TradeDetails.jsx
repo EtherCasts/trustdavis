@@ -11,7 +11,7 @@ var TradeStatusPane = require("./TradeStatusPane");
 var TradeReferenceList = require("./TradeReferenceList");
 
 var TradeDetails = React.createClass({
-  mixins: [FluxMixin, StoreWatchMixin("TradeStore")],
+  mixins: [FluxMixin, StoreWatchMixin("TradeStore", "UserStore")],
 
   getInitialState: function() {
     return {};
@@ -19,17 +19,20 @@ var TradeDetails = React.createClass({
 
   getStateFromFlux: function() {
     var flux = this.getFlux();
-    return flux.store("TradeStore").getState();
+    return {
+        trades: flux.store("TradeStore").getState(),
+        user: flux.store("UserStore").getState()
+    };
   },
 
   render: function() {
     // TODO select trade from URL
-    var trade = this.state.trades[0];
+    var trade = this.state.trades.trades[0];
     return (
       <div>
         <div className="row">
             <div className="col-sm-6">
-                <TradeSummaryPane trade={trade} user={this.props.user} />
+                <TradeSummaryPane trade={trade} user={this.state.user.user} />
             </div>
             <div className="col-sm-6">
                 <TradeStatusPane trade={trade} />

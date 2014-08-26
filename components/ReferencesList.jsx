@@ -19,7 +19,7 @@ var ReferenceRow = React.createClass({
     },
     handleDelete: function(e) {
         e.preventDefault();
-        // TODO
+        // TODO handleDelete
     }
 });
 

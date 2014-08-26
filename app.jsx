@@ -24,6 +24,9 @@ var ContactDetails = require("./components/ContactDetails");
 var ContactStore = require("./stores/ContactStore");
 var ContactActions = require("./actions/ContactActions");
 
+var UserStore = require("./stores/UserStore");
+var UserActions = require("./actions/UserActions");
+
 // TODO mock data
 var fixtures = require("./fixtures");
 
@@ -40,26 +43,28 @@ var Redirect = Router.Redirect;
 var stores = {
   TradeStore: new TradeStore({trades: fixtures.tradeList}),
   ReferenceStore: new ReferenceStore({references: fixtures.referencesList}),
-  ContactStore: new ContactStore({contacts: fixtures.contactList})
+  ContactStore: new ContactStore({contacts: fixtures.contactList}),
+  UserStore: new UserStore({user: fixtures.user})
 };
 
 var actions = {
     trade: TradeActions,
     reference: ReferenceActions,
-    contact: ContactActions
+    contact: ContactActions,
+    user: UserActions
 };
 
 var flux = new Fluxxor.Flux(stores, actions);
 
 var routes = (
     <Routes>
-        <Route handler={TrustDavisApp} user={fixtures.user}>
+        <Route handler={TrustDavisApp} flux={flux}>
             <Redirect from="/" to="trades" />
-            <Route name="trades" path="/trades" handler={Trades} user={fixtures.user} flux={flux} />
-            <Route name="tradeDetails" path="/trade/:tradeId" handler={TradeDetails} user={fixtures.user} flux={flux} />
+            <Route name="trades" path="/trades" handler={Trades} flux={flux} />
+            <Route name="tradeDetails" path="/trade/:tradeId" handler={TradeDetails} flux={flux} />
             <Route name="references" path="/references" handler={References} flux={flux} />
             <Route name="contacts" path="/contacts" handler={Contacts} flux={flux} />
-            <Route name="contactDetails" path="/contact/:contactId" handler={ContactDetails} user={fixtures.user} flux={flux} />
+            <Route name="contactDetails" path="/contact/:contactId" handler={ContactDetails} flux={flux} />
         </Route>
     </Routes>
 );

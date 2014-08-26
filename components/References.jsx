@@ -11,21 +11,22 @@ var ReferencesOverviewPane = require("./ReferencesOverviewPane");
 var ReferencesDepositPane = require("./ReferencesDepositPane");
 var ReferencesList = require("./ReferencesList");
 
-// TODO mock data
-var fixtures = require("../fixtures");
 var stats = require("../stats");
 
 var References = React.createClass({
-  mixins: [FluxMixin, StoreWatchMixin("ReferenceStore")],
+  mixins: [FluxMixin, StoreWatchMixin("ReferenceStore", "UserStore")],
 
   getStateFromFlux: function() {
     var flux = this.getFlux();
-    return flux.store("ReferenceStore").getState();
+    return {
+        references: flux.store("ReferenceStore").getState(),
+        user: flux.store("UserStore").getState()
+    };
   },
 
   render: function() {
-    var referenceStats = stats.referenceStats(this.state.references);
-    var available = fixtures.user.deposit - referenceStats.lockedLiabilities;
+    var referenceStats = stats.referenceStats(this.state.references.references);
+    var available = this.state.user.user.deposit - referenceStats.lockedLiabilities;
 
     return (
       <div>
@@ -34,12 +35,12 @@ var References = React.createClass({
                 <ReferencesOverviewPane stats={referenceStats} />
             </div>
             <div className="col-sm-6">
-                <ReferencesDepositPane deposit={fixtures.user.deposit} available={available} />
+                <ReferencesDepositPane deposit={this.state.user.user.deposit} available={available} />
             </div>
         </div>
         <NewReferenceForm />
         <h3>Your References</h3>
-        <ReferencesList referencesList={this.state.references} editable={true} />
+        <ReferencesList referencesList={this.state.references.references} editable={true} />
       </div>
     );
   }
