@@ -11,5 +11,9 @@ module.exports = {
     }),
     reference: keyMirror({
         ADD_REFERENCE: null
+    }),
+    user: keyMirror({
+        DEPOSIT: null,
+        WITHDRAW: null
     })
 };
