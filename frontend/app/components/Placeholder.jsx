@@ -6,7 +6,7 @@ var Placeholder = React.createClass({
   render: function() {
     return (
       <div>
-        <h1>Placeholder - {this.props.name}</h1>
+        <h1>{this.props.title}</h1>
       </div>
     );
   }
