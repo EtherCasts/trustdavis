@@ -26,7 +26,7 @@ var TradeSummaryPane = React.createClass({
                     <tr>
                         <td>Trade ID</td>
                         <td>{shortId + '\u2026 '}
-                        <ModalTrigger modal={<TradeIdModal tradeId={this.props.trade.id} />}>
+                        <ModalTrigger modal={<TradeIdModal trade={this.props.trade} />}>
                             <button type="button" className="btn btn-default btn-xs">
                                 <i className="fa fa-files-o fa-lg"></i>
                             </button>

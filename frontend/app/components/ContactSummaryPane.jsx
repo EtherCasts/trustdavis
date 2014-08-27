@@ -19,7 +19,7 @@ var ContactSummaryPane = React.createClass({
                     <tr>
                         <td>Contact ID</td>
                         <td>{this.props.contact.id + '\u2026 '}
-                        <ModalTrigger modal={<ContactIdModal contactId={this.props.contact.id} />}>
+                        <ModalTrigger modal={<ContactIdModal contact={this.props.contact} />}>
                             <button type="button" className="btn btn-default btn-xs">
                                 <i className="fa fa-files-o fa-lg"></i>
                             </button>

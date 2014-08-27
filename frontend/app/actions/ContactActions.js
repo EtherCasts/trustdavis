@@ -7,6 +7,10 @@ var ContactActions = {
 
   removeContact: function(contact) {
     this.dispatch(constants.contact.REMOVE_CONTACT, contact);
+  },
+
+  renameContact: function(contact) {
+    this.dispatch(constants.contact.RENAME_CONTACT, contact);
   }
 };
 

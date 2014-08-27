@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 
 var React = require("react");
+var ModalTrigger = require('react-bootstrap/ModalTrigger');
 
 var ActionDropDown = React.createClass({
     render: function() {
@@ -10,11 +11,20 @@ var ActionDropDown = React.createClass({
                 Action <span className="caret"></span>
               </button>
               <ul className="dropdown-menu" role="menu" aria-labelledby={'dropdownMenu-' + this.props.key}>
-                {this.props.handleEdit && <li role="presentation"><a role="menuitem" tabIndex="-1" href="#" onClick={this.props.handleEdit}>Edit</a></li>}
+                {this.props.handleEdit &&
+                  <li role="presentation">
+                    <ModalTrigger modal={this.props.handleEdit}>
+                      <a role="menuitem" tabIndex="-1" href="#" onClick={this.preventDefault}>Edit</a>
+                    </ModalTrigger>
+                  </li>
+                }
                 <li role="presentation"><a role="menuitem" tabIndex="-1" href="#" onClick={this.props.handleDelete}>Delete</a></li>
               </ul>
             </div>
         );
+    },
+    preventDefault: function(e) {
+        e.preventDefault();
     }
 });
 

@@ -12,7 +12,7 @@ var TradeIdModal = React.createClass({
                 <div className="modal-body">
                     <p>This is the trade ID, the Ethereum address of the trade contract:</p>
                     <pre>
-                        {this.props.tradeId}
+                        {this.props.trade.id}
                     </pre>
                 </div>
                 <div className="modal-footer">

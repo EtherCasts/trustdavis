@@ -7,6 +7,7 @@ var FluxChildMixin = Fluxxor.FluxChildMixin(React);
 var _ = require('lodash');
 
 var ActionDropDown = require("./ActionDropDown");
+var ContactEditModal = require("./ContactEditModal");
 var UserLink = require("./UserLink");
 
 var ContactRow = React.createClass({
@@ -15,7 +16,9 @@ var ContactRow = React.createClass({
         return (
             <tr>
                 <td><UserLink id={this.props.contact.id} /></td>
-                <td><ActionDropDown key={this.props.contact.id} handleDelete={this.handleDelete} /></td>
+                <td><ActionDropDown key={this.props.contact.id}
+                        handleEdit={<ContactEditModal contact={this.props.contact} flux={this.getFlux()} />}
+                        handleDelete={this.handleDelete} /></td>
             </tr>
         );
     },
