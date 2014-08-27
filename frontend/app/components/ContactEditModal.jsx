@@ -7,6 +7,8 @@ var FluxMixin = Fluxxor.FluxMixin(React);
 var Button = require('react-bootstrap/Button');
 var Modal = require('react-bootstrap/Modal');
 
+// XXX should be FluxChildMixin, but then flux object doesn't get passed along somehow
+
 var ContactEditModal = React.createClass({
     mixins: [FluxMixin],
     render: function() {
@@ -24,7 +26,6 @@ var ContactEditModal = React.createClass({
         );
     },
     handleSave: function() {
-        console.log("SAVE");
         var name = this.refs.name.getDOMNode().value.trim();
         this.getFlux().actions.contact.renameContact({id: this.props.contact.id, name: name});
         this.props.onRequestHide();
