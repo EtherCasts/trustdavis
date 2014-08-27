@@ -11,6 +11,8 @@ var UserStore = Fluxxor.createStore({
             constants.user.DEPOSIT, this.onDeposit,
             constants.user.WITHDRAW, this.onWithdraw
         );
+
+        this.setMaxListeners(1024); // prevent "possible EventEmitter memory leak detected"
     },
 
     onDeposit: function(payload) {

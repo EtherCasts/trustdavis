@@ -2,7 +2,6 @@
 
 var React = require("react");
 var Fluxxor = require("fluxxor");
-
 var FluxMixin = Fluxxor.FluxMixin(React),
     StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
@@ -22,7 +21,7 @@ var Contacts = React.createClass({
       <div>
         <NewContactForm />
         <h3>Your Contacts</h3>
-        <ContactList contactList={this.state.contacts} />
+        <ContactList contactList={this.state.contactList} />
       </div>
     );
   }

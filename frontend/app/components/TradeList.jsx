@@ -8,14 +8,14 @@ var UserLink = require("./UserLink");
 
 var TradeRow = React.createClass({
     render: function() {
-        var isBuyer = this.props.trade.buyer && (this.props.trade.buyer.id === this.props.user.id);
-        var isSeller = this.props.trade.seller && (this.props.trade.seller.id === this.props.user.id);
-        var counterparty;
+        var isBuyer = this.props.trade.buyerId && (this.props.trade.buyerId === this.props.user.id);
+        var isSeller = this.props.trade.sellerId && (this.props.trade.sellerId === this.props.user.id);
+        var counterpartyId;
 
         if (isBuyer) {
-            counterparty = this.props.trade.seller;
+            counterpartyId = this.props.trade.sellerId;
         } else if (isSeller) {
-            counterparty = this.props.trade.buyer;
+            counterpartyId = this.props.trade.buyerId;
         }
 
         return (
@@ -25,7 +25,7 @@ var TradeRow = React.createClass({
                 <td><Link to="tradeDetails" tradeId={this.props.trade.id}>
                 {this.props.trade.description}</Link></td>
                 <td>{this.props.trade.price} ETH</td>
-                <td>{counterparty ? <UserLink user={counterparty} /> : 'Not claimed'}</td>
+                <td>{counterpartyId ? <UserLink id={counterpartyId} /> : 'Not claimed'}</td>
                 <td>{this.props.trade.status}</td>
                 <td>{this.props.trade.expiration}</td>
             </tr>

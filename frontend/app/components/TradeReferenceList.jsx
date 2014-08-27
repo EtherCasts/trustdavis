@@ -8,7 +8,7 @@ var TradeReferenceRow = React.createClass({
     render: function() {
         return (
             <tr>
-                <td><UserLink user={this.props.reference.insurer} /></td>
+                <td><UserLink id={this.props.reference.insurerId} /></td>
                 <td>{this.props.reference.liability} ETH</td>
                 <td>{this.props.reference.premiumPct} %</td>
             </tr>

@@ -1,34 +1,39 @@
 var Fluxxor = require("fluxxor");
+var _ = require("lodash");
 
 var constants = require("../constants");
 
 var ContactStore = Fluxxor.createStore({
-  initialize: function(options) {
-    this.contacts = options.contacts || [];
+    initialize: function(options) {
+        this.contacts = options.contacts || {};
 
-    this.bindActions(
-      constants.contact.ADD_CONTACT, this.onAddContact,
-      constants.contact.REMOVE_CONTACT, this.onRemoveContact
-    );
-  },
+        this.bindActions(
+            constants.contact.ADD_CONTACT, this.onAddContact,
+            constants.contact.REMOVE_CONTACT, this.onRemoveContact
+        );
 
-  onAddContact: function(payload) {
-    this.contacts.push({id: payload.address, name: payload.name});
-    this.emit(constants.CHANGE_EVENT);
-  },
+        this.setMaxListeners(1024); // prevent "possible EventEmitter memory leak detected"
+    },
 
-  onRemoveContact: function(payload) {
-    this.contacts = this.contacts.filter(function(contact) {
-        return contact.id !== payload.id;
-    });
-    this.emit(constants.CHANGE_EVENT);
-  },
+    onAddContact: function(payload) {
+        this.contacts[payload.address] = {
+            id: payload.address,
+            name: payload.name
+        };
+        this.emit(constants.CHANGE_EVENT);
+    },
 
-  getState: function() {
-    return {
-      contacts: this.contacts
-    };
-  }
+    onRemoveContact: function(payload) {
+        delete this.contacts[payload.id];
+        this.emit(constants.CHANGE_EVENT);
+    },
+
+    getState: function() {
+        return {
+            contactList: _.values(this.contacts),
+            contactById: this.contacts
+        };
+    }
 });
 
 module.exports = ContactStore;
