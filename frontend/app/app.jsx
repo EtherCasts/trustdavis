@@ -41,7 +41,7 @@ var Routes = Router.Routes;
 var Redirect = Router.Redirect;
 
 var stores = {
-  TradeStore: new TradeStore({trades: fixtures.tradeList}),
+  TradeStore: new TradeStore({trades: fixtures.trades}),
   ReferenceStore: new ReferenceStore({references: fixtures.referencesList}),
   ContactStore: new ContactStore({contacts: fixtures.contacts}),
   UserStore: new UserStore({user: fixtures.user})

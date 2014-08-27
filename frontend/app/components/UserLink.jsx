@@ -11,6 +11,10 @@ var Link = Router.Link;
 var UserLink = React.createClass({
     mixins: [FluxChildMixin, StoreWatchMixin("ContactStore", "UserStore")],
 
+    propTypes: {
+        id: React.PropTypes.string.isRequired
+    },
+
     shortIdLength: 8,
 
     getStateFromFlux: function() {
