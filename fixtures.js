@@ -4,44 +4,47 @@ var fixtures = {
         name: "Mike",
         deposit: 12
     },
-    tradeList : [{
-        id: 'f70097659f329a09',
-        type: 'buy',
-        category: 'product',
-        description: 'Garden gnome',
-        price: 12,
-        buyerId: '1a73636d',
-        sellerId: '91c24063',
-        status: 'new',
-        expiration: '31/12/2014',
-        escrowPct: 100.0,
-        insurancePct: 50.0,
-        statusText: 'awaiting insurance',
-        references: [{
-            id: 'f7009765',
-            insurerId: 'f7009765',
-            liability: 6,
-            premiumPct: 10.0
-        }]
-    }, {
-        id: 'e92113a5cb209c12',
-        type: 'sell',
-        category: 'product',
-        description: 'Lawnmower',
-        price: 66,
-        sellerId: '1a73636d',
-        status: 'new',
-        expiration: '15/10/2014',
-        escrowPct: 100.0,
-        insurancePct: 50.0,
-        statusText: 'awaiting insurance',
-        references: [{
-            id: 'f7009765',
-            insurerId: 'f7009765',
-            liability: 6,
-            premiumPct: 10.0
-        }]
-    }],
+    trades: {
+        'f70097659f329a09': {
+            id: 'f70097659f329a09',
+            type: 'buy',
+            category: 'product',
+            description: 'Garden gnome',
+            price: 12,
+            buyerId: '1a73636d',
+            sellerId: '91c24063',
+            status: 'new',
+            expiration: '31/12/2014',
+            escrowPct: 100.0,
+            insurancePct: 50.0,
+            statusText: 'awaiting insurance',
+            references: [{
+                id: 'f7009765',
+                insurerId: 'f7009765',
+                liability: 6,
+                premiumPct: 10.0
+            }]
+        },
+        'e92113a5cb209c12': {
+            id: 'e92113a5cb209c12',
+            type: 'sell',
+            category: 'product',
+            description: 'Lawnmower',
+            price: 66,
+            sellerId: '1a73636d',
+            status: 'new',
+            expiration: '15/10/2014',
+            escrowPct: 100.0,
+            insurancePct: 50.0,
+            statusText: 'awaiting insurance',
+            references: [{
+                id: 'f7009765',
+                insurerId: 'f7009765',
+                liability: 6,
+                premiumPct: 10.0
+            }]
+        }
+    },
     referencesList: [
     {
         id: 'f7009765',
