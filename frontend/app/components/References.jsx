@@ -25,14 +25,14 @@ var References = React.createClass({
   },
 
   render: function() {
-    var referenceStats = stats.referenceStats(this.state.references.references);
-    var available = this.state.user.user.deposit - referenceStats.lockedLiabilities;
+    var summedStats = stats.sumReferenceStats(this.state.references.references);
+    var available = this.state.user.user.deposit - summedStats.lockedLiabilities;
 
     return (
       <div>
         <div className="row">
             <div className="col-sm-6">
-                <ReferencesOverviewPane stats={referenceStats} />
+                <ReferencesOverviewPane stats={summedStats} />
             </div>
             <div className="col-sm-6">
                 <ReferencesDepositPane deposit={this.state.user.user.deposit} available={available} />
