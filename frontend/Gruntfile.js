@@ -46,6 +46,12 @@ module.exports = function(grunt) {
             }
         }
     },
+    jest: {
+      "scriptPreprocessor": "<rootDir>/app/jsx_preprocessor.js",
+      "unmockedModulePathPatterns": [
+        "<rootDir>/node_modules/react"
+      ]
+    },
     jshint: {
       // define the files to lint
       files: ['Gruntfile.js', 'webpack.config.js', 'app/**/*.js', 'app/**/*.jsx'],
@@ -56,7 +62,17 @@ module.exports = function(grunt) {
           jQuery: true,
           console: true,
           module: true,
-          require: true
+          require: true,
+          /* jest */
+          afterEach: false,
+          beforeEach: false,
+          describe: false,
+          expect: false,
+          it: false,
+          jest: false,
+          pit: false,
+          xdescribe: false,
+          xit: false
         },
         "undef": true,
         "unused": true
@@ -65,7 +81,7 @@ module.exports = function(grunt) {
     watch: {
             app: {
                 files: ["app/**/*"],
-                tasks: ["jshint", "webpack:build-dev"],
+                tasks: ["jshint", "jest", "webpack:build-dev"],
                 options: {
                     spawn: false,
                 }
@@ -79,13 +95,14 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-jest');
   grunt.loadNpmTasks('grunt-jsxhint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-webpack');
   grunt.loadNpmTasks('grunt-gh-pages');
 
   grunt.registerTask("default", ["webpack-dev-server:start"]);
-  grunt.registerTask("dev", ["webpack:build-dev", "watch:app"]);
+  grunt.registerTask("dev", ["jshint", "jest", "webpack:build-dev", "watch:app"]);
   grunt.registerTask("build", ["jshint", "webpack:build"]);
   grunt.registerTask("publish", ["build", "gh-pages"]);
 };

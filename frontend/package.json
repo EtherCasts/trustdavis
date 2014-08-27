@@ -5,7 +5,7 @@
   "main": "app/app.jsx",
   "scripts": {
     "start": "echo \"Error: use grunt\" && exit 1",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,12 @@
     "url": "https://github.com/EtherCasts/trustdavis/issues"
   },
   "homepage": "https://github.com/EtherCasts/trustdavis",
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/app/jsx_preprocessor.js",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ]
+  },
   "devDependencies": {
     "webpack": "^1.3.3-beta2",
     "webpack-dev-server": "^1.4.10",
@@ -39,7 +45,10 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-jsxhint": "^0.3.0",
-    "react-tools": "^0.11.1"
+    "react-tools": "^0.11.1",
+    "jest": "^0.1.37",
+    "jest-cli": "^0.1.18",
+    "grunt-jest": "^0.1.1"
   },
   "dependencies": {
     "react": "^0.11.1",
