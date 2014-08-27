@@ -9,6 +9,7 @@ var Router = require("react-router");
 window.React = React;
 
 var TrustDavisApp = require("./components/TrustDavisApp");
+var Placeholder = require("./components/Placeholder");
 
 var TradeStore = require("./stores/TradeStore");
 var TradeActions = require("./actions/TradeActions");
@@ -65,6 +66,7 @@ var routes = (
             <Route name="references" path="/references" handler={References} flux={flux} />
             <Route name="contacts" path="/contacts" handler={Contacts} flux={flux} />
             <Route name="contactDetails" path="/contact/:contactId" handler={ContactDetails} flux={flux} />
+            <Route name="notfound" path="/notfound" handler={Placeholder} title="Contact or Trade ID not found" flux={flux} />
         </Route>
     </Routes>
 );
