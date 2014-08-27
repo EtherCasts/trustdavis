@@ -2,15 +2,18 @@
 
 var React = require("react");
 
+var ModalTrigger = require('react-bootstrap/ModalTrigger');
+
+var TradeIdModal = require("./TradeIdModal");
 var UserLink = require("./UserLink");
 
 var TradeSummaryPane = React.createClass({
   shortIdLength: 8,
 
   render: function() {
+    var shortId = this.props.trade.id.substr(0, this.shortIdLength);
     var isBuyer = this.props.trade.buyerId === this.props.user.id;
     var isSeller = this.props.trade.sellerId === this.props.user.id;
-    var shortId = this.props.trade.id.substr(0, this.shortIdLength);
 
     return (
         <div className="panel panel-default">
@@ -23,9 +26,12 @@ var TradeSummaryPane = React.createClass({
                     <tr>
                         <td>Trade ID</td>
                         <td>{shortId + '\u2026 '}
-                        <button type="button" className="btn btn-default btn-xs">
-                            <i className="fa fa-files-o fa-lg"></i>
-                        </button></td>
+                        <ModalTrigger modal={<TradeIdModal tradeId={this.props.trade.id} />}>
+                            <button type="button" className="btn btn-default btn-xs">
+                                <i className="fa fa-files-o fa-lg"></i>
+                            </button>
+                        </ModalTrigger>
+                        </td>
                     </tr>
                     <tr>
                         <td>Buyer {isBuyer && '(you)'}</td>

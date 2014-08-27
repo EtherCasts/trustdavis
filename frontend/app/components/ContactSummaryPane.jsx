@@ -2,6 +2,10 @@
 
 var React = require("react");
 
+var ModalTrigger = require('react-bootstrap/ModalTrigger');
+
+var ContactIdModal = require("./ContactIdModal");
+
 var ContactSummaryPane = React.createClass({
   render: function() {
     return (
@@ -15,9 +19,12 @@ var ContactSummaryPane = React.createClass({
                     <tr>
                         <td>Contact ID</td>
                         <td>{this.props.contact.id + '\u2026 '}
-                        <button type="button" className="btn btn-default btn-xs">
-                            <i className="fa fa-files-o fa-lg"></i>
-                        </button></td>
+                        <ModalTrigger modal={<ContactIdModal contactId={this.props.contact.id} />}>
+                            <button type="button" className="btn btn-default btn-xs">
+                                <i className="fa fa-files-o fa-lg"></i>
+                            </button>
+                        </ModalTrigger>
+                        </td>
                     </tr>
                     <tr>
                         <td>Name</td>

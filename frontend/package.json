@@ -48,7 +48,8 @@
     "react-tools": "^0.11.1",
     "jest": "^0.1.37",
     "jest-cli": "^0.1.18",
-    "grunt-jest": "^0.1.1"
+    "grunt-jest": "^0.1.1",
+    "react-bootstrap": "^0.11.1"
   },
   "dependencies": {
     "react": "^0.11.1",
