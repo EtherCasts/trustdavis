@@ -2,7 +2,7 @@ var _ = require('lodash');
 
 var stats = {
     // XXX should this be part of the ReferenceStore?
-    referenceStats: function(references) {
+    sumReferenceStats: function(references) {
         var maxLiabilities = _.reduce(references, function(s, entry) {
             return s + parseFloat(entry.maxLiability);
         }, 0);
