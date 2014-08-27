@@ -10,8 +10,8 @@ var fixtures = {
         category: 'product',
         description: 'Garden gnome',
         price: 12,
-        buyer: { id: '1a73636d', name: 'Mike' },
-        seller: { id: '91c24063', name: 'Andrew' },
+        buyerId: '1a73636d',
+        sellerId: '91c24063',
         status: 'new',
         expiration: '31/12/2014',
         escrowPct: 100.0,
@@ -19,7 +19,7 @@ var fixtures = {
         statusText: 'awaiting insurance',
         references: [{
             id: 'f7009765',
-            insurer: { id: 'f7009765', name: 'John' },
+            insurerId: 'f7009765',
             liability: 6,
             premiumPct: 10.0
         }]
@@ -29,7 +29,7 @@ var fixtures = {
         category: 'product',
         description: 'Lawnmower',
         price: 66,
-        seller: { id: '1a73636d', name: 'Mike' },
+        sellerId: '1a73636d',
         status: 'new',
         expiration: '15/10/2014',
         escrowPct: 100.0,
@@ -37,25 +37,36 @@ var fixtures = {
         statusText: 'awaiting insurance',
         references: [{
             id: 'f7009765',
-            insurer: { id: 'f7009765', name: 'John' },
+            insurerId: 'f7009765',
             liability: 6,
             premiumPct: 10.0
         }]
     }],
-    referencesList: [{
+    referencesList: [
+    {
         id: 'f7009765',
-        trader: { id: '91c24063', name: 'Andrew' },
+        traderId: '91c24063',
         maxLiability: 12,
         premiumPct: 10,
         lockedLiability: 6
+    },
+    {
+        id: '812d3340',
+        traderId: '12345678',
+        maxLiability: 0,
+        premiumPct: 0,
+        lockedLiability: 0
     }],
-    contactList: [{
-        id: '91c24063',
-        name: 'Andrew'
-    }, {
-        id: 'f7009765',
-        name: 'John'
-    }]
+    contacts: {
+        '91c24063': {
+            id: '91c24063',
+            name: 'Andrew'
+        },
+        'f7009765': {
+            id: 'f7009765',
+            name: 'John'
+        }
+    }
 };
 
 module.exports = fixtures;

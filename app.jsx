@@ -43,7 +43,7 @@ var Redirect = Router.Redirect;
 var stores = {
   TradeStore: new TradeStore({trades: fixtures.tradeList}),
   ReferenceStore: new ReferenceStore({references: fixtures.referencesList}),
-  ContactStore: new ContactStore({contacts: fixtures.contactList}),
+  ContactStore: new ContactStore({contacts: fixtures.contacts}),
   UserStore: new UserStore({user: fixtures.user})
 };
 

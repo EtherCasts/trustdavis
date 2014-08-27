@@ -3,18 +3,18 @@
 var React = require("react");
 var Fluxxor = require("fluxxor");
 var FluxChildMixin = Fluxxor.FluxChildMixin(React);
-var Router = require("react-router");
-var Link = Router.Link;
+
+var _ = require('lodash');
 
 var ActionDropDown = require("./ActionDropDown");
+var UserLink = require("./UserLink");
 
 var ContactRow = React.createClass({
     mixins: [FluxChildMixin],
     render: function() {
         return (
             <tr>
-                <td><Link to="contactDetails" contactId={this.props.contact.id}>{this.props.contact.name}</Link></td>
-                <td>{this.props.contact.id}</td>
+                <td><UserLink id={this.props.contact.id} /></td>
                 <td><ActionDropDown key={this.props.contact.id} handleDelete={this.handleDelete} /></td>
             </tr>
         );
@@ -27,7 +27,8 @@ var ContactRow = React.createClass({
 
 var ContactList = React.createClass({
     render: function() {
-        var contactListNodes = this.props.contactList.map(function (contact) {
+        var contactListNodes = _.sortBy(this.props.contactList, 'name')
+                                .map(function (contact) {
             return (
                 <ContactRow key={contact.id} contact={contact} />
             );
@@ -36,8 +37,7 @@ var ContactList = React.createClass({
             <table className="contactList table table-striped">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Address</th>
+                        <th>Contact</th>
                         <th>Action</th>
                     </tr>
                 </thead>

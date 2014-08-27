@@ -6,8 +6,8 @@ var UserLink = require("./UserLink");
 
 var TradeSummaryPane = React.createClass({
   render: function() {
-    var isBuyer = this.props.trade.buyer.id === this.props.user.id;
-    var isSeller = this.props.trade.seller.id === this.props.user.id;
+    var isBuyer = this.props.trade.buyerId === this.props.user.id;
+    var isSeller = this.props.trade.sellerId === this.props.user.id;
 
     return (
         <div className="panel panel-default">
@@ -26,11 +26,11 @@ var TradeSummaryPane = React.createClass({
                     </tr>
                     <tr>
                         <td>Buyer {isBuyer && '(you)'}</td>
-                        <td><UserLink user={this.props.trade.buyer} /></td>
+                        <td><UserLink id={this.props.trade.buyerId} /></td>
                     </tr>
                     <tr>
                         <td>Seller {isSeller && '(you)'}</td>
-                        <td><UserLink user={this.props.trade.seller} /></td>
+                        <td><UserLink id={this.props.trade.sellerId} /></td>
                     </tr>
                     <tr>
                         <td>Category</td>
