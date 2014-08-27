@@ -4,7 +4,8 @@ module.exports = {
     CHANGE_EVENT: "change",
     contact: keyMirror({
         ADD_CONTACT: null,
-        REMOVE_CONTACT: null
+        REMOVE_CONTACT: null,
+        RENAME_CONTACT: null
     }),
     trade: keyMirror({
         ADD_TRADE: null
