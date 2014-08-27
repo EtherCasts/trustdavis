@@ -16,14 +16,18 @@ var UserStore = Fluxxor.createStore({
     },
 
     onDeposit: function(payload) {
-        // TODO deposit
         console.log("DEPOSIT", payload);
+        if (payload.amount > 0) {
+            this.user.deposit += payload.amount;
+        }
         this.emit(constants.CHANGE_EVENT);
     },
 
     onWithdraw: function(payload) {
-        // TODO withdraw
         console.log("WITHDRAW", payload);
+        if (payload.amount <= this.user.deposit) {
+            this.user.deposit -= payload.amount;
+        }
         this.emit(constants.CHANGE_EVENT);
     },
 
