@@ -1,8 +1,16 @@
 /** @jsx React.DOM */
 
 var React = require("react");
+var Fluxxor = require("fluxxor");
+var FluxChildMixin = Fluxxor.FluxChildMixin(React);
+
+var ModalTrigger = require('react-bootstrap/ModalTrigger');
+
+var UserDepositModal = require("./UserDepositModal");
+var UserWithdrawModal = require("./UserWithdrawModal");
 
 var ReferencesDepositPane = React.createClass({
+  mixins: [FluxChildMixin],
   render: function() {
     return (
         <div className="panel panel-default">
@@ -28,18 +36,19 @@ var ReferencesDepositPane = React.createClass({
             </div>
             <div className="row spacer">
                 <div className="col-xs-6">
-                    <button type="button" className="btn btn-default">Deposit</button>
+                    <ModalTrigger modal={<UserDepositModal flux={this.getFlux()} />}>
+                        <button type="button" className="btn btn-default">Deposit</button>
+                    </ModalTrigger>
                 </div>
                 <div className="col-xs-6">
-                    <button type="button" className="btn btn-default">Withdraw</button>
+                    <ModalTrigger modal={<UserWithdrawModal flux={this.getFlux()} />}>
+                        <button type="button" className="btn btn-default">Withdraw</button>
+                    </ModalTrigger>
                 </div>
             </div>
           </div>
         </div>
     );
-  },
-  onSubmitForm: function(e) {
-    e.preventDefault();
   }
 });
 
