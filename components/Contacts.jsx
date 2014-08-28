@@ -20,7 +20,8 @@ var Contacts = React.createClass({
     return (
       <div>
         <NewContactForm />
-        <h3>Your Contacts</h3>
+        <h3>Your Contacts {this.state.loading && <i className="fa fa-spinner fa-spin"></i>}</h3>
+        {this.state.error && <div className="alert alert-danger" role="alert"><strong>Error!</strong> {this.state.error}</div>}
         <ContactList contactList={this.state.contactList} />
       </div>
     );
