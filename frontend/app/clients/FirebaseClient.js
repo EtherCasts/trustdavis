@@ -12,24 +12,24 @@ var FirebaseClient = function(firebaseRef) {
         }, failure);
     };
 
-    this.set = function(contact, success, failure) {
-        _firebaseRef.child('contacts/' + contact.id).set(contact, function onComplete(error) {
+    this._onComplete = function(item, success, failure) {
+        return function(error) {
             if (error) {
                 failure(error);
             } else {
-                success(contact);
+                success(item);
             }
-        });
+        };
+    };
+
+    this.set = function(contact, success, failure) {
+        _firebaseRef.child('contacts/' + contact.id)
+                    .set(contact, this._onComplete(contact, success, failure));
     };
 
     this.remove = function(contact, success, failure) {
-        _firebaseRef.child('contacts/' + contact.id).remove(function onComplete(error) {
-            if (error) {
-                failure(error);
-            } else {
-                success(contact);
-            }
-        });
+        _firebaseRef.child('contacts/' + contact.id)
+                    .remove(this._onComplete(contact, success, failure));
     };
 
     if (firebaseRef instanceof Firebase === false) {
