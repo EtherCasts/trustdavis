@@ -4,6 +4,8 @@ module.exports = {
     CHANGE_EVENT: "change",
     contact: keyMirror({
         LOAD_CONTACTS: null,
+        LOAD_CONTACTS_SUCCESS: null,
+        LOAD_CONTACTS_FAIL: null,
         ADD_CONTACT: null,
         REMOVE_CONTACT: null,
         RENAME_CONTACT: null

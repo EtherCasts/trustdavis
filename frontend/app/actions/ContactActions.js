@@ -3,10 +3,13 @@ var constants = require("../constants");
 var ContactActions = function(client) {
 
   this.loadContacts = function() {
+    this.dispatch(constants.contact.LOAD_CONTACTS);
+
     _client.load(function(contacts) {
-      this.dispatch(constants.contact.LOAD_CONTACTS, contacts);
+      this.dispatch(constants.contact.LOAD_CONTACTS_SUCCESS, contacts);
     }.bind(this), function(error) {
       console.log(error);
+      this.dispatch(constants.contact.LOAD_CONTACTS_FAIL, {error: error});
     }.bind(this));
   };
 
