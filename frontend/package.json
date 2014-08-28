@@ -26,6 +26,10 @@
   "homepage": "https://github.com/EtherCasts/trustdavis",
   "jest": {
     "scriptPreprocessor": "<rootDir>/app/jsx_preprocessor.js",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/.grunt/"
+    ],
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/react"
     ]

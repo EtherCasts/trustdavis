@@ -46,12 +46,6 @@ module.exports = function(grunt) {
             }
         }
     },
-    jest: {
-      "scriptPreprocessor": "<rootDir>/app/jsx_preprocessor.js",
-      "unmockedModulePathPatterns": [
-        "<rootDir>/node_modules/react"
-      ]
-    },
     jshint: {
       // define the files to lint
       files: ['Gruntfile.js', 'webpack.config.js', 'app/**/*.js', 'app/**/*.jsx'],
