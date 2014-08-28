@@ -31,6 +31,9 @@ var UserActions = require("./actions/UserActions");
 // TODO mock data
 var fixtures = require("./fixtures");
 
+var Firebase = require("Firebase");
+var FirebaseClient = require("./clients/FirebaseClient");
+
 // Load jQuery and bootstrap
 var jQuery = require("jquery");
 window.jQuery = jQuery;
@@ -48,10 +51,14 @@ var stores = {
   UserStore: new UserStore({user: fixtures.user})
 };
 
+var firebaseUrl = "https://flickering-heat-4989.firebaseio.com/";
+var firebaseRef = new Firebase(firebaseUrl);
+var client = new FirebaseClient(firebaseRef);
+
 var actions = {
     trade: TradeActions,
     reference: ReferenceActions,
-    contact: ContactActions,
+    contact: new ContactActions(client),
     user: UserActions
 };
 
