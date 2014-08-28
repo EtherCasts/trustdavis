@@ -3,6 +3,7 @@ var keyMirror = require('react/lib/keyMirror');
 module.exports = {
     CHANGE_EVENT: "change",
     contact: keyMirror({
+        LOAD_CONTACTS: null,
         ADD_CONTACT: null,
         REMOVE_CONTACT: null,
         RENAME_CONTACT: null

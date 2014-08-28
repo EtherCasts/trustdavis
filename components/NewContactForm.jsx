@@ -33,7 +33,7 @@ var NewContactForm = React.createClass({
     if (!name || !address) {
       return false;
     }
-    this.getFlux().actions.contact.addContact({name: name, address: address});
+    this.getFlux().actions.contact.addContact({name: name, id: address});
 
     this.refs.name.getDOMNode().value = '';
     this.refs.address.getDOMNode().value = '';

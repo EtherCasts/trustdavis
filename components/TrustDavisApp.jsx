@@ -24,7 +24,11 @@ var TrustDavisApp = React.createClass({
         <this.props.activeRouteHandler/>
       </div>
     );
-  }
+  },
+
+  componentDidMount: function() {
+    this.getFlux().actions.contact.loadContacts();
+  },
 });
 
 module.exports = TrustDavisApp;
