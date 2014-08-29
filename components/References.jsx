@@ -25,8 +25,9 @@ var References = React.createClass({
   },
 
   render: function() {
+    var deposit = this.state.user.user.deposit || 0;
     var summedStats = stats.sumReferenceStats(this.state.references.references);
-    var available = this.state.user.user.deposit - summedStats.lockedLiabilities;
+    var available = deposit - summedStats.lockedLiabilities;
 
     return (
       <div>
@@ -35,7 +36,7 @@ var References = React.createClass({
                 <ReferencesOverviewPane stats={summedStats} />
             </div>
             <div className="col-sm-6">
-                <ReferencesDepositPane deposit={this.state.user.user.deposit} available={available} />
+                <ReferencesDepositPane deposit={deposit} available={available} />
             </div>
         </div>
         <NewReferenceForm />
