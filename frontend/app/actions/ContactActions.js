@@ -5,7 +5,7 @@ var ContactActions = function(client) {
   this.loadContacts = function() {
     this.dispatch(constants.contact.LOAD_CONTACTS);
 
-    _client.load(function(contacts) {
+    _client.loadContacts(function(contacts) {
       this.dispatch(constants.contact.LOAD_CONTACTS_SUCCESS, contacts);
     }.bind(this), function(error) {
       console.log(error);
@@ -14,7 +14,7 @@ var ContactActions = function(client) {
   };
 
   this.addContact = function(contact) {
-    _client.set(contact, function() {
+    _client.setContact(contact, function() {
       this.dispatch(constants.contact.ADD_CONTACT, contact);
     }.bind(this), function(error) {
       console.log(error);
@@ -22,7 +22,7 @@ var ContactActions = function(client) {
   };
 
   this.removeContact = function(contact) {
-    _client.remove(contact, function() {
+    _client.removeContact(contact, function() {
       this.dispatch(constants.contact.REMOVE_CONTACT, contact);
     }.bind(this), function(error) {
       console.log(error);
@@ -30,7 +30,7 @@ var ContactActions = function(client) {
   };
 
   this.renameContact = function(contact) {
-    _client.set(contact, function() {
+    _client.setContact(contact, function() {
       this.dispatch(constants.contact.RENAME_CONTACT, contact);
     }.bind(this), function(error) {
       console.log(error);

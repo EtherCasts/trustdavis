@@ -59,7 +59,7 @@ var actions = {
     trade: TradeActions,
     reference: ReferenceActions,
     contact: new ContactActions(client),
-    user: UserActions
+    user: new UserActions(client)
 };
 
 var flux = new Fluxxor.Flux(stores, actions);

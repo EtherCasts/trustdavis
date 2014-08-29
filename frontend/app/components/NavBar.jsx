@@ -49,7 +49,10 @@ var NavBar = React.createClass({
                             <button type="submit" className="btn btn-default"><span className="glyphicon glyphicon-search"></span></button>
                         </form>
                         <ul className="nav navbar-nav navbar-right">
-                            <li><UserLink id={this.props.user.id} showIcon={true} /></li>
+                            <li>
+                                {this.props.user.loading ? <p className="navbar-text"><i className="fa fa-spinner fa-spin"></i></p>
+                                    : <UserLink id={this.props.user.user.id} showIcon={true} />}
+                            </li>
                         </ul>
                     </div>
                 </div>
