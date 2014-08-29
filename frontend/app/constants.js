@@ -11,6 +11,9 @@ module.exports = {
         RENAME_CONTACT: null
     }),
     trade: keyMirror({
+        LOAD_TRADES: null,
+        LOAD_TRADES_SUCCESS: null,
+        LOAD_TRADES_FAIL: null,
         ADD_TRADE: null
     }),
     reference: keyMirror({

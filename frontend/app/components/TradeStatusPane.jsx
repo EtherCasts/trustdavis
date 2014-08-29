@@ -16,7 +16,7 @@ var TradeStatusPane = React.createClass({
                     Escrow
                 </div>
                 <div className="col-xs-8">
-                    <ProgressBar pct={this.props.trade.escrowPct} />
+                    <ProgressBar pct={this.props.trade.escrowPct || 0} />
                 </div>
             </div>
             <div className="row">
@@ -24,7 +24,7 @@ var TradeStatusPane = React.createClass({
                     Insurance
                 </div>
                 <div className="col-xs-8">
-                    <ProgressBar pct={this.props.trade.insurancePct} />
+                    <ProgressBar pct={this.props.trade.insurancePct || 0} />
                 </div>
             </div>
             <div className="row spacer">
