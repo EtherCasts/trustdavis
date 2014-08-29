@@ -45,7 +45,7 @@ var Routes = Router.Routes;
 var Redirect = Router.Redirect;
 
 var stores = {
-  TradeStore: new TradeStore({trades: fixtures.trades}),
+  TradeStore: new TradeStore(),
   ReferenceStore: new ReferenceStore({references: fixtures.referencesList}),
   ContactStore: new ContactStore(),
   UserStore: new UserStore({user: fixtures.user})
@@ -56,7 +56,7 @@ var firebaseRef = new Firebase(firebaseUrl);
 var client = new FirebaseClient(firebaseRef);
 
 var actions = {
-    trade: TradeActions,
+    trade: new TradeActions(client),
     reference: ReferenceActions,
     contact: new ContactActions(client),
     user: new UserActions(client)

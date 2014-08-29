@@ -4,6 +4,20 @@ var utils = require("../utils");
 
 var FirebaseClient = function(firebaseRef) {
 
+    this.loadTrades = function(success, failure) {
+        _firebaseRef.child('trade').once('value', function(data) {
+            var trades = data.val() || {};
+            console.log("TRADES", trades);
+            success(trades);
+        }, failure);
+    };
+
+    this.setTrade = function(trade, success, failure) {
+        console.log("SET_TRADE", trade);
+        _firebaseRef.child('trade').child(trade.id)
+                    .set(trade, this._onComplete(trade, success, failure));
+    };
+
     this.loadContacts = function(success, failure) {
         var uid = this._UID();
         _firebaseRef.child('contact').child(uid).once('value', function(data) {
@@ -46,7 +60,7 @@ var FirebaseClient = function(firebaseRef) {
         var uid = this._UID();
         var user = {id: uid, name: name};
         _firebaseRef.child('user').child(uid)
-                    .set(user, this._onComplete(name, success, failure));
+                    .update(user, this._onComplete(name, success, failure));
     };
 
     this.ref = function() {

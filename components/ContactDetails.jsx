@@ -45,7 +45,7 @@ var ContactDetails = React.createClass({
             );
         } else {
             return (
-                    <h3>Contact not found</h3>
+                <h3>Contact not found</h3>
             );
         }
     }
