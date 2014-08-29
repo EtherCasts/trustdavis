@@ -7,26 +7,30 @@ var FluxMixin = Fluxxor.FluxMixin(React),
     StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
 var NavBar = require("./NavBar");
-
+var CreateAccountModal = require("./CreateAccountModal");
 
 var TrustDavisApp = React.createClass({
   mixins: [FluxMixin, StoreWatchMixin("ReferenceStore", "UserStore")],
 
   getStateFromFlux: function() {
     var flux = this.getFlux();
-    return flux.store("UserStore").getState();
+    return {
+        user: flux.store("UserStore").getState()
+    };
   },
 
   render: function() {
     return (
       <div>
         <NavBar user={this.state.user} />
-        <this.props.activeRouteHandler/>
+        {this.state.user.createAccount && <CreateAccountModal flux={this.getFlux()} />}
+        <this.props.activeRouteHandler />
       </div>
     );
   },
 
   componentDidMount: function() {
+    this.getFlux().actions.user.loadUser();
     this.getFlux().actions.contact.loadContacts();
   },
 });

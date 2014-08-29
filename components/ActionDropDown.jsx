@@ -7,7 +7,7 @@ var ActionDropDown = React.createClass({
     render: function() {
         return (
             <div className="dropdown">
-              <button className="btn btn-default dropdown-toggle" type="button" id={'dropdownMenu-' + this.props.key} data-toggle="dropdown">
+              <button className="btn btn-default btn-sm dropdown-toggle" type="button" id={'dropdownMenu-' + this.props.key} data-toggle="dropdown">
                 Action <span className="caret"></span>
               </button>
               <ul className="dropdown-menu" role="menu" aria-labelledby={'dropdownMenu-' + this.props.key}>

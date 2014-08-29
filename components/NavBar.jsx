@@ -24,7 +24,7 @@ var NavBar = React.createClass({
 
     render: function() {
         return (
-            <nav className="navbar navbar-default" role="navigation">
+            <nav className="navbar navbar-inverse" role="navigation">
                 <div className="container-fluid">
                     <div className="navbar-header">
                         <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -49,7 +49,10 @@ var NavBar = React.createClass({
                             <button type="submit" className="btn btn-default"><span className="glyphicon glyphicon-search"></span></button>
                         </form>
                         <ul className="nav navbar-nav navbar-right">
-                            <li><UserLink id={this.props.user.id} showIcon={true} /></li>
+                            <li>
+                                {this.props.user.loading ? <p className="navbar-text"><i className="fa fa-spinner fa-spin"></i></p>
+                                    : <UserLink id={this.props.user.user.id} showIcon={true} />}
+                            </li>
                         </ul>
                     </div>
                 </div>
