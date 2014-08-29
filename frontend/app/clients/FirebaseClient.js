@@ -5,18 +5,22 @@ var utils = require("../utils");
 var FirebaseClient = function(firebaseRef) {
 
     this.loadContacts = function(success, failure) {
-        _firebaseRef.child('contact').once('value', function(data) {
-            success(data.val());
+        var uid = this._UID();
+        _firebaseRef.child('contact').child(uid).once('value', function(data) {
+            var contacts = data.val() || {};
+            success(contacts);
         }, failure);
     };
 
     this.setContact = function(contact, success, failure) {
-        _firebaseRef.child('contact').child(contact.id)
+        var uid = this._UID();
+        _firebaseRef.child('contact').child(uid).child(contact.id)
                     .set(contact, this._onComplete(contact, success, failure));
     };
 
     this.removeContact = function(contact, success, failure) {
-        _firebaseRef.child('contact').child(contact.id)
+        var uid = this._UID();
+        _firebaseRef.child('contact').child(uid).child(contact.id)
                     .remove(this._onComplete(contact, success, failure));
     };
 
@@ -33,10 +37,7 @@ var FirebaseClient = function(firebaseRef) {
     this.loadUser = function(success, failure) {
         var uid = this._UID();
         _firebaseRef.child('user').child(uid).once('value', function(data) {
-            var user = data.val();
-            if (!user) {
-                user = {id: uid};
-            }
+            var user = data.val() || {id: uid};
             success(user);
         }, failure);
     };
