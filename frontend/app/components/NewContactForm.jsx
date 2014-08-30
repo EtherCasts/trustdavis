@@ -15,9 +15,9 @@ var NewContactForm = React.createClass({
           <div className="panel-body">
             <form className="form-inline" onSubmit={this.onSubmitForm}>
                 I want to add the contact{' '}
-                <input type="text" className="form-control" placeholder="name" ref="name" />
+                <input type="text" className="form-control" pattern="\w{1,32}" placeholder="name" ref="name" />
                 {' '}with the address{' '}
-                <input type="text" className="form-control" placeholder="ethereum address" ref="address" />
+                <input type="text" className="form-control" pattern="[0-9a-fA-F]{64}" placeholder="ethereum address" ref="address" />
                 {' '}
                 <button type="submit" className="btn btn-default">Create</button>
             </form>

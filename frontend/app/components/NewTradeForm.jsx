@@ -25,7 +25,7 @@ var NewTradeForm = React.createClass({
                   <option>service</option>
                 </select> called
                 {' '}
-                 <input type="text" className="form-control" placeholder="description" ref="description" />
+                 <input type="text" className="form-control" pattern=".{0,32}" placeholder="description" ref="description" />
                 {' '}
                 for <input type="number" min="0" step="0.0001" className="form-control small" placeholder="0.0000" ref="price" /> ETH.
                 <p>This offer is valid until <input type="date" className="form-control medium" placeholder="date" ref="expiration" />

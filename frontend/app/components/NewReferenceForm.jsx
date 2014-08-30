@@ -14,7 +14,7 @@ var NewReferenceForm = React.createClass({
           </div>
           <div className="panel-body">
             <form className="form-inline" onSubmit={this.onSubmitForm}>
-                I want to insure <input type="text" className="form-control" placeholder="person" ref="trader" />
+                I want to insure <input type="text" className="form-control" pattern="\w{1,32}" placeholder="person" ref="trader" />
                 {' '}
                 with a maximum liability of
                 {' '}

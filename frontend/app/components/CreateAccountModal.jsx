@@ -19,18 +19,21 @@ var CreateAccountModal = React.createClass({
     render: function() {
         return this.transferPropsTo(
             <Modal title="Create Account" animation={false} closeButton={false} onRequestHide={this.handleHide}>
-                <div className="modal-body">
-                    <p>What is the name for your TrustDavis account?</p>
-                    <input type="text" className="form-control" placeholder="name" ref="name" />
-                </div>
-                <div className="modal-footer">
-                    <Button onClick={this.handleSave} bsStyle="primary">Create Account</Button>
-                </div>
+                <form onSubmit={this.handleSave}>
+                    <div className="modal-body">
+                        <p>What is the name for your TrustDavis account?</p>
+                        <input type="text" className="form-control" placeholder="name" pattern="\w{1,32}" ref="name" />
+                    </div>
+                    <div className="modal-footer">
+                        <Button type="submit" bsStyle="primary">Create Account</Button>
+                    </div>
+                </form>
             </Modal>
         );
     },
 
-    handleSave: function() {
+    handleSave: function(e) {
+        e.preventDefault();
         var name = this.refs.name.getDOMNode().value.trim();
         if (!name) {
             return;
