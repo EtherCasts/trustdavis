@@ -2,8 +2,7 @@
 
 var React = require("react");
 var Fluxxor = require("fluxxor");
-var FluxChildMixin = Fluxxor.FluxChildMixin(React),
-    StoreWatchMixin = Fluxxor.StoreWatchMixin;
+var FluxChildMixin = Fluxxor.FluxChildMixin(React);
 
 var Router = require("react-router");
 var Link = Router.Link;
@@ -12,15 +11,7 @@ var Tab = require("./Tab");
 var UserLink = require("./UserLink");
 
 var NavBar = React.createClass({
-    mixins: [FluxChildMixin, StoreWatchMixin("TradeStore", "ContactStore")],
-
-    getStateFromFlux: function() {
-        var flux = this.getFlux();
-        return {
-            trades: flux.store("TradeStore").getState(),
-            contacts: flux.store("ContactStore").getState()
-        };
-    },
+    mixins: [FluxChildMixin],
 
     render: function() {
         return (
@@ -63,9 +54,9 @@ var NavBar = React.createClass({
     onSubmitForm: function(e) {
         e.preventDefault();
         var searchId = this.refs.searchId.getDOMNode().value.trim();
-        if (this.state.trades.tradeById[searchId] !== undefined) {
+        if (this.props.trades.tradeById[searchId] !== undefined) {
             Router.transitionTo('tradeDetails', {tradeId: searchId});
-        } else if (this.state.contacts.contactById[searchId]) {
+        } else if (this.props.contacts.contactById[searchId]) {
             Router.transitionTo('userDetails', {userId: searchId});
         } else {
             Router.transitionTo('notfound');
