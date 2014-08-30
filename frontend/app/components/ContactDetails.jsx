@@ -36,11 +36,9 @@ var ContactDetails = React.createClass({
         if (contact) {
             return (
                 <div>
-                    <ContactSummaryPane contact={contact} tradeList={this.state.trades.tradeList} referencesList={this.state.references.references} />
-                    <h3>{contact.name}'s Trades</h3>
-                    <TradeList tradeList={this.state.trades.tradeList} user={this.state.user.user} />
-                    <h3>{contact.name}'s References</h3>
-                    <ReferencesList referencesList={this.state.references.references} />
+                    <ContactSummaryPane contact={contact} tradeList={this.state.trades.tradeList} referencesList={this.state.references.referencesList} />
+                    <TradeList title={contact.name + "'s Active Trades"} trades={this.state.trades} user={this.state.user.user} />
+                    <ReferencesList title={contact.name + "'s References"} references={this.state.references} />
                 </div>
             );
         } else {

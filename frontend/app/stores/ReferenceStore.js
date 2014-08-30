@@ -58,7 +58,7 @@ var ReferenceStore = Fluxxor.createStore({
 
     getState: function() {
         return {
-            references: _.values(this.references),
+            referencesList: _.values(this.references),
             loading: this.loading,
             error: this.error
         };

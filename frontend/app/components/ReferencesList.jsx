@@ -26,13 +26,14 @@ var ReferenceRow = React.createClass({
     }
 });
 
-var ReferencesList = React.createClass({
+var ReferencesTable = React.createClass({
     render: function() {
         var referencesListNodes = this.props.referencesList.map(function(reference) {
             return (
                 <ReferenceRow key={reference.id} reference={reference} editable={this.props.editable} />
             );
         }.bind(this));
+
         return (
             <table className="referenceList table table-striped">
                 <thead>
@@ -48,6 +49,18 @@ var ReferencesList = React.createClass({
                     {referencesListNodes}
                 </tbody>
             </table>
+        );
+    }
+});
+
+var ReferencesList = React.createClass({
+    render: function() {
+        return (
+            <div>
+                <h3>{this.props.title} {this.props.references.loading && <i className="fa fa-spinner fa-spin"></i>}</h3>
+                {this.props.references.error && <div className="alert alert-danger" role="alert"><strong>Error!</strong> {this.props.references.error}</div>}
+                <ReferencesTable referencesList={this.props.references.referencesList} editable={this.props.editable} />
+            </div>
         );
     }
 });
