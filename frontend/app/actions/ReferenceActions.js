@@ -1,5 +1,4 @@
 var constants = require("../constants");
-var utils = require("../utils");
 
 var ReferenceActions = function(client) {
 
