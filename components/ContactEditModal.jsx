@@ -14,18 +14,21 @@ var ContactEditModal = React.createClass({
     render: function() {
         return this.transferPropsTo(
             <Modal title="Edit Contact" animation={false}>
-                <div className="modal-body">
-                    <p>What is the new name for contact "{this.props.contact.name}"?</p>
-                    <input type="text" className="form-control" placeholder="name" ref="name" defaultValue={this.props.contact.name} />
-                </div>
-                <div className="modal-footer">
-                    <Button onClick={this.props.onRequestHide}>Cancel</Button>
-                    <Button onClick={this.handleSave} bsStyle="primary">Save</Button>
-                </div>
+                <form onSubmit={this.handleSave}>
+                    <div className="modal-body">
+                        <p>What is the new name for contact "{this.props.contact.name}"?</p>
+                        <input type="text" className="form-control" placeholder="name" pattern="\w{1,32}" ref="name" defaultValue={this.props.contact.name} />
+                    </div>
+                    <div className="modal-footer">
+                        <Button onClick={this.props.onRequestHide}>Cancel</Button>
+                        <Button type="submit" bsStyle="primary">Save</Button>
+                    </div>
+                </form>
             </Modal>
         );
     },
-    handleSave: function() {
+    handleSave: function(e) {
+        e.preventDefault();
         var name = this.refs.name.getDOMNode().value.trim();
         this.getFlux().actions.contact.renameContact({id: this.props.contact.id, name: name});
         this.props.onRequestHide();
