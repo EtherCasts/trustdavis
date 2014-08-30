@@ -24,9 +24,7 @@ var Trades = React.createClass({
     return (
       <div>
         <NewTradeForm />
-        <h3>Your Active Trades {this.state.trades.loading && <i className="fa fa-spinner fa-spin"></i>}</h3>
-        {this.state.trades.error && <div className="alert alert-danger" role="alert"><strong>Error!</strong> {this.state.trades.error}</div>}
-        <TradeList tradeList={this.state.trades.tradeList} user={this.state.user.user} />
+        <TradeList title="Your Active Trades" trades={this.state.trades} user={this.state.user.user} />
       </div>
     );
   }

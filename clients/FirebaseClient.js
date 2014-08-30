@@ -7,13 +7,11 @@ var FirebaseClient = function(firebaseRef) {
     this.loadTrades = function(success, failure) {
         _firebaseRef.child('trade').once('value', function(data) {
             var trades = data.val() || {};
-            console.log("TRADES", trades);
             success(trades);
         }, failure);
     };
 
     this.setTrade = function(trade, success, failure) {
-        console.log("SET_TRADE", trade);
         _firebaseRef.child('trade').child(trade.id)
                     .set(trade, this._onComplete(trade, success, failure));
     };
@@ -22,7 +20,6 @@ var FirebaseClient = function(firebaseRef) {
         var uid = this._UID();
         _firebaseRef.child('reference').child(uid).once('value', function(data) {
             var references = data.val() || {};
-            console.log("REFERENCES", references);
             success(references);
         }, failure);
     };
