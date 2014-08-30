@@ -28,9 +28,6 @@ var ContactActions = require("./actions/ContactActions");
 var UserStore = require("./stores/UserStore");
 var UserActions = require("./actions/UserActions");
 
-// TODO mock data
-var fixtures = require("./fixtures");
-
 var Firebase = require("Firebase");
 var FirebaseClient = require("./clients/FirebaseClient");
 
@@ -46,9 +43,9 @@ var Redirect = Router.Redirect;
 
 var stores = {
   TradeStore: new TradeStore(),
-  ReferenceStore: new ReferenceStore({references: fixtures.referencesList}),
+  ReferenceStore: new ReferenceStore(),
   ContactStore: new ContactStore(),
-  UserStore: new UserStore({user: fixtures.user})
+  UserStore: new UserStore()
 };
 
 var firebaseUrl = "https://flickering-heat-4989.firebaseio.com/";
@@ -57,7 +54,7 @@ var client = new FirebaseClient(firebaseRef);
 
 var actions = {
     trade: new TradeActions(client),
-    reference: ReferenceActions,
+    reference: new ReferenceActions(client),
     contact: new ContactActions(client),
     user: new UserActions(client)
 };

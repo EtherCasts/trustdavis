@@ -17,6 +17,9 @@ module.exports = {
         ADD_TRADE: null
     }),
     reference: keyMirror({
+        LOAD_REFERENCES: null,
+        LOAD_REFERENCES_SUCCESS: null,
+        LOAD_REFERENCES_FAIL: null,
         ADD_REFERENCE: null,
         REMOVE_REFERENCE: null
     }),

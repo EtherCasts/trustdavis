@@ -38,7 +38,7 @@ var NewReferenceForm = React.createClass({
       return false;
     }
     this.getFlux().actions.reference.addReference({
-        trader: { id: trader },
+        id: trader,
         maxLiability: maxLiability,
         premiumPct: premiumPct
     });
