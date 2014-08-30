@@ -21,9 +21,10 @@ var ReferenceStore = require("./stores/ReferenceStore");
 var ReferenceActions = require("./actions/ReferenceActions");
 
 var Contacts = require("./components/Contacts");
-var ContactDetails = require("./components/ContactDetails");
 var ContactStore = require("./stores/ContactStore");
 var ContactActions = require("./actions/ContactActions");
+
+var UserDetails = require("./components/UserDetails");
 
 var UserStore = require("./stores/UserStore");
 var UserActions = require("./actions/UserActions");
@@ -69,8 +70,8 @@ var routes = (
             <Route name="tradeDetails" path="/trade/:tradeId" handler={TradeDetails} flux={flux} />
             <Route name="references" path="/references" handler={References} flux={flux} />
             <Route name="contacts" path="/contacts" handler={Contacts} flux={flux} />
-            <Route name="contactDetails" path="/contact/:contactId" handler={ContactDetails} flux={flux} />
-            <Route name="notfound" path="/notfound" handler={Placeholder} title="Contact or Trade ID not found" flux={flux} />
+            <Route name="userDetails" path="/user/:userId" handler={UserDetails} flux={flux} />
+            <Route name="notfound" path="/notfound" handler={Placeholder} title="User or Trade ID not found" flux={flux} />
         </Route>
     </Routes>
 );
