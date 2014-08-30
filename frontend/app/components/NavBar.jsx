@@ -44,7 +44,7 @@ var NavBar = React.createClass({
                         </ul>
                         <form className="navbar-form navbar-right" role="search" onSubmit={this.onSubmitForm}>
                             <div className="form-group">
-                                <input type="text" className="form-control" placeholder="Contact or Trade ID" ref="searchId" />
+                                <input type="text" className="form-control" placeholder="User or Trade ID" ref="searchId" />
                             </div>
                             <button type="submit" className="btn btn-default"><span className="glyphicon glyphicon-search"></span></button>
                         </form>
@@ -66,7 +66,7 @@ var NavBar = React.createClass({
         if (this.state.trades.tradeById[searchId] !== undefined) {
             Router.transitionTo('tradeDetails', {tradeId: searchId});
         } else if (this.state.contacts.contactById[searchId]) {
-            Router.transitionTo('contactDetails', {contactId: searchId});
+            Router.transitionTo('userDetails', {userId: searchId});
         } else {
             Router.transitionTo('notfound');
         }

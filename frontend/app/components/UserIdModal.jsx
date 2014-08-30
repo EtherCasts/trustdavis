@@ -5,14 +5,14 @@ var React = require("react");
 var Button = require('react-bootstrap/Button');
 var Modal = require('react-bootstrap/Modal');
 
-var ContactIdModal = React.createClass({
+var UserIdModal = React.createClass({
     render: function() {
         return this.transferPropsTo(
-            <Modal title={"Contact ID for " + this.props.contact.name} animation={false}>
+            <Modal title={"User ID for " + this.props.user.name} animation={false}>
                 <div className="modal-body">
-                    <p>This is the contact ID for "{this.props.contact.name}", the Ethereum public key of the person:</p>
+                    <p>This is the user ID for "{this.props.user.name}", the Ethereum public key of the person:</p>
                     <pre>
-                        {this.props.contact.id}
+                        {this.props.user.id}
                     </pre>
                 </div>
                 <div className="modal-footer">
@@ -23,4 +23,4 @@ var ContactIdModal = React.createClass({
     }
 });
 
-module.exports = ContactIdModal;
+module.exports = UserIdModal;
