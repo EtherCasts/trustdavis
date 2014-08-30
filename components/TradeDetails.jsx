@@ -3,36 +3,23 @@
 var React = require("react");
 var Fluxxor = require("fluxxor");
 
-var FluxMixin = Fluxxor.FluxMixin(React),
-    StoreWatchMixin = Fluxxor.StoreWatchMixin;
+var FluxChildMixin = Fluxxor.FluxChildMixin(React);
 
 var TradeSummaryPane = require("./TradeSummaryPane");
 var TradeStatusPane = require("./TradeStatusPane");
 var TradeReferenceList = require("./TradeReferenceList");
 
 var TradeDetails = React.createClass({
-    mixins: [FluxMixin, StoreWatchMixin("TradeStore", "UserStore")],
-
-    getInitialState: function() {
-        return {};
-    },
-
-    getStateFromFlux: function() {
-        var flux = this.getFlux();
-        return {
-            trades: flux.store("TradeStore").getState(),
-            user: flux.store("UserStore").getState()
-        };
-    },
+    mixins: [FluxChildMixin],
 
     render: function() {
-        var trade = this.state.trades.tradeById[this.props.params.tradeId];
+        var trade = this.props.trades.tradeById[this.props.params.tradeId];
         if (trade) {
             return (
                 <div>
                     <div className="row">
                         <div className="col-sm-6">
-                            <TradeSummaryPane trade={trade} user={this.state.user.user} />
+                            <TradeSummaryPane trade={trade} user={this.props.user.user} />
                         </div>
                         <div className="col-sm-6">
                             <TradeStatusPane trade={trade} />

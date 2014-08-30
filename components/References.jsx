@@ -3,8 +3,7 @@
 var React = require("react");
 var Fluxxor = require("fluxxor");
 
-var FluxMixin = Fluxxor.FluxMixin(React),
-    StoreWatchMixin = Fluxxor.StoreWatchMixin;
+var FluxChildMixin = Fluxxor.FluxChildMixin(React);
 
 var NewReferenceForm = require("./NewReferenceForm");
 var ReferencesOverviewPane = require("./ReferencesOverviewPane");
@@ -14,19 +13,11 @@ var ReferencesList = require("./ReferencesList");
 var stats = require("../stats");
 
 var References = React.createClass({
-  mixins: [FluxMixin, StoreWatchMixin("ReferenceStore", "UserStore")],
-
-  getStateFromFlux: function() {
-    var flux = this.getFlux();
-    return {
-        references: flux.store("ReferenceStore").getState(),
-        user: flux.store("UserStore").getState()
-    };
-  },
+  mixins: [FluxChildMixin],
 
   render: function() {
-    var deposit = this.state.user.user.deposit || 0;
-    var summedStats = stats.sumReferenceStats(this.state.references.references);
+    var deposit = this.props.user.user.deposit || 0;
+    var summedStats = stats.sumReferenceStats(this.props.references.references);
     var available = deposit - summedStats.lockedLiabilities;
 
     return (
@@ -40,7 +31,7 @@ var References = React.createClass({
             </div>
         </div>
         <NewReferenceForm />
-        <ReferencesList title="Your References" references={this.state.references} editable={true} />
+        <ReferencesList title="Your References" references={this.props.references} editable={true} />
       </div>
     );
   }

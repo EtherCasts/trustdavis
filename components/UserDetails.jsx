@@ -3,40 +3,29 @@
 var React = require("react");
 var Fluxxor = require("fluxxor");
 
-var FluxMixin = Fluxxor.FluxMixin(React),
-    StoreWatchMixin = Fluxxor.StoreWatchMixin;
+var FluxChildMixin = Fluxxor.FluxChildMixin(React);
 
 var UserSummaryPane = require("./UserSummaryPane");
 var TradeList = require("./TradeList");
 var ReferencesList = require("./ReferencesList");
 
 var UserDetails = React.createClass({
-    mixins: [FluxMixin, StoreWatchMixin("TradeStore", "ReferenceStore", "ContactStore", "UserStore")],
-
-    getStateFromFlux: function() {
-        var flux = this.getFlux();
-        return {
-            trades: flux.store("TradeStore").getState(),
-            references: flux.store("ReferenceStore").getState(),
-            contacts: flux.store("ContactStore").getState(),
-            user: flux.store("UserStore").getState()
-        };
-    },
+    mixins: [FluxChildMixin],
 
     render: function() {
         var user;
-        if (this.props.params.userId === this.state.user.user.id) {
-            user = this.state.user.user;
+        if (this.props.params.userId === this.props.user.user.id) {
+            user = this.props.user.user;
         } else {
-            user = this.state.contacts.contactById[this.props.params.userId];
+            user = this.props.contacts.contactById[this.props.params.userId];
         }
 
         if (user) {
             return (
                 <div>
-                    <UserSummaryPane user={user} tradeList={this.state.trades.tradeList} referencesList={this.state.references.referencesList} />
-                    <TradeList title={user.name + "'s Active Trades"} trades={this.state.trades} user={this.state.user.user} />
-                    <ReferencesList title={user.name + "'s References"} references={this.state.references} />
+                    <UserSummaryPane user={user} tradeList={this.props.trades.tradeList} referencesList={this.props.references.referencesList} />
+                    <TradeList title={user.name + "'s Active Trades"} trades={this.props.trades} user={this.props.user.user} />
+                    <ReferencesList title={user.name + "'s References"} references={this.props.references} />
                 </div>
             );
         } else {
