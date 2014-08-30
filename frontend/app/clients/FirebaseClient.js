@@ -18,6 +18,27 @@ var FirebaseClient = function(firebaseRef) {
                     .set(trade, this._onComplete(trade, success, failure));
     };
 
+    this.loadReferences = function(success, failure) {
+        var uid = this._UID();
+        _firebaseRef.child('reference').child(uid).once('value', function(data) {
+            var references = data.val() || {};
+            console.log("REFERENCES", references);
+            success(references);
+        }, failure);
+    };
+
+    this.setReference = function(reference, success, failure) {
+        var uid = this._UID();
+        _firebaseRef.child('reference').child(uid).child(reference.id)
+                    .set(reference, this._onComplete(reference, success, failure));
+    };
+
+    this.removeReference = function(reference, success, failure) {
+        var uid = this._UID();
+        _firebaseRef.child('reference').child(uid).child(reference.id)
+                    .remove(this._onComplete(reference, success, failure));
+    };
+
     this.loadContacts = function(success, failure) {
         var uid = this._UID();
         _firebaseRef.child('contact').child(uid).once('value', function(data) {
