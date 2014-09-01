@@ -1,3 +1,5 @@
+var webpack = require("webpack");
+
 module.exports = {
   entry: [
     "./app/app.jsx"
@@ -7,7 +9,9 @@ module.exports = {
     path: __dirname + "/app",
     filename: "bundle.js"
   },
-  plugins: [],
+  plugins: [
+      new webpack.IgnorePlugin(/vertx/)
+  ],
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
