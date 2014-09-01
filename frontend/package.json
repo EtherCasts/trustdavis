@@ -56,12 +56,12 @@
     "webpack-dev-server": "^1.5.0"
   },
   "dependencies": {
-    "react": "^0.11.1",
-    "fluxxor": "^1.4.0",
-    "react-router": "^0.5.3",
-    "jquery": "^2.1.1",
     "bootstrap": "^3.2.0",
+    "firebase": "^1.0.21",
+    "fluxxor": "^1.4.0",
+    "jquery": "^2.1.1",
     "lodash": "^2.4.1",
-    "firebase": "^1.0.21"
+    "react": "^0.11.1",
+    "react-router": "^0.6.1"
   }
 }
