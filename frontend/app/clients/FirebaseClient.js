@@ -58,10 +58,11 @@ var FirebaseClient = function(firebaseRef) {
 
     this._UID = function() {
         /* global localStorage */
-        var uid = localStorage.getItem('uid');
+        var uidKey = 'trustdavis:uid';
+        var uid = localStorage.getItem(uidKey);
         if (!uid) {
             uid = utils.randomId();
-            localStorage.setItem('uid', uid);
+            localStorage.setItem(uidKey, uid);
         }
         return(uid);
     };
