@@ -16,8 +16,6 @@ var NewContactForm = React.createClass({
             <form className="form-inline" onSubmit={this.onSubmitForm}>
                 I want to add the contact{' '}
                 <input type="text" className="form-control" pattern="\w{1,32}" placeholder="name" ref="name" />
-                {' '}with the address{' '}
-                <input type="text" className="form-control" pattern="[0-9a-fA-F]{64}" placeholder="ethereum address" ref="address" />
                 {' '}
                 <button type="submit" className="btn btn-default">Create</button>
             </form>
@@ -28,15 +26,13 @@ var NewContactForm = React.createClass({
   onSubmitForm: function(e) {
     e.preventDefault();
     var name = this.refs.name.getDOMNode().value.trim();
-    var address = this.refs.address.getDOMNode().value.trim();
 
-    if (!name || !address) {
+    if (!name) {
       return false;
     }
-    this.getFlux().actions.contact.addContact({name: name, id: address});
+    this.getFlux().actions.contact.addContact({name: name});
 
     this.refs.name.getDOMNode().value = '';
-    this.refs.address.getDOMNode().value = '';
     return false;
   }
 });

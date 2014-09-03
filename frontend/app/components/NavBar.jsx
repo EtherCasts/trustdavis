@@ -41,8 +41,8 @@ var NavBar = React.createClass({
                         </form>
                         <ul className="nav navbar-nav navbar-right">
                             <li>
-                                {this.props.user.loading ? <p className="navbar-text"><i className="fa fa-spinner fa-spin"></i></p>
-                                    : <UserLink id={this.props.user.user.id} showIcon={true} />}
+                                {this.props.users.loading ? <p className="navbar-text"><i className="fa fa-spinner fa-spin"></i></p>
+                                    : <UserLink users={this.props.users} id={this.props.users.currentUserId} showIcon={true} />}
                             </li>
                         </ul>
                     </div>

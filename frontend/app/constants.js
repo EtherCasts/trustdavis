@@ -24,10 +24,10 @@ module.exports = {
         REMOVE_REFERENCE: null
     }),
     user: keyMirror({
-        LOAD_USER: null,
-        LOAD_USER_SUCCESS: null,
-        LOAD_USER_FAIL: null,
-        SET_USER_NAME: null,
+        LOAD_USERS: null,
+        LOAD_USERS_SUCCESS: null,
+        LOAD_USERS_FAIL: null,
+        REGISTER_USER: null,
         DEPOSIT: null,
         WITHDRAW: null
     })

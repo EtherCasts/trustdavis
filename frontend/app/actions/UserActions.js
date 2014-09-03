@@ -2,20 +2,20 @@ var constants = require("../constants");
 
 var UserActions = function(client) {
 
-    this.loadUser = function() {
-        this.dispatch(constants.user.LOAD_USER);
+    this.loadUsers = function() {
+        this.dispatch(constants.user.LOAD_USERS, {currentUserId: _client.UID()});
 
-        _client.loadUser(function(user) {
-            this.dispatch(constants.user.LOAD_USER_SUCCESS, user);
+        _client.loadUsers(function(users) {
+            this.dispatch(constants.user.LOAD_USERS_SUCCESS, {users: users});
         }.bind(this), function(error) {
             console.log(error);
-            this.dispatch(constants.user.LOAD_USER_FAIL, {error: error});
+            this.dispatch(constants.user.LOAD_USERS_FAIL, {error: error});
         }.bind(this));
     };
 
-    this.setUserName = function(name) {
+    this.registerUser = function(name) {
         _client.setUserName(name, function(name) {
-          this.dispatch(constants.user.SET_USER_NAME, {name: name});
+          this.dispatch(constants.user.REGISTER_USER, {name: name});
         }.bind(this), function(error) {
           console.log(error);
         }.bind(this));

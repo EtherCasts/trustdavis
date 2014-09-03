@@ -8,8 +8,8 @@ var UserLink = require("./UserLink");
 
 var TradeRow = React.createClass({
     render: function() {
-        var isBuyer = this.props.trade.buyerId && (this.props.trade.buyerId === this.props.user.id);
-        var isSeller = this.props.trade.sellerId && (this.props.trade.sellerId === this.props.user.id);
+        var isBuyer = this.props.trade.buyerId && (this.props.trade.buyerId === this.props.users.currentUser.id);
+        var isSeller = this.props.trade.sellerId && (this.props.trade.sellerId === this.props.users.currentUser.id);
         var counterpartyId;
 
         if (isBuyer) {
@@ -37,7 +37,7 @@ var TradeTable = React.createClass({
     render: function() {
         var tradeListNodes = this.props.tradeList.map(function(trade) {
             return (
-                <TradeRow key={trade.id} trade={trade} user={this.props.user} />
+                <TradeRow key={trade.id} trade={trade} users={this.props.users} />
             );
         }.bind(this));
         return (
@@ -67,7 +67,7 @@ var TradeList = React.createClass({
             <div>
                 <h3>{this.props.title} {this.props.trades.loading && <i className="fa fa-spinner fa-spin"></i>}</h3>
                 {this.props.trades.error && <div className="alert alert-danger" role="alert"><strong>Error!</strong> {this.props.trades.error}</div>}
-                <TradeTable tradeList={this.props.trades.tradeList} user={this.props.user.user} />
+                <TradeTable tradeList={this.props.trades.tradeList} users={this.props.users} />
             </div>
         );
     }

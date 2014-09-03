@@ -38,7 +38,7 @@ var CreateAccountModal = React.createClass({
         if (!name) {
             return;
         }
-        this.getFlux().actions.user.setUserName(name);
+        this.getFlux().actions.user.registerUser(name);
     }
 });
 
