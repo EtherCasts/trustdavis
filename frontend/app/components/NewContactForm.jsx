@@ -27,14 +27,20 @@ var NewContactForm = React.createClass({
   },
   onSubmitForm: function(e) {
     e.preventDefault();
-    var name = this.refs.name.getDOMNode().value.trim();
+    var name = this.refs.name.getDOMNode().value.trim().toLowerCase();
 
     if (!name) {
       return false;
     }
-    this.getFlux().actions.contact.addContact({name: name});
 
-    this.refs.name.getDOMNode().value = '';
+    var contactId = this.props.users.usersByName[name];
+    if (contactId) {
+        this.getFlux().actions.contact.addContact({id: contactId});
+        this.refs.name.getDOMNode().value = '';
+    } else {
+        // TODO
+        console.log("User not found");
+    }
     return false;
   }
 });

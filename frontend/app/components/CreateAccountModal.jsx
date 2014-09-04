@@ -25,7 +25,7 @@ var CreateAccountModal = React.createClass({
                     <div className="modal-body">
                         <p>What is the name for your TrustDavis account?</p>
                         <input type="text" className="form-control" placeholder="name" pattern={constants.VALID_USERNAME_PATTERN} ref="name" />
-                        <span className="help-block">Pick a nickname or email address that you want to be publically associated with. Maximum length is 32 characters.</span>
+                        <span className="help-block">Pick a nickname or email address that you want to be publically associated with. Maximum length is 32 characters, lower case only.</span>
                     </div>
                     <div className="modal-footer">
                         <Button type="submit" bsStyle="primary">Create Account</Button>

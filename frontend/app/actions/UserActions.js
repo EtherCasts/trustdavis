@@ -14,7 +14,8 @@ var UserActions = function(client) {
     };
 
     this.registerUser = function(name) {
-        _client.setUserName(name, function(name) {
+        var trimmedName = name.trim().toLowerCase();
+        _client.setUserName(trimmedName, function(name) {
           this.dispatch(constants.user.REGISTER_USER, {name: name});
         }.bind(this), function(error) {
           console.log(error);
