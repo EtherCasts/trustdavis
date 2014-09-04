@@ -3,10 +3,14 @@
 var React = require("react");
 var Fluxxor = require("fluxxor");
 var FluxChildMixin = Fluxxor.FluxChildMixin(React);
+var moment = require("moment");
+
+var constants = require("../constants");
 
 var NewTradeForm = React.createClass({
   mixins: [FluxChildMixin],
   render: function() {
+      var validUntil = moment().add(constants.TRADE_VALID_DAYS, 'days').endOf('day').format("YYYY-MM-DD");
     return (
         <div className="panel panel-default">
           <div className="panel-heading">
@@ -14,10 +18,7 @@ var NewTradeForm = React.createClass({
           </div>
           <div className="panel-body">
             <form className="form-inline" onSubmit={this.onSubmitForm}>
-                I want to <select className="form-control input-large" ref="type">
-                  <option>sell</option>
-                  <option>buy</option>
-                </select> a
+                I want to <strong>sell</strong> a
                 {' '}
                 <select className="form-control input-large" required="required" ref="category">
                   <option value="" disabled="disabled">product / service...</option>
@@ -27,8 +28,8 @@ var NewTradeForm = React.createClass({
                 {' '}
                  <input type="text" className="form-control" pattern=".{0,32}" placeholder="description" ref="description" />
                 {' '}
-                for <input type="number" min="0" step="0.0001" className="form-control small" placeholder="0.0000" ref="price" /> ETH.
-                <p>This offer is valid until <input type="date" className="form-control medium" placeholder="date" ref="expiration" />
+                for {constants.CURRENCY} <input type="number" min="0" step="0.01" className="form-control small" placeholder="0.00" ref="price" />
+                <p>This offer is <strong>valid for {constants.TRADE_VALID_DAYS} days</strong> (until {validUntil})
                 {' '}
                 <button type="submit" className="btn btn-default">Create</button></p>
             </form>

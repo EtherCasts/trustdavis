@@ -4,6 +4,8 @@ var React = require("react");
 var Fluxxor = require("fluxxor");
 var FluxChildMixin = Fluxxor.FluxChildMixin(React);
 
+var constants = require("../constants");
+
 var NewReferenceForm = React.createClass({
   mixins: [FluxChildMixin],
   render: function() {
@@ -18,7 +20,7 @@ var NewReferenceForm = React.createClass({
                 {' '}
                 with a maximum liability of
                 {' '}
-                <input type="number" min="0" step="0.0001" className="form-control small" placeholder="0.0000" ref="maxLiability" /> ETH
+                {constants.CURRENCY} <input type="number" min="0" step="0.01" className="form-control small" placeholder="0.00" ref="maxLiability" />
                 {' '}
                 for a premium of <input type="number" min="0" step="0.1" className="form-control small" placeholder="0.0" ref="premiumPct" /> %
                 {' '}

@@ -4,12 +4,14 @@ var React = require("react");
 
 var UserLink = require("./UserLink");
 
+var constants = require("../constants");
+
 var TradeReferenceRow = React.createClass({
     render: function() {
         return (
             <tr>
                 <td><UserLink id={this.props.reference.insurerId} /></td>
-                <td>{this.props.reference.liability} ETH</td>
+                <td>{constants.CURRENCY} {this.props.reference.liability}</td>
                 <td>{this.props.reference.premiumPct} %</td>
             </tr>
         );

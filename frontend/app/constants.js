@@ -2,6 +2,8 @@ var keyMirror = require('react/lib/keyMirror');
 
 module.exports = {
     CHANGE_EVENT: "change",
+    CURRENCY: "USD",
+    TRADE_VALID_DAYS: 30,
     contact: keyMirror({
         LOAD_CONTACTS: null,
         LOAD_CONTACTS_SUCCESS: null,

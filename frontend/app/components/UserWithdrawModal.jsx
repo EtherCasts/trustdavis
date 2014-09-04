@@ -7,6 +7,8 @@ var FluxMixin = Fluxxor.FluxMixin(React);
 var Button = require('react-bootstrap/Button');
 var Modal = require('react-bootstrap/Modal');
 
+var constants = require("../constants");
+
 // XXX should be FluxChildMixin, but then flux object doesn't get passed along somehow
 
 var UserWithdrawModal = React.createClass({
@@ -16,8 +18,8 @@ var UserWithdrawModal = React.createClass({
             <Modal title="Withdraw" animation={false}>
                 <div className="modal-body">
                     <form className="form-inline">
-                        <p>How much ETH do you want to withdraw?</p>
-                        <input type="number" min="0" step="0.0001" className="form-control small" placeholder="0.0000" ref="amount" /> ETH.
+                        <p>How much {constants.CURRENCY} do you want to withdraw?</p>
+                        <input type="number" min="0" step="0.01" className="form-control small" placeholder="0.00" ref="amount" />
                     </form>
                 </div>
                 <div className="modal-footer">

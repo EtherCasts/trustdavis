@@ -6,6 +6,8 @@ var Link = Router.Link;
 
 var UserLink = require("./UserLink");
 
+var constants = require("../constants");
+
 var TradeRow = React.createClass({
     render: function() {
         var isBuyer = this.props.trade.buyerId && (this.props.trade.buyerId === this.props.users.currentUser.id);
@@ -24,7 +26,7 @@ var TradeRow = React.createClass({
                 <td>{this.props.trade.category}</td>
                 <td><Link to="tradeDetails" tradeId={this.props.trade.id}>
                 {this.props.trade.description}</Link></td>
-                <td>{this.props.trade.price} ETH</td>
+                <td>{constants.CURRENCY} {this.props.trade.price}</td>
                 <td>{counterpartyId ? <UserLink id={counterpartyId} /> : 'Not claimed'}</td>
                 <td>{this.props.trade.status}</td>
                 <td>{this.props.trade.expiration}</td>
