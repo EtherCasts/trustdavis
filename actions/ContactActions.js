@@ -29,14 +29,6 @@ var ContactActions = function(client) {
         }.bind(this));
     };
 
-    this.renameContact = function(contact) {
-        _client.setContact(contact, function() {
-            this.dispatch(constants.contact.RENAME_CONTACT, contact);
-        }.bind(this), function(error) {
-            console.log(error);
-        }.bind(this));
-    };
-
     var _client = client;
 };
 

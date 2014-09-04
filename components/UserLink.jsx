@@ -11,7 +11,8 @@ var UserLink = React.createClass({
     mixins: [FluxChildMixin],
 
     propTypes: {
-        id: React.PropTypes.string
+        id: React.PropTypes.string,
+        users: React.PropTypes.object.isRequired
     },
 
     shortIdLength: 8,

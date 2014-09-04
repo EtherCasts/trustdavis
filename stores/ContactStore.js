@@ -14,8 +14,7 @@ var ContactStore = Fluxxor.createStore({
             constants.contact.LOAD_CONTACTS_SUCCESS, this.onLoadContactsSuccess,
             constants.contact.LOAD_CONTACTS_FAIL, this.onLoadContactsFail,
             constants.contact.ADD_CONTACT, this.onAddContact,
-            constants.contact.REMOVE_CONTACT, this.onRemoveContact,
-            constants.contact.RENAME_CONTACT, this.onRenameContact
+            constants.contact.REMOVE_CONTACT, this.onRemoveContact
         );
 
         this.setMaxListeners(1024); // prevent "possible EventEmitter memory leak detected"
@@ -51,11 +50,6 @@ var ContactStore = Fluxxor.createStore({
 
     onRemoveContact: function(payload) {
         delete this.contacts[payload.id];
-        this.emit(constants.CHANGE_EVENT);
-    },
-
-    onRenameContact: function(payload) {
-        this.contacts[payload.id].name = payload.name;
         this.emit(constants.CHANGE_EVENT);
     },
 

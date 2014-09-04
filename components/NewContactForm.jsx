@@ -4,6 +4,8 @@ var React = require("react");
 var Fluxxor = require("fluxxor");
 var FluxChildMixin = Fluxxor.FluxChildMixin(React);
 
+var constants = require("../constants");
+
 var NewContactForm = React.createClass({
   mixins: [FluxChildMixin],
   render: function() {
@@ -15,9 +17,9 @@ var NewContactForm = React.createClass({
           <div className="panel-body">
             <form className="form-inline" onSubmit={this.onSubmitForm}>
                 I want to add the contact{' '}
-                <input type="text" className="form-control" pattern="\w{1,32}" placeholder="name" ref="name" />
+                <input type="text" className="form-control" pattern={constants.VALID_USERNAME_PATTERN} placeholder="name" ref="name" />
                 {' '}
-                <button type="submit" className="btn btn-default">Create</button>
+                <button type="submit" className="btn btn-default">Add</button>
             </form>
           </div>
         </div>

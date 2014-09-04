@@ -34,7 +34,7 @@ var TradeDetails = React.createClass({
                             <button type="button" className="btn btn-default" disabled="disabled">Insure this trade</button>
                         </div>
                     </div>
-                    <TradeReferenceList tradeReferenceList={trade.references || []} />
+                    <TradeReferenceList users={this.props.users} tradeReferenceList={trade.references || []} />
                 </div>
             );
         } else {

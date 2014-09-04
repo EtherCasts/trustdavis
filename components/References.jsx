@@ -34,7 +34,7 @@ var References = React.createClass({
                     </div>
                 </div>
                 <NewReferenceForm />
-                <ReferencesList title="Your References" references={this.props.references} editable={true} />
+                <ReferencesList title="Your References" users={this.props.users} references={this.props.references} editable={true} />
             </div>
         );
     }

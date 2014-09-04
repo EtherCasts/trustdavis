@@ -14,7 +14,7 @@ var ReferenceRow = React.createClass({
     render: function() {
         return (
             <tr>
-                <td><UserLink id={this.props.reference.id} /></td>
+                <td><UserLink users={this.props.users} id={this.props.reference.id} /></td>
                 <td>{constants.CURRENCY} {this.props.reference.maxLiability}</td>
                 <td>{this.props.reference.premiumPct} %</td>
                 <td>{constants.CURRENCY} {this.props.reference.lockedLiability}</td>
@@ -32,7 +32,7 @@ var ReferencesTable = React.createClass({
     render: function() {
         var referencesListNodes = this.props.referencesList.map(function(reference) {
             return (
-                <ReferenceRow key={reference.id} reference={reference} editable={this.props.editable} />
+                <ReferenceRow key={reference.id} users={this.props.users} reference={reference} editable={this.props.editable} />
             );
         }.bind(this));
 
@@ -61,7 +61,7 @@ var ReferencesList = React.createClass({
             <div>
                 <h3>{this.props.title} {this.props.references.loading && <i className="fa fa-spinner fa-spin"></i>}</h3>
                 {this.props.references.error && <div className="alert alert-danger" role="alert"><strong>Error!</strong> {this.props.references.error}</div>}
-                <ReferencesTable referencesList={this.props.references.referencesList} editable={this.props.editable} />
+                <ReferencesTable users={this.props.users} referencesList={this.props.references.referencesList} editable={this.props.editable} />
             </div>
         );
     }
