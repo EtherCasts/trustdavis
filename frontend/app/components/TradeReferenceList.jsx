@@ -10,7 +10,7 @@ var TradeReferenceRow = React.createClass({
     render: function() {
         return (
             <tr>
-                <td><UserLink id={this.props.reference.insurerId} /></td>
+                <td><UserLink users={this.props.users} id={this.props.reference.insurerId} /></td>
                 <td>{constants.CURRENCY} {this.props.reference.liability}</td>
                 <td>{this.props.reference.premiumPct} %</td>
             </tr>
@@ -22,7 +22,7 @@ var TradeReferenceList = React.createClass({
     render: function() {
         var tradeReferenceListNodes = this.props.tradeReferenceList.map(function(reference) {
             return (
-                <TradeReferenceRow key={reference.id} reference={reference} />
+                <TradeReferenceRow key={reference.id} users={this.props.users} reference={reference} />
             );
         });
         return (

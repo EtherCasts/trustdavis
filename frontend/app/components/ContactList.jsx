@@ -14,7 +14,7 @@ var ContactRow = React.createClass({
     render: function() {
         return (
             <tr>
-                <td><UserLink id={this.props.contact.id} /></td>
+                <td><UserLink users={this.props.users} id={this.props.contact.id} /></td>
                 <td><ActionDropDown key={this.props.contact.id}
                         handleDelete={this.handleDelete} /></td>
             </tr>

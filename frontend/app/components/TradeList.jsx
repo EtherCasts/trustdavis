@@ -27,7 +27,7 @@ var TradeRow = React.createClass({
                 <td><Link to="tradeDetails" tradeId={this.props.trade.id}>
                 {this.props.trade.description}</Link></td>
                 <td>{constants.CURRENCY} {this.props.trade.price}</td>
-                <td>{counterpartyId ? <UserLink id={counterpartyId} /> : 'Not claimed'}</td>
+                <td>{counterpartyId ? <UserLink users={this.props.users} id={counterpartyId} /> : 'Not claimed'}</td>
                 <td>{this.props.trade.status}</td>
                 <td>{this.props.trade.expiration}</td>
             </tr>
