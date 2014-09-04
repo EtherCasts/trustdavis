@@ -31,7 +31,7 @@ var ContactList = React.createClass({
         var contactListNodes = _.sortBy(this.props.contactList, 'name')
                                 .map(function (contact) {
             return (
-                <ContactRow key={contact.id} contact={contact} />
+                <ContactRow key={contact.id} contact={contact} users={this.props.users} />
             );
         }.bind(this));
         return (

@@ -32,7 +32,7 @@ var NewReferenceForm = React.createClass({
   },
   onSubmitForm: function(e) {
     e.preventDefault();
-    var trader = this.refs.trader.getDOMNode().value.trim();
+    var trader = this.refs.trader.getDOMNode().value.trim().toLowerCase();
     var maxLiability = this.refs.maxLiability.getDOMNode().value.trim();
     var premiumPct = this.refs.premiumPct.getDOMNode().value.trim();
 

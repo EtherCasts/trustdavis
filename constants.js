@@ -4,7 +4,7 @@ module.exports = {
     CHANGE_EVENT: "change",
     CURRENCY: "USD",
     TRADE_VALID_DAYS: 30,
-    VALID_USERNAME_PATTERN: "[a-zA-Z0-9_.+@-]{1,32}",
+    VALID_USERNAME_PATTERN: "[a-z0-9_.+@-]{1,32}",
     contact: keyMirror({
         LOAD_CONTACTS: null,
         LOAD_CONTACTS_SUCCESS: null,

@@ -13,10 +13,10 @@ var Contacts = React.createClass({
   render: function() {
     return (
       <div>
-        <NewContactForm />
+        <NewContactForm users={this.props.users} />
         <h3>Your Contacts {this.props.contacts.loading && <i className="fa fa-spinner fa-spin"></i>}</h3>
         {this.props.contacts.error && <div className="alert alert-danger" role="alert"><strong>Error!</strong> {this.props.contacts.error}</div>}
-        <ContactList contactList={this.props.contacts.contactList} />
+        <ContactList users={this.props.users} contactList={this.props.contacts.contactList} />
       </div>
     );
   }
