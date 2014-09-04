@@ -18,22 +18,22 @@ var TrustDavisApp = React.createClass({
         trades: flux.store("TradeStore").getState(),
         references: flux.store("ReferenceStore").getState(),
         contacts: flux.store("ContactStore").getState(),
-        user: flux.store("UserStore").getState()
+        users: flux.store("UserStore").getState()
     };
   },
 
   render: function() {
     return (
       <div>
-        <NavBar trades={this.state.trades} contacts={this.state.contacts} user={this.state.user} />
-        {this.state.user.createAccount && <CreateAccountModal flux={this.getFlux()} />}
-        <this.props.activeRouteHandler trades={this.state.trades} references={this.state.references} contacts={this.state.contacts} user={this.state.user} />
+        <NavBar trades={this.state.trades} contacts={this.state.contacts} users={this.state.users} />
+        {this.state.users.createAccount && <CreateAccountModal flux={this.getFlux()} />}
+        <this.props.activeRouteHandler trades={this.state.trades} references={this.state.references} contacts={this.state.contacts} users={this.state.users} />
       </div>
     );
   },
 
   componentDidMount: function() {
-    this.getFlux().actions.user.loadUser();
+    this.getFlux().actions.user.loadUsers();
     this.getFlux().actions.contact.loadContacts();
     this.getFlux().actions.trade.loadTrades();
     this.getFlux().actions.reference.loadReferences();

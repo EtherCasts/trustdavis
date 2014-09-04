@@ -2,6 +2,8 @@
 
 var React = require("react");
 
+var constants = require("../constants");
+
 var ReferencesOverviewPane = React.createClass({
   render: function() {
     return (
@@ -14,11 +16,11 @@ var ReferencesOverviewPane = React.createClass({
                 <tbody>
                     <tr>
                         <td>Max Liabilities</td>
-                        <td>{this.props.stats.maxLiabilities} ETH</td>
+                        <td>{constants.CURRENCY} {this.props.stats.maxLiabilities}</td>
                     </tr>
                     <tr>
                         <td>Locked Liabilities</td>
-                        <td>{this.props.stats.lockedLiabilities} ETH</td>
+                        <td>{constants.CURRENCY} {this.props.stats.lockedLiabilities}</td>
                     </tr>
                     <tr>
                         <td>Insured Trades</td>
@@ -30,7 +32,7 @@ var ReferencesOverviewPane = React.createClass({
                     </tr>
                     <tr>
                         <td>Profit</td>
-                        <td>? ETH</td>{ /* TODO */ }
+                        <td>{constants.CURRENCY} ?</td>{ /* TODO */ }
                     </tr>
                 </tbody>
             </table>

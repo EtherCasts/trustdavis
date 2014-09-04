@@ -9,6 +9,8 @@ var ModalTrigger = require('react-bootstrap/ModalTrigger');
 var UserDepositModal = require("./UserDepositModal");
 var UserWithdrawModal = require("./UserWithdrawModal");
 
+var constants = require("../constants");
+
 var ReferencesDepositPane = React.createClass({
   mixins: [FluxChildMixin],
   render: function() {
@@ -23,7 +25,7 @@ var ReferencesDepositPane = React.createClass({
                     Deposit
                 </div>
                 <div className="col-xs-6">
-                    {this.props.deposit} ETH
+                    {constants.CURRENCY} {this.props.deposit}
                 </div>
             </div>
             <div className="row">
@@ -31,7 +33,7 @@ var ReferencesDepositPane = React.createClass({
                     Available
                 </div>
                 <div className="col-xs-6">
-                    {this.props.available} ETH
+                    {constants.CURRENCY} {this.props.available}
                 </div>
             </div>
             <div className="row spacer">

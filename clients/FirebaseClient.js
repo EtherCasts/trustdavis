@@ -17,7 +17,7 @@ var FirebaseClient = function(firebaseRef) {
     };
 
     this.loadReferences = function(success, failure) {
-        var uid = this._UID();
+        var uid = this.UID();
         _firebaseRef.child('reference').child(uid).once('value', function(data) {
             var references = data.val() || {};
             success(references);
@@ -25,19 +25,19 @@ var FirebaseClient = function(firebaseRef) {
     };
 
     this.setReference = function(reference, success, failure) {
-        var uid = this._UID();
+        var uid = this.UID();
         _firebaseRef.child('reference').child(uid).child(reference.id)
                     .set(reference, this._onComplete(reference, success, failure));
     };
 
     this.removeReference = function(reference, success, failure) {
-        var uid = this._UID();
+        var uid = this.UID();
         _firebaseRef.child('reference').child(uid).child(reference.id)
                     .remove(this._onComplete(reference, success, failure));
     };
 
     this.loadContacts = function(success, failure) {
-        var uid = this._UID();
+        var uid = this.UID();
         _firebaseRef.child('contact').child(uid).once('value', function(data) {
             var contacts = data.val() || {};
             success(contacts);
@@ -45,40 +45,39 @@ var FirebaseClient = function(firebaseRef) {
     };
 
     this.setContact = function(contact, success, failure) {
-        var uid = this._UID();
+        var uid = this.UID();
         _firebaseRef.child('contact').child(uid).child(contact.id)
                     .set(contact, this._onComplete(contact, success, failure));
     };
 
     this.removeContact = function(contact, success, failure) {
-        var uid = this._UID();
+        var uid = this.UID();
         _firebaseRef.child('contact').child(uid).child(contact.id)
                     .remove(this._onComplete(contact, success, failure));
     };
 
-    this._UID = function() {
+    this.UID = function() {
         /* global localStorage */
-        var uid = localStorage.getItem('uid');
+        var uidKey = 'trustdavis:uid';
+        var uid = localStorage.getItem(uidKey);
         if (!uid) {
             uid = utils.randomId();
-            localStorage.setItem('uid', uid);
+            localStorage.setItem(uidKey, uid);
         }
         return(uid);
     };
 
-    this.loadUser = function(success, failure) {
-        var uid = this._UID();
-        _firebaseRef.child('user').child(uid).once('value', function(data) {
-            var user = data.val() || {id: uid};
-            success(user);
+    this.loadUsers = function(success, failure) {
+        _firebaseRef.child('user').once('value', function(data) {
+            var users = data.val() || {};
+            success(users);
         }, failure);
     };
 
     this.setUserName = function(name, success, failure) {
-        var uid = this._UID();
-        var user = {id: uid, name: name};
+        var uid = this.UID();
         _firebaseRef.child('user').child(uid)
-                    .update(user, this._onComplete(name, success, failure));
+                    .update({name: name}, this._onComplete(name, success, failure));
     };
 
     this.ref = function() {

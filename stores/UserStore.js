@@ -1,20 +1,23 @@
 var Fluxxor = require("fluxxor");
+var _ = require('lodash');
 
 var constants = require("../constants");
 
 var UserStore = Fluxxor.createStore({
 
     initialize: function(options) {
-        this.user = options.user || {};
         this.createAccount = false;
+        this.currentUserId = options.currentUserId || null;
+        this.users = options.users || {};
+        this.usersByName = options.usersByName || {};
         this.loading = false;
         this.error = null;
 
         this.bindActions(
-            constants.user.LOAD_USER, this.onLoadUser,
-            constants.user.LOAD_USER_SUCCESS, this.onLoadUserSuccess,
-            constants.user.LOAD_USER_FAIL, this.onLoadUserFail,
-            constants.user.SET_USER_NAME, this.onSetUserName,
+            constants.user.LOAD_USERS, this.onLoadUsers,
+            constants.user.LOAD_USERS_SUCCESS, this.onLoadUsersSuccess,
+            constants.user.LOAD_USERS_FAIL, this.onLoadUsersFail,
+            constants.user.REGISTER_USER, this.onRegisterUser,
             constants.user.DEPOSIT, this.onDeposit,
             constants.user.WITHDRAW, this.onWithdraw
         );
@@ -22,32 +25,46 @@ var UserStore = Fluxxor.createStore({
         this.setMaxListeners(1024); // prevent "possible EventEmitter memory leak detected"
     },
 
-    onLoadUser: function() {
-        this.user = {name: '[unknown]'};
+    onLoadUsers: function(payload) {
+        this.currentUserId = payload.currentUserId;
         this.createAccount = false;
         this.loading = true;
         this.error = null;
         this.emit(constants.CHANGE_EVENT);
     },
 
-    onLoadUserSuccess: function(payload) {
-        this.user = payload;
-        if (!payload.name) {
-            this.createAccount = true;
-        }
+    onLoadUsersSuccess: function(payload) {
+        _.forEach(payload.users, function(user, id) {
+            this.users[id] = {
+                name: user.name,
+                deposit: user.deposit || 0
+            };
+            this.usersByName[user.name] = id;
+        }, this);
+
+        this.createAccount = ! this.users.hasOwnProperty(this.currentUserId);
         this.loading = false;
         this.error = null;
         this.emit(constants.CHANGE_EVENT);
     },
 
-    onLoadUserFail: function(payload) {
+    onLoadUsersFail: function(payload) {
         this.loading = false;
         this.error = payload.error;
         this.emit(constants.CHANGE_EVENT);
     },
 
-    onSetUserName: function(payload) {
-        this.user.name = payload.name;
+    onRegisterUser: function(payload) {
+        // check if already used
+        if (this.users.hasOwnProperty(this.currentUserId)) {
+            console.log("User already registered");
+            return;
+        }
+        this.users[this.currentUserId] = {
+            name: payload.name,
+            deposit: 0
+        };
+        this.usersByName[payload.name] = this.currentUserId;
         this.createAccount = false;
         this.emit(constants.CHANGE_EVENT);
     },
@@ -70,10 +87,13 @@ var UserStore = Fluxxor.createStore({
 
     getState: function() {
         return {
-            user: this.user,
+            createAccount: this.createAccount,
+            currentUserId: this.currentUserId,
+            currentUser: this.users[this.currentUserId],
+            users: this.users,
+            usersByName: this.usersByName,
             loading: this.loading,
-            error: this.error,
-            createAccount: this.createAccount
+            error: this.error
         };
     }
 });

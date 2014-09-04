@@ -7,15 +7,17 @@ var FluxChildMixin = Fluxxor.FluxChildMixin(React);
 var UserLink = require("./UserLink");
 var ActionDropDown = require("./ActionDropDown");
 
+var constants = require("../constants");
+
 var ReferenceRow = React.createClass({
     mixins: [FluxChildMixin],
     render: function() {
         return (
             <tr>
                 <td><UserLink id={this.props.reference.id} /></td>
-                <td>{this.props.reference.maxLiability} ETH</td>
+                <td>{constants.CURRENCY} {this.props.reference.maxLiability}</td>
                 <td>{this.props.reference.premiumPct} %</td>
-                <td>{this.props.reference.lockedLiability} ETH</td>
+                <td>{constants.CURRENCY} {this.props.reference.lockedLiability}</td>
                 {this.props.editable && <td><ActionDropDown key={this.props.reference.id} handleDelete={this.handleDelete} /></td>}
             </tr>
         );

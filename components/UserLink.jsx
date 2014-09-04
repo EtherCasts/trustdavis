@@ -11,7 +11,7 @@ var UserLink = React.createClass({
     mixins: [FluxChildMixin],
 
     propTypes: {
-        id: React.PropTypes.string.isRequired
+        id: React.PropTypes.string
     },
 
     shortIdLength: 8,
@@ -21,10 +21,11 @@ var UserLink = React.createClass({
             return null;
         }
         var shortId = this.props.id.substr(0, this.shortIdLength);
+        var user = this.props.users.users[this.props.id];
 
         return (
             <Link to="userDetails" userId={this.props.id}>
-                {this.props.showIcon && <span className="glyphicon glyphicon-user"></span>} ({shortId + '\u2026'})
+                {this.props.showIcon && <span className="glyphicon glyphicon-user"></span>} {user && user.name} ({shortId + '\u2026'})
             </Link>
         );
     }

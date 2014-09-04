@@ -22,7 +22,8 @@ var CreateAccountModal = React.createClass({
                 <form onSubmit={this.handleSave}>
                     <div className="modal-body">
                         <p>What is the name for your TrustDavis account?</p>
-                        <input type="text" className="form-control" placeholder="name" pattern="\w{1,32}" ref="name" />
+                        <input type="text" className="form-control" placeholder="name" pattern="[a-zA-Z0-9_.+@-]{1,32}" ref="name" />
+                        <span className="help-block">Pick a nickname or email address that you want to be publically associated with. Maximum length is 32 characters.</span>
                     </div>
                     <div className="modal-footer">
                         <Button type="submit" bsStyle="primary">Create Account</Button>
@@ -38,7 +39,7 @@ var CreateAccountModal = React.createClass({
         if (!name) {
             return;
         }
-        this.getFlux().actions.user.setUserName(name);
+        this.getFlux().actions.user.registerUser(name);
     }
 });
 

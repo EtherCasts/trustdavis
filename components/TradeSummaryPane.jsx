@@ -7,6 +7,8 @@ var ModalTrigger = require('react-bootstrap/ModalTrigger');
 var TradeIdModal = require("./TradeIdModal");
 var UserLink = require("./UserLink");
 
+var constants = require("../constants");
+
 var TradeSummaryPane = React.createClass({
   shortIdLength: 8,
 
@@ -51,7 +53,7 @@ var TradeSummaryPane = React.createClass({
                     </tr>
                     <tr>
                         <td>Price</td>
-                        <td>{this.props.trade.price} ETH</td>
+                        <td>{constants.CURRENCY} {this.props.trade.price}</td>
                     </tr>
                     <tr>
                         <td>Valid Until</td>
