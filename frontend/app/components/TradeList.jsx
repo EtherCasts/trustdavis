@@ -10,9 +10,10 @@ var constants = require("../constants");
 
 var TradeRow = React.createClass({
     render: function() {
-        var isBuyer = this.props.trade.buyerId && (this.props.trade.buyerId === this.props.users.currentUser.id);
-        var isSeller = this.props.trade.sellerId && (this.props.trade.sellerId === this.props.users.currentUser.id);
+        var isBuyer = this.props.trade.buyerId && (this.props.trade.buyerId === this.props.users.currentUserId);
+        var isSeller = this.props.trade.sellerId && (this.props.trade.sellerId === this.props.users.currentUserId);
         var counterpartyId;
+
 
         if (isBuyer) {
             counterpartyId = this.props.trade.sellerId;

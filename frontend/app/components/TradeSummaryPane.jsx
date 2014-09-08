@@ -14,8 +14,8 @@ var TradeSummaryPane = React.createClass({
 
   render: function() {
     var shortId = this.props.trade.id.substr(0, this.shortIdLength);
-    var isBuyer = this.props.trade.buyerId === this.props.user.id;
-    var isSeller = this.props.trade.sellerId === this.props.user.id;
+    var isBuyer = this.props.trade.buyerId === this.props.users.currentUserId;
+    var isSeller = this.props.trade.sellerId === this.props.users.currentUserId;
 
     return (
         <div className="panel panel-default">
