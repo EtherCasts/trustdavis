@@ -14,7 +14,7 @@ var ContactActions = function(client) {
     };
 
     this.addContact = function(contact) {
-        _client.setContact(contact, function() {
+        _client.addContact(contact, function() {
             this.dispatch(constants.contact.ADD_CONTACT, contact);
         }.bind(this), function(error) {
             console.log(error);
