@@ -14,8 +14,8 @@ var ContactRow = React.createClass({
     render: function() {
         return (
             <tr>
-                <td><UserLink users={this.props.users} id={this.props.contact.id} /></td>
-                <td><ActionDropDown key={this.props.contact.id}
+                <td><UserLink users={this.props.users} id={this.props.contactId} /></td>
+                <td><ActionDropDown key={this.props.contactId}
                         handleDelete={this.handleDelete} /></td>
             </tr>
         );
@@ -28,10 +28,9 @@ var ContactRow = React.createClass({
 
 var ContactList = React.createClass({
     render: function() {
-        var contactListNodes = _.sortBy(this.props.contactList, 'name')
-                                .map(function (contact) {
+        var contactListNodes = _.map(this.props.contactList, function(contactId) {
             return (
-                <ContactRow key={contact.id} contact={contact} users={this.props.users} />
+                <ContactRow key={contactId} contactId={contactId} users={this.props.users} />
             );
         }.bind(this));
         return (

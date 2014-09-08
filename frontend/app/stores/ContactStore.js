@@ -55,7 +55,7 @@ var ContactStore = Fluxxor.createStore({
 
     getState: function() {
         return {
-            contactList: _.values(this.contacts),
+            contactList: _.keys(this.contacts),
             contactById: this.contacts,
             loading: this.loading,
             error: this.error
