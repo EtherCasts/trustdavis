@@ -21,9 +21,9 @@ var ContactActions = function(client) {
         }.bind(this));
     };
 
-    this.removeContact = function(contact) {
-        _client.removeContact(contact, function() {
-            this.dispatch(constants.contact.REMOVE_CONTACT, contact);
+    this.removeContact = function(contactId) {
+        _client.removeContact(contactId, function() {
+            this.dispatch(constants.contact.REMOVE_CONTACT, contactId);
         }.bind(this), function(error) {
             console.log(error);
         }.bind(this));

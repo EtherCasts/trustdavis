@@ -22,7 +22,7 @@ var UserDetails = React.createClass({
         if (user) {
             return (
                 <div>
-                    <UserSummaryPane user={user} tradeList={this.props.trades.tradeList} referencesList={this.props.references.referencesList} users={this.props.users} />
+                    <UserSummaryPane user={user} tradeList={this.props.trades.tradeList} referencesList={this.props.references.referencesList} contacts={this.props.contacts} users={this.props.users} />
                     <TradeList title={user.name + "'s Active Trades"} trades={this.props.trades} user={this.props.users.currentUser} users={this.props.users} />
                     <ReferencesList title={user.name + "'s References"} references={this.props.references} users={this.props.users} />
                 </div>

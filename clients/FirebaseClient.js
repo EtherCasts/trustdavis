@@ -50,10 +50,10 @@ var FirebaseClient = function(firebaseRef) {
                     .set(true, this._onComplete(contact, success, failure));
     };
 
-    this.removeContact = function(contact, success, failure) {
+    this.removeContact = function(contactId, success, failure) {
         var uid = this.UID();
-        _firebaseRef.child('contact').child(uid).child(contact.id)
-                    .remove(this._onComplete(contact, success, failure));
+        _firebaseRef.child('contact').child(uid).child(contactId)
+                    .remove(this._onComplete(contactId, success, failure));
     };
 
     this.UID = function() {
