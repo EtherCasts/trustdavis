@@ -44,10 +44,10 @@ var FirebaseClient = function(firebaseRef) {
         }, failure);
     };
 
-    this.setContact = function(contact, success, failure) {
+    this.addContact = function(contact, success, failure) {
         var uid = this.UID();
         _firebaseRef.child('contact').child(uid).child(contact.id)
-                    .set(contact, this._onComplete(contact, success, failure));
+                    .set(true, this._onComplete(contact, success, failure));
     };
 
     this.removeContact = function(contact, success, failure) {
