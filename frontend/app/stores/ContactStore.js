@@ -49,7 +49,7 @@ var ContactStore = Fluxxor.createStore({
     },
 
     onRemoveContact: function(payload) {
-        delete this.contacts[payload.id];
+        delete this.contacts[payload];
         this.emit(constants.CHANGE_EVENT);
     },
 

@@ -22,7 +22,7 @@ var ContactRow = React.createClass({
     },
     handleDelete: function(e) {
         e.preventDefault();
-        this.getFlux().actions.contact.removeContact(this.props.contact);
+        this.getFlux().actions.contact.removeContact(this.props.contactId);
     }
 });
 

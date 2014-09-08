@@ -36,6 +36,7 @@ var UserStore = Fluxxor.createStore({
     onLoadUsersSuccess: function(payload) {
         _.forEach(payload.users, function(user, id) {
             this.users[id] = {
+                id: id,
                 name: user.name,
                 deposit: user.deposit || 0
             };
@@ -61,6 +62,7 @@ var UserStore = Fluxxor.createStore({
             return;
         }
         this.users[this.currentUserId] = {
+            id: this.currentUserId,
             name: payload.name,
             deposit: 0
         };
