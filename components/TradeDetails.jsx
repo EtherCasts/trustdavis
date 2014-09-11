@@ -2,9 +2,9 @@
 
 var React = require("react");
 var Fluxxor = require("fluxxor");
-
 var FluxChildMixin = Fluxxor.FluxChildMixin(React);
 
+var constants = require("../constants");
 var TradeSummaryPane = require("./TradeSummaryPane");
 var TradeStatusPane = require("./TradeStatusPane");
 var TradeReferenceList = require("./TradeReferenceList");
@@ -31,7 +31,9 @@ var TradeDetails = React.createClass({
                             <h3 className="hidden-xs">References for this trade</h3>
                         </div>
                         <div className="col-xs-6 text-right">
-                            <button type="button" className="btn btn-default" disabled="disabled">Insure this trade</button>
+                            {this.props.state === constants.state.ACCEPTED &&
+                                <button type="button" className="btn btn-default" disabled="disabled">Insure this trade</button>
+                            }
                         </div>
                     </div>
                     <TradeReferenceList users={this.props.users} tradeReferenceList={trade.references || []} />

@@ -14,7 +14,8 @@ var TradeStore = Fluxxor.createStore({
             constants.trade.LOAD_TRADES, this.onLoadTrades,
             constants.trade.LOAD_TRADES_SUCCESS, this.onLoadTradesSuccess,
             constants.trade.LOAD_TRADES_FAIL, this.onLoadTradesFail,
-            constants.trade.ADD_TRADE, this.onAddTrade
+            constants.trade.ADD_TRADE, this.onAddTrade,
+            constants.trade.UPDATE_TRADE, this.onUpdateTrade
         );
     },
 
@@ -26,7 +27,10 @@ var TradeStore = Fluxxor.createStore({
     },
 
     onLoadTradesSuccess: function(payload) {
-        this.trades = payload;
+        this.trades = _.chain(payload)
+                       .map(function(val, key) { return [key, this._defaultTrade(val)]; }, this)
+                       .object()
+                       .value();
         this.loading = false;
         this.error = null;
         this.emit(constants.CHANGE_EVENT);
@@ -39,21 +43,22 @@ var TradeStore = Fluxxor.createStore({
     },
 
     onAddTrade: function(payload) {
-        this.trades[payload.id] = {
-            id: payload.id,
-            type: payload.type,
-            description: payload.description,
-            price: payload.price,
-            expiration: payload.expiration,
-            buyerId: payload.buyerId,
-            sellerId: payload.sellerId,
+        this.trades[payload.id] = this._defaultTrade(payload);
+        this.emit(constants.CHANGE_EVENT);
+    },
+
+    onUpdateTrade: function(payload) {
+        this.trades[payload.id] = payload;
+        this.emit(constants.CHANGE_EVENT);
+    },
+
+    _defaultTrade: function(trade) {
+        return _.defaults(trade, {
+            state: constants.state.NEW,
             escrowPct: 0,
             insurancePct: 0,
-            status: payload.status || 'new',
-            statusText: payload.statusText || 'new',
             references: []
-        };
-        this.emit(constants.CHANGE_EVENT);
+        });
     },
 
     getState: function() {

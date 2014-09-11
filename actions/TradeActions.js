@@ -21,6 +21,15 @@ var TradeActions = function(client) {
         }.bind(this));
     };
 
+    this.cancelTrade = function(trade) {
+        trade.state = constants.state.CANCELLED;
+        _client.setTrade(trade, function() {
+            this.dispatch(constants.trade.UPDATE_TRADE, trade);
+        }.bind(this), function(error) {
+            console.log(error);
+        }.bind(this));
+    };
+
     var _client = client;
 };
 
