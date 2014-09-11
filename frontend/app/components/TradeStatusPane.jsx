@@ -32,7 +32,7 @@ var TradeStatusPane = React.createClass({
                     Status
                 </div>
                 <div className="col-xs-8">
-                    {this.props.trade.statusText}
+                    {this.props.trade.state}
                 </div>
             </div>
             <div className="row spacer">

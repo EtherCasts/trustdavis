@@ -5,6 +5,16 @@ module.exports = {
     CURRENCY: "USD",
     TRADE_VALID_DAYS: 30,
     VALID_USERNAME_PATTERN: "[a-z0-9_.+@-]{1,32}",
+    state: keyMirror({
+        NEW: null,
+        ACCEPTED: null,
+        CANCELLED: null,
+        INSURED: null,
+        PARTIAL_SUCCESS: null,
+        COMPLETED: null,
+        FAILED: null,
+        EXPIRED: null
+    }),
     contact: keyMirror({
         LOAD_CONTACTS: null,
         LOAD_CONTACTS_SUCCESS: null,
