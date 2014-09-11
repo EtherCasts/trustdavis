@@ -35,7 +35,7 @@ var NavBar = React.createClass({
                         </ul>
                         <form className="navbar-form navbar-right" role="search" onSubmit={this.onSubmitForm}>
                             <div className="form-group">
-                                <input type="text" className="form-control" pattern="[0-9a-fA-F]{64}" placeholder="User or Trade ID" ref="searchId" />
+                                <input type="text" className="form-control" pattern="[0-9a-fA-F]{64}" spellCheck="false" placeholder="User or Trade ID" ref="searchId" />
                             </div>
                             <button type="submit" className="btn btn-default"><span className="glyphicon glyphicon-search"></span></button>
                         </form>
