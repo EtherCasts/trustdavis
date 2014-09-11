@@ -3,9 +3,9 @@
 var React = require("react");
 var Router = require("react-router");
 var Link = Router.Link;
+var _ = require('lodash');
 
 var UserLink = require("./UserLink");
-
 var constants = require("../constants");
 
 var TradeRow = React.createClass({
@@ -13,7 +13,6 @@ var TradeRow = React.createClass({
         var isBuyer = this.props.trade.buyerId && (this.props.trade.buyerId === this.props.users.currentUserId);
         var isSeller = this.props.trade.sellerId && (this.props.trade.sellerId === this.props.users.currentUserId);
         var counterpartyId;
-
 
         if (isBuyer) {
             counterpartyId = this.props.trade.sellerId;
@@ -24,7 +23,6 @@ var TradeRow = React.createClass({
         return (
             <tr>
                 <td>{this.props.trade.type}</td>
-                <td>{this.props.trade.category}</td>
                 <td><Link to="tradeDetails" tradeId={this.props.trade.id}>
                 {this.props.trade.description}</Link></td>
                 <td>{constants.CURRENCY} {this.props.trade.price}</td>
@@ -38,17 +36,18 @@ var TradeRow = React.createClass({
 
 var TradeTable = React.createClass({
     render: function() {
-        var tradeListNodes = this.props.tradeList.map(function(trade) {
-            return (
-                <TradeRow key={trade.id} trade={trade} users={this.props.users} />
-            );
-        }.bind(this));
+        var tradeListNodes = _.chain(this.props.tradeList)
+                              .sortBy('expiration')
+                              .reverse()
+                              .map(function(trade) {
+                                  return <TradeRow key={trade.id} trade={trade} users={this.props.users} />;
+                               }, this)
+                              .value();
         return (
             <table className="tradeList table table-striped">
                 <thead>
                     <tr>
                         <th>Type</th>
-                        <th>Category</th>
                         <th>Description</th>
                         <th>Price</th>
                         <th>Counterparty</th>

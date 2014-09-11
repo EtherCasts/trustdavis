@@ -1,5 +1,4 @@
 var constants = require("../constants");
-var utils = require("../utils");
 
 var TradeActions = function(client) {
 
@@ -15,7 +14,6 @@ var TradeActions = function(client) {
     };
 
     this.addTrade = function(trade) {
-        trade.id = utils.randomId();
         _client.setTrade(trade, function() {
             this.dispatch(constants.trade.ADD_TRADE, trade);
         }.bind(this), function(error) {

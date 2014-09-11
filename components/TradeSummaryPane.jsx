@@ -36,16 +36,12 @@ var TradeSummaryPane = React.createClass({
                         </td>
                     </tr>
                     <tr>
-                        <td>Buyer {isBuyer && '(you)'}</td>
-                        <td>{this.props.trade.buyerId ? <UserLink users={this.props.users} id={this.props.trade.buyerId} /> : 'Not claimed'}</td>
-                    </tr>
-                    <tr>
                         <td>Seller {isSeller && '(you)'}</td>
                         <td>{this.props.trade.sellerId ? <UserLink users={this.props.users} id={this.props.trade.sellerId} /> : 'Not claimed'}</td>
                     </tr>
                     <tr>
-                        <td>Category</td>
-                        <td>{this.props.trade.category}</td>
+                        <td>Buyer {isBuyer && '(you)'}</td>
+                        <td>{this.props.trade.buyerId ? <UserLink users={this.props.users} id={this.props.trade.buyerId} /> : 'Not claimed'}</td>
                     </tr>
                     <tr>
                         <td>Description</td>
