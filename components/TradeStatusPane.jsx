@@ -8,11 +8,18 @@ var constants = require("../constants");
 var ProgressBar = require("./ProgressBar");
 
 var TradeActionButtons = React.createClass({
-
     mixins: [FluxChildMixin],
 
     render: function() {
-        if (this.props.state === constants.state.NEW || this.props.state === constants.state.ACCEPTED) {
+        if (this.props.trade.state === constants.state.NEW && this.props.trade.buyerId !== this.props.users.currentUserId && this.props.trade.sellerId !== this.props.users.currentUserId) {
+            return (
+                <div className="row spacer">
+                    <div className="col-xs-4">
+                        <button type="button" className="btn btn-default" onClick={this.onAcceptButton}>Accept Trade</button>
+                    </div>
+                </div>
+            );
+        } else if (this.props.trade.state === constants.state.NEW || this.props.trade.state === constants.state.ACCEPTED) {
             return (
                 <div className="row spacer">
                     <div className="col-xs-4">
@@ -20,7 +27,7 @@ var TradeActionButtons = React.createClass({
                     </div>
                 </div>
             );
-        } else if (this.props.state === constants.state.INSURED) {
+        } else if (this.props.trade.state === constants.state.INSURED) {
             return (
                 <div className="row spacer">
                     <div className="col-xs-4">
@@ -34,12 +41,18 @@ var TradeActionButtons = React.createClass({
         } else {
             return null;
         }
+    },
+
+    onAcceptButton: function() {
+        this.getFlux().actions.trade.acceptTrade(this.props.trade);
+    },
+
+    onCancelButton: function() {
+        this.getFlux().actions.trade.cancelTrade(this.props.trade);
     }
 });
 
 var TradeStatusPane = React.createClass({
-    mixins: [FluxChildMixin],
-
     render: function() {
         return (
             <div className="panel panel-default">
@@ -71,14 +84,10 @@ var TradeStatusPane = React.createClass({
                             {this.props.trade.state}
                         </div>
                     </div>
-                    <TradeActionButtons />
+                    <TradeActionButtons trade={this.props.trade} users={this.props.users} />
                 </div>
             </div>
         );
-    },
-
-    onCancelButton: function() {
-        this.getFlux().actions.trade.cancelTrade(this.props.trade);
     }
 });
 
