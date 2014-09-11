@@ -3,6 +3,7 @@
 var React = require("react");
 
 var ModalTrigger = require('react-bootstrap/ModalTrigger');
+var moment = require("moment");
 
 var TradeIdModal = require("./TradeIdModal");
 var UserLink = require("./UserLink");
@@ -16,6 +17,8 @@ var TradeSummaryPane = React.createClass({
     var shortId = this.props.trade.id.substr(0, this.shortIdLength);
     var isBuyer = this.props.trade.buyerId === this.props.users.currentUserId;
     var isSeller = this.props.trade.sellerId === this.props.users.currentUserId;
+
+    var timeUntilExpiration = moment(this.props.trade.expiration).fromNow();
 
     return (
         <div className="panel panel-default">
@@ -53,7 +56,7 @@ var TradeSummaryPane = React.createClass({
                     </tr>
                     <tr>
                         <td>Valid Until</td>
-                        <td>{this.props.trade.expiration}</td>
+                        <td>{this.props.trade.expiration} ({timeUntilExpiration})</td>
                     </tr>
                 </tbody>
             </table>
