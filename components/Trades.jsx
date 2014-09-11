@@ -14,7 +14,8 @@ var Trades = React.createClass({
     return (
       <div>
         <NewTradeForm users={this.props.users} />
-        <TradeList title="Your Active Trades" trades={this.props.trades} users={this.props.users} />
+        <TradeList title="Your Active Trades" trades={this.props.trades} tradeList={this.props.trades.activeTradeList} users={this.props.users} />
+        <TradeList title="Your Closed Trades" trades={this.props.trades} tradeList={this.props.trades.closedTradeList} users={this.props.users} />
       </div>
     );
   }
