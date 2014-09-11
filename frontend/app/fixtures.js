@@ -8,7 +8,6 @@ var fixtures = {
         'f70097659f329a09': {
             id: 'f70097659f329a09',
             type: 'buy',
-            category: 'product',
             description: 'Garden gnome',
             price: 12,
             buyerId: '1a73636d',
@@ -28,7 +27,6 @@ var fixtures = {
         'e92113a5cb209c12': {
             id: 'e92113a5cb209c12',
             type: 'sell',
-            category: 'product',
             description: 'Lawnmower',
             price: 66,
             sellerId: '1a73636d',

@@ -42,7 +42,6 @@ var TradeStore = Fluxxor.createStore({
         this.trades[payload.id] = {
             id: payload.id,
             type: payload.type,
-            category: payload.category,
             description: payload.description,
             price: payload.price,
             expiration: payload.expiration,

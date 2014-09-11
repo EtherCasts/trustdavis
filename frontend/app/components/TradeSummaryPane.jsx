@@ -44,10 +44,6 @@ var TradeSummaryPane = React.createClass({
                         <td>{this.props.trade.sellerId ? <UserLink users={this.props.users} id={this.props.trade.sellerId} /> : 'Not claimed'}</td>
                     </tr>
                     <tr>
-                        <td>Category</td>
-                        <td>{this.props.trade.category}</td>
-                    </tr>
-                    <tr>
                         <td>Description</td>
                         <td>{this.props.trade.description}</td>
                     </tr>
