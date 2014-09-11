@@ -22,7 +22,7 @@ var TradeDetails = React.createClass({
                             <TradeSummaryPane trade={trade} users={this.props.users} />
                         </div>
                         <div className="col-sm-6">
-                            <TradeStatusPane trade={trade} />
+                            <TradeStatusPane trade={trade} users={this.props.users} />
                         </div>
                     </div>
                     <div className="row">
