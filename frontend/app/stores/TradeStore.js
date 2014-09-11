@@ -14,7 +14,8 @@ var TradeStore = Fluxxor.createStore({
             constants.trade.LOAD_TRADES, this.onLoadTrades,
             constants.trade.LOAD_TRADES_SUCCESS, this.onLoadTradesSuccess,
             constants.trade.LOAD_TRADES_FAIL, this.onLoadTradesFail,
-            constants.trade.ADD_TRADE, this.onAddTrade
+            constants.trade.ADD_TRADE, this.onAddTrade,
+            constants.trade.UPDATE_TRADE, this.onUpdateTrade
         );
     },
 
@@ -43,6 +44,11 @@ var TradeStore = Fluxxor.createStore({
 
     onAddTrade: function(payload) {
         this.trades[payload.id] = this._defaultTrade(payload);
+        this.emit(constants.CHANGE_EVENT);
+    },
+
+    onUpdateTrade: function(payload) {
+        this.trades[payload.id] = payload;
         this.emit(constants.CHANGE_EVENT);
     },
 

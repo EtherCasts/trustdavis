@@ -26,7 +26,8 @@ module.exports = {
         LOAD_TRADES: null,
         LOAD_TRADES_SUCCESS: null,
         LOAD_TRADES_FAIL: null,
-        ADD_TRADE: null
+        ADD_TRADE: null,
+        UPDATE_TRADE: null
     }),
     reference: keyMirror({
         LOAD_REFERENCES: null,
