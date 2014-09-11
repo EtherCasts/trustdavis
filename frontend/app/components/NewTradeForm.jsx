@@ -3,9 +3,12 @@
 var React = require("react");
 var Fluxxor = require("fluxxor");
 var FluxChildMixin = Fluxxor.FluxChildMixin(React);
+
+var Router = require("react-router");
 var moment = require("moment");
 
 var constants = require("../constants");
+var utils = require("../utils");
 
 var NewTradeForm = React.createClass({
     mixins: [FluxChildMixin],
@@ -72,6 +75,7 @@ var NewTradeForm = React.createClass({
         }
 
         var trade = {
+            id: utils.randomId(),
             type: this.state.type,
             category: this.state.category,
             description: this.state.description,
@@ -84,11 +88,11 @@ var NewTradeForm = React.createClass({
         } else if (trade.type === 'buy') {
             trade.buyerId = this.props.users.currentUserId;
         }
-        console.log(trade);
 
         this.getFlux().actions.trade.addTrade(trade);
 
         this.setState({category: '', description: '', price: ''});
+        Router.transitionTo('tradeDetails', {tradeId: trade.id});
         return false;
     }
 });
