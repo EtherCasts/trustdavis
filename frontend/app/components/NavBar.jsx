@@ -29,9 +29,9 @@ var NavBar = React.createClass({
 
                     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul className="nav navbar-nav">
-                            <Tab to="trades">Trades</Tab>
-                            <Tab to="references">References</Tab>
-                            <Tab to="contacts">Contacts</Tab>
+                            <Tab to="trades"><i className="fa fa-exchange fa-fw"></i>&nbsp;Trades</Tab>
+                            <Tab to="references"><i className="fa fa-check-square-o fa-fw"></i>&nbsp;References</Tab>
+                            <Tab to="contacts"><i className="fa fa-at fa-fw"></i>&nbsp;Contacts</Tab>
                         </ul>
                         <form className="navbar-form navbar-right" role="search" onSubmit={this.onSubmitForm}>
                             <div className="form-group">
