@@ -61,9 +61,16 @@ var TradeStore = Fluxxor.createStore({
         });
     },
 
+    _isActive: function(trade) {
+        return trade.state === constants.state.NEW || trade.state === constants.state.ACCEPTED ||
+            trade.state === constants.state.INSURED || trade.state === constants.state.PARTIAL_SUCCESS;
+    },
+
     getState: function() {
         return {
             tradeList: _.values(this.trades),
+            activeTradeList: _.chain(this.trades).values().filter(this._isActive).value(),
+            closedTradeList: _.chain(this.trades).values().reject(this._isActive).value(),
             tradeById: this.trades,
             loading: this.loading,
             error: this.error

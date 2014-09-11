@@ -69,7 +69,7 @@ var TradeList = React.createClass({
             <div>
                 <h3>{this.props.title} {this.props.trades.loading && <i className="fa fa-spinner fa-spin"></i>}</h3>
                 {this.props.trades.error && <div className="alert alert-danger" role="alert"><strong>Error!</strong> {this.props.trades.error}</div>}
-                <TradeTable tradeList={this.props.trades.tradeList} users={this.props.users} />
+                <TradeTable tradeList={this.props.tradeList ? this.props.tradeList : this.props.trades.tradeList} users={this.props.users} />
             </div>
         );
     }
