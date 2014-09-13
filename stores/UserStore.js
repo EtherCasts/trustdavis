@@ -17,6 +17,7 @@ var UserStore = Fluxxor.createStore({
             constants.user.LOAD_USERS, this.onLoadUsers,
             constants.user.LOAD_USERS_SUCCESS, this.onLoadUsersSuccess,
             constants.user.LOAD_USERS_FAIL, this.onLoadUsersFail,
+            constants.user.USER_CHANGED, this.onUserChanged,
             constants.user.REGISTER_USER, this.onRegisterUser,
             constants.user.DEPOSIT, this.onDeposit,
             constants.user.WITHDRAW, this.onWithdraw
@@ -35,11 +36,7 @@ var UserStore = Fluxxor.createStore({
 
     onLoadUsersSuccess: function(payload) {
         _.forEach(payload.users, function(user, id) {
-            this.users[id] = {
-                id: id,
-                name: user.name,
-                deposit: user.deposit || 0
-            };
+            this.users[id] = this._defaultUser(id, user);
             this.usersByName[user.name] = id;
         }, this);
 
@@ -55,17 +52,18 @@ var UserStore = Fluxxor.createStore({
         this.emit(constants.CHANGE_EVENT);
     },
 
+    onUserChanged: function(payload) {
+        this.users[payload.id] = this._defaultUser(payload.id, payload);
+        this.emit(constants.CHANGE_EVENT);
+    },
+
     onRegisterUser: function(payload) {
         // check if already used
         if (this.users.hasOwnProperty(this.currentUserId)) {
             console.log("User already registered");
             return;
         }
-        this.users[this.currentUserId] = {
-            id: this.currentUserId,
-            name: payload.name,
-            deposit: 0
-        };
+        this.users[this.currentUserId] = this._defaultUser(this.currentUserId, payload);
         this.usersByName[payload.name] = this.currentUserId;
         this.createAccount = false;
         this.emit(constants.CHANGE_EVENT);
@@ -83,6 +81,13 @@ var UserStore = Fluxxor.createStore({
             this.users[this.currentUserId].deposit -= payload.amount;
         }
         this.emit(constants.CHANGE_EVENT);
+    },
+
+    _defaultUser: function(id, user) {
+        return _.defaults(user, {
+            id: id,
+            deposit: 0
+        });
     },
 
     getState: function() {

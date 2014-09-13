@@ -34,6 +34,7 @@ var TrustDavisApp = React.createClass({
 
   componentDidMount: function() {
     this.getFlux().actions.user.loadUsers();
+    this.getFlux().actions.user.listenCurrentUser();
     this.getFlux().actions.contact.loadContacts();
     this.getFlux().actions.trade.loadTrades();
     this.getFlux().actions.reference.loadReferences();

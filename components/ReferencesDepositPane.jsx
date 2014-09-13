@@ -13,6 +13,7 @@ var constants = require("../constants");
 
 var ReferencesDepositPane = React.createClass({
   mixins: [FluxChildMixin],
+
   render: function() {
     return (
         <div className="panel panel-default">

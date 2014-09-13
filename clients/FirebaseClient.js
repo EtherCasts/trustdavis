@@ -74,6 +74,17 @@ var FirebaseClient = function(firebaseRef) {
         }, failure);
     };
 
+    this.listenCurrentUser = function(callback) {
+        var uid = this.UID();
+        _firebaseRef.child('user').child(uid).on('value', function(data) {
+            var user = data.val();
+            if (!user.id) {
+                user.id = uid;
+            }
+            callback(user);
+        });
+    };
+
     this.setUserName = function(name, success, failure) {
         var uid = this.UID();
         _firebaseRef.child('user').child(uid)
