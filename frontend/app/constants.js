@@ -40,6 +40,7 @@ module.exports = {
         LOAD_USERS: null,
         LOAD_USERS_SUCCESS: null,
         LOAD_USERS_FAIL: null,
+        USER_CHANGED: null,
         REGISTER_USER: null,
         DEPOSIT: null,
         WITHDRAW: null

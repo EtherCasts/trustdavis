@@ -13,6 +13,12 @@ var UserActions = function(client) {
         }.bind(this));
     };
 
+    this.listenCurrentUser = function() {
+        _client.listenCurrentUser(function(currentUser) {
+            this.dispatch(constants.user.USER_CHANGED, currentUser);
+        }.bind(this));
+    };
+
     this.registerUser = function(name) {
         var trimmedName = name.trim().toLowerCase();
         _client.setUserName(trimmedName, function(name) {

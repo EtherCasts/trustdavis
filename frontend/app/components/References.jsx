@@ -19,6 +19,7 @@ var References = React.createClass({
         if (!this.props.users.currentUser) {
             return null;
         }
+
         var deposit = this.props.users.currentUser.deposit || 0;
         var summedStats = stats.sumReferenceStats(this.props.references.references);
         var available = deposit - summedStats.lockedLiabilities;
