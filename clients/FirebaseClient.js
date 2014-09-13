@@ -80,6 +80,23 @@ var FirebaseClient = function(firebaseRef) {
                     .update({name: name}, this._onComplete(name, success, failure));
     };
 
+    this.depositUser = function(amount, success, failure) {
+        var uid = this.UID();
+        _firebaseRef.child('user').child(uid).child('deposit').transaction(function(currentDeposit) {
+            return currentDeposit += amount;
+        }, this._onComplete(amount, success, failure));
+    };
+
+    this.withdrawUser = function(amount, success, failure) {
+        var uid = this.UID();
+        _firebaseRef.child('user').child(uid).child('deposit').transaction(function(currentDeposit) {
+            if (amount > currentDeposit) {
+                return currentDeposit;
+            }
+            return currentDeposit -= amount;
+        }, this._onComplete(amount, success, failure));
+    };
+
     this.ref = function() {
         return _firebaseRef;
     };

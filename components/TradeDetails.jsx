@@ -31,8 +31,8 @@ var TradeDetails = React.createClass({
                             <h3 className="hidden-xs">References for this trade</h3>
                         </div>
                         <div className="col-xs-6 text-right">
-                            {this.props.state === constants.state.ACCEPTED &&
-                                <button type="button" className="btn btn-default" disabled="disabled">Insure this trade</button>
+                            {trade.state === constants.state.ACCEPTED &&
+                                <button type="button" className="btn btn-default">Insure this trade</button>
                             }
                         </div>
                     </div>
@@ -41,7 +41,7 @@ var TradeDetails = React.createClass({
             );
         } else {
             return (
-                    <h3>Trade not found</h3>
+                <h3>Trade not found</h3>
             );
         }
     }
