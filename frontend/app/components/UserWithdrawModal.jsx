@@ -13,6 +13,7 @@ var constants = require("../constants");
 
 var UserWithdrawModal = React.createClass({
     mixins: [FluxMixin],
+
     render: function() {
         return this.transferPropsTo(
             <Modal title="Withdraw" animation={false}>
@@ -29,6 +30,7 @@ var UserWithdrawModal = React.createClass({
             </Modal>
         );
     },
+
     handleWithdraw: function() {
         var amount = parseFloat(this.refs.amount.getDOMNode().value);
         this.getFlux().actions.user.withdraw(amount);

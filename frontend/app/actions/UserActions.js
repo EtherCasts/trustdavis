@@ -23,11 +23,19 @@ var UserActions = function(client) {
     };
 
     this.deposit = function(amount) {
-        this.dispatch(constants.user.DEPOSIT, {amount: amount});
+        _client.depositUser(amount, function(amount) {
+          this.dispatch(constants.user.DEPOSIT, {amount: amount});
+        }.bind(this), function(error) {
+          console.log(error);
+        }.bind(this));
     };
 
     this.withdraw = function(amount) {
-        this.dispatch(constants.user.WITHDRAW, {amount: amount});
+        _client.withdrawUser(amount, function(amount) {
+          this.dispatch(constants.user.WITHDRAW, {amount: amount});
+        }.bind(this), function(error) {
+          console.log(error);
+        }.bind(this));
     };
 
     var _client = client;

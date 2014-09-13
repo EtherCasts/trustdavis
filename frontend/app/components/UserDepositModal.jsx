@@ -13,6 +13,7 @@ var constants = require("../constants");
 
 var UserDepositModal = React.createClass({
     mixins: [FluxMixin],
+
     render: function() {
         return this.transferPropsTo(
             <Modal title="Deposit" animation={false}>
@@ -29,6 +30,7 @@ var UserDepositModal = React.createClass({
             </Modal>
         );
     },
+
     handleDeposit: function() {
         var amount = parseFloat(this.refs.amount.getDOMNode().value);
         this.getFlux().actions.user.deposit(amount);
